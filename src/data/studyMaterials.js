@@ -1,5 +1,6 @@
-// Resumos Teóricos e Guias de Estudo Prático MedBio
+// Guias Teóricos e Conteúdo Programático Detalhado LUmed
 export const STUDY_MATERIALS = [
+  // Bioquímica Médica (Módulos 1-7)
   {
     id: 1,
     assunto: "Introdução às biomoléculas e ao metabolismo",
@@ -15,9 +16,8 @@ export const STUDY_MATERIALS = [
     ],
     relacaoMedicina: "Compreender a bioenergética e a regulação hormonal é a base para diagnosticar cetoacidose diabética, erros inatos do metabolismo, síndrome metabólica e o mecanismo de ação de antidiabéticos como a Metformina (que ativa a AMPK).",
     errosComuns: [
-      "Achar que enzimas alteram o ΔG ou a constante de equilíbrio (Keq) de uma reação. Enzimas alteram APENAS a velocidade (energia de ativação).",
-      "Confundir massa de metabólito estática com taxa de renovação isotópica (fluxo).",
-      "Assumir que vias anabólicas e catabólicas ocorrem simultaneamente no mesmo compartimento sem regulação."
+      "Achar que enzimas alteram o ΔG ou a constante de equilíbrio (Keq) de uma reação.",
+      "Confundir massa de metabólito estática com taxa de renovação isotópica (fluxo)."
     ],
     questoesRelacionadas: [1, 2, 3, 4, 5]
   },
@@ -26,125 +26,103 @@ export const STUDY_MATERIALS = [
     assunto: "Água nos sistemas biológicos, pH e tampões",
     icone: "Droplet",
     descricao: "Propriedades da água, pontes de hidrogênio, equação de Henderson-Hasselbalch, tampão bicarbonato e osmose.",
-    resumo: "A água é o solvente biológico universal. Sua natureza polar e capacidade de formar pontes de hidrogênio conferem elevado calor específico, essencial para a termorregulação. Os tampões biológicos resistem a variações drásticas de pH quando este está próximo ao pKa do sistema.",
+    resumo: "A água é o solvente biológico universal. Sua natureza polar e capacidade de formar pontes de hidrogênio conferem elevado calor específico. Os tampões biológicos resistem a variações de pH fisiológico.",
     conceitosFundamentais: [
       "Equação de Henderson-Hasselbalch: pH = pKa + log([Base Conjugada] / [Ácido Fraco]).",
-      "Máxima capacidade tamponante ocorre quando pH = pKa (50% ácido / 50% base).",
-      "O tampão bicarbonato (HCO3-/CO2) é um sistema aberto regulado dinamicamente por pulmões (CO2) e rins (HCO3-).",
-      "No meio intracelular, o tampão fosfato e os resíduos de Histidina nas proteínas são predominantes.",
-      "Osmose: Movimento de água do meio hipotônico para o hipertônico. Hemácias em meio hipotônico sofrem hemólise."
+      "Máxima capacidade tamponante ocorre quando pH = pKa.",
+      "O tampão bicarbonato (HCO3-/CO2) é um sistema aberto regulado por pulmões e rins."
     ],
-    relacaoMedicina: "Essencial para entender a prescrição de fluidoterapia intravenosa (soro fisiológico vs. água livre), prevenção de edema cerebral osmótico e fisiologia respiratória/renal básica.",
-    errosComuns: [
-      "Achar que o tampão bicarbonato é ineficaz por ter pKa de 6,1. Ele é extremamente eficiente por ser um sistema aberto fisiológico.",
-      "Confundir a direção da osmose: a água é atraída PARA o meio de MAIOR osmolaridade (hipertônico).",
-      "Esquecer que o pH do sangue humano normal é estritamente mantido entre 7,35 e 7,45."
-    ],
+    relacaoMedicina: "Base para a prescrição de fluidoterapia intravenosa e prevenção de distúrbios osmóticos.",
+    errosComuns: ["Achar que a osmose move água para o meio hipotônico."],
     questoesRelacionadas: [6, 7, 8, 9, 10]
   },
+
+  // ----------------------------------------------------------------------
+  // NOVO CONTEÚDO PROGRAMÁTICO: MICROBIOLOGIA, VIROLOGIA E SÍNDROMES GRIPAIS
+  // ----------------------------------------------------------------------
+
   {
-    id: 3,
-    assunto: "Eletrólitos e equilíbrio ácido-base",
+    id: 8,
+    assunto: "Módulo 1: Introdução à Microbiologia",
+    icone: "Microscope",
+    descricao: "Conceito, escopo, diferenciação celular dos microrganismos (bactérias, fungos, protozoários, vírus) e microbiota humana.",
+    resumo: "A Microbiologia é a ciência dedicada ao estudo dos organismos microscópicos. Abrange o diagnóstico médico e antibiogramas, aplicações biotecnológicas (síntese de insulina recombinante, fermentação) e ciclos biogeoquímicos. Compreende a diferenciação entre procariontes (bactérias com peptidoglicano), eucariontes (fungos com quitina, protozoários) e agentes acelulares (vírus). A microbiota humana atua na exclusão competitiva de patógenos e síntese de vitaminas K e B12.",
+    conceitosFundamentais: [
+      "Bactérias: Procariontes unicelulares sem núcleo individualizado e com parede celular de peptidoglicano.",
+      "Fungos: Eucariontes (unicelulares como leveduras ou filamentosos como bolores) com parede celular rica em quitina.",
+      "Protozoários: Eucariontes unicelulares sem parede celular rígida, móveis por cílios, flagelos ou pseudópodes.",
+      "Vírus: Parasitas intracelulares obrigatórios acelulares (DNA ou RNA).",
+      "Ubiquidade e Microbiota Humana: A microbiota comensal/mutualista protege mucosas por exclusão competitiva e modula o sistema imune."
+    ],
+    relacaoMedicina: "Fundamental no diagnóstico infeccioso, testes de suscetibilidade a antimicrobianos (antibiogramas), prevenção de infecções hospitalares (CCIH) e preservação da microbiota comensal na prescrição de antibióticos de amplo espectro.",
+    errosComuns: [
+      "Confundir bactérias (procariontes com peptidoglicano) com fungos (eucariontes com quitina).",
+      "Assumir que a microbiota humana é maléfica (ela é vital para a nutrição e imunoproteção por exclusão competitiva)."
+    ],
+    questoesRelacionadas: [36, 37, 38, 39, 40]
+  },
+  {
+    id: 9,
+    assunto: "Módulo 2: Introdução à Virologia",
+    icone: "Shield",
+    descricao: "Propriedades virais, genoma, capsídeo, simetrias, envelope lipídico, marcos históricos e vacinas de Poliomielite (Salk vs. Sabin).",
+    resumo: "Vírus são elementos genéticos (DNA ou RNA) envoltos por capsídeo proteico (com simetria icosaédrica, helicoidal ou complexa). O vírion é a partícula madura infectante. Vírus envelopados adquirem bicamada lipídica da célula hospedeira, tornando-se mais sensíveis a detergentes, sabão, álcool 70% e calor. Destacam-se os marcos históricos de Edward Jenner (varíola), Beijerinck e o desenvolvimento das vacinas de poliomielite por Salk (IPV - inativada injetável) e Sabin (OPV - atenuada oral).",
+    conceitosFundamentais: [
+      "Vírion: Partícula viral estruturalmente completa e infectante no ambiente extracelular.",
+      "Envelope Lipídico: Bicamada lipídica contendo glicoproteínas virais; torna o vírus sensível a álcool 70%, detergentes e dessecação.",
+      "Simetria dos Capsídeos: Icosaédrica (20 faces), Helicoidal (em espiral) ou Complexa (poxvírus/bacteriófagos).",
+      "Vacina Salk (IPV): Vírus inativado por formaldeído injetável.",
+      "Vacina Sabin (OPV): Vírus vivo atenuado oral ('gotinha')."
+    ],
+    relacaoMedicina: "Crucial para entender a higienização de mãos com álcool 70% e detergentes contra vírus envelopados, além de dominar o calendário vacinal do PNI e imunobiológicos.",
+    errosComuns: [
+      "Achar que vírus envelopados são mais resistentes que não envelopados (o envelope lipídico os torna MUITO mais sensíveis a álcool e sabão).",
+      "Inverter o tipo de vacina: Salk = Injetável Inativada (IPV); Sabin = Oral Atenuada (OPV)."
+    ],
+    questoesRelacionadas: [41, 42, 43, 44, 45]
+  },
+  {
+    id: 10,
+    assunto: "Módulo 3: Vírus Influenza (Gripe)",
+    settitulo: "Orthomyxoviridae, Hemaglutinina, Neuraminidase, Canal M2, Antigenic Drift vs. Shift e Oseltamivir",
+    icone: "Thermometer",
+    descricao: "Estrutura do vírus Influenza A e B, proteínas HA, NA e M2, Deriva e Salto Antigênico, clínica, complicações e antiviral Oseltamivir.",
+    resumo: "O vírus Influenza (família Orthomyxoviridae) possui genoma de RNA fita negativa (-ssRNA) segmentado em 8 fragmentos. A Hemaglutinina (HA) liga-se ao ácido siálico e medeia a fusão. A Neuraminidase (NA) cliva o ácido siálico para liberar vírions brotados. A Deriva Antigênica (Antigenic Drift) por mutações pontuais causa epidemias sazonais anuais. O Salto Antigênico (Antigenic Shift) por rearranjo genético entre cepas em um hospedeiro intermediário causa PANDEMIAS. O Oseltamivir (Tamiflu) age inibindo a Neuraminidase.",
+    conceitosFundamentais: [
+      "Hemaglutinina (HA): Trímero de acoplamento ao ácido siálico e fusão celular.",
+      "Neuraminidase (NA): Enzima de desancoragem que cliva o ácido siálico permitindo a liberação viral.",
+      "Canal Iônico M2: Promove acidificação endossômica para o desnudamento (uncoating).",
+      "Deriva Antigênica (Antigenic Drift): Mutações pontuais da RNA polimerase -> Epidemias Sazonais Anuais.",
+      "Salto Antigênico (Antigenic Shift): Rearranjo/recombinação de segmentos genéticos de RNA de diferentes cepas -> PANDEMIAS (ex: H1N1 em 2009).",
+      "Oseltamivir (Tamiflu): Inibidor seletivo da Neuraminidase (NA)."
+    ],
+    relacaoMedicina: "Diagnóstico diferencial de Síndrome Gripal em prontos-socorros, indicação precoce do Oseltamivir nas primeiras 48h em pacientes de risco e rastreamento de complicações como pneumonia bacteriana secundária por S. pneumoniae.",
+    errosComuns: [
+      "Confundir Antigenic Drift (mutações pontuais sazonais) com Antigenic Shift (rearranjo drástico de segmentos causa de pandemias).",
+      "Achar que o Oseltamivir mata bactérias (ele é um antiviral inibidor da Neuraminidase viral)."
+    ],
+    questoesRelacionadas: [46, 47, 48, 49, 50]
+  },
+  {
+    id: 11,
+    assunto: "Módulo 4: Síndromes Gripais e Principais Vírus Respiratórios",
     icone: "Activity",
-    descricao: "Gasometria arterial, acidose e alcalose metabólica/respiratória, Ânion Gap e Fórmula de Winter.",
-    resumo: "Os desequilíbrios ácido-base alteram a carga de proteínas e o funcionamento celular. Classificam-se em primariamente metabólicos (variação no HCO3-) ou respiratórios (variação na PaCO2), acompanhados por respostas compensatórias fisiológicas dos rins ou pulmões.",
+    descricao: "Critérios de Síndrome Gripal (SG), Rinovírus (ICAM-1/33-35°C), Adenovírus, Vírus Sincicial Respiratório (VSR/Proteína F/Abrysvo/Palivizumabe/Nirsevimabe) e SARS-CoV-2 (Spike/ACE2/TMPRSS2/Vacinas).",
+    resumo: "A Síndrome Gripal (SG) é caracterizada por início agudo de febre, tosse, dor de garganta, cefaleia e mialgia. O Rinovírus causa o resfriado comum replicando idealmente a 33-35°C na cavidade nasal. O Adenovírus causa faringocutânea, ceratoconjuntivite e gastroenterite. O VSR causa Bronquiolite Viral Aguda (BVA) em lactentes via Proteína F que forma SINCÍCIOS multinucleados. O SARS-CoV-2 liga a proteína Spike (S) ao receptor ACE2 com clivagem por TMPRSS2, desencadeando a tempestade de citocinas em casos graves.",
     conceitosFundamentais: [
-      "Acidose: pH < 7,35. Alcalose: pH > 7,45.",
-      "Ânion Gap = Na+ - (Cl- + HCO3-). Valor normal: 8 a 12 mEq/L. Elevado na Cetoacidose, Acidose Lática e Uremia.",
-      "Alcalose metabólica por vômitos decorre da perda maciça de HCl gástrico (hipoclorêmica).",
-      "Alcalose respiratória por hiperventilação desprotona a albumina, reduz o cálcio iônico livre e gera tetania/parestesias.",
-      "Fórmula de Winter: PaCO2 esperada na acidose metabólica = (1,5 × [HCO3-]) + 8 ± 2."
+      "Vírus Envelopados (Influenza, VSR, Coronavírus): Transmissão por gotículas; sensíveis a sabão e álcool 70%.",
+      "Vírus Não Envelopados (Rinovírus, Adenovírus): Resistentes ao estômago e dessecação; persistem em fômites.",
+      "Rinovírus: Liga-se ao ICAM-1 e replica a 33-35°C no nariz (restrito ao trato superior).",
+      "Adenovírus: Vírus de dsDNA não envelopado com fibras; causa febre faringoconjuntival e ceratoconjuntivite.",
+      "VSR: Agente principal da Bronquiolite em lactentes; Proteína F forma Sincícios.",
+      "Imunização do VSR: Vacina materna Abrysvo® (IgG transplacentário) e Monoclonais (Palivizumabe e Nirsevimabe).",
+      "SARS-CoV-2: Proteína Spike (S) -> Receptor ACE2 + Protease celular TMPRSS2 -> Tempestade de citocinas (IL-6) e tempestade inflamatória."
     ],
-    relacaoMedicina: "Tema obrigatório nas UTI, Prontos-Socorros e Enfermarias. Permite diagnosticar insuficiência respiratória, choque séptico, cetoacidose diabética e intoxicações gravemente descompensadas.",
+    relacaoMedicina: "Manejo pediátrico de Bronquiolite Viral Aguda por VSR, rastreamento de síndrome respiratória aguda grave (SRAG), profilaxia com anticorpos monoclonais e manejo imunológico da COVID-19.",
     errosComuns: [
-      "Não calcular o Ânion Gap ao se deparar com uma acidose metabólica.",
-      "Confundir hiperventilação (causa alcalose respiratória) com respiração profunda compensatória de Kussmaul.",
-      "Esquecer que a compensação renal leva de 24 a 72 horas para atuar plenamente, enquanto a respiratória age em minutos."
+      "Achar que o Rinovírus replica bem no pulmão a 37°C (ele é restrito a 33-35°C na cavidade nasal).",
+      "Esquecer que a Proteína F do VSR promove a fusão celular gerando os característicos Sincícios."
     ],
-    questoesRelacionadas: [11, 12, 13, 14, 15]
-  },
-  {
-    id: 4,
-    assunto: "Aminoácidos, peptídeos e proteínas de interesse clínico",
-    icone: "Dna",
-    descricao: "Estrutura proteica, ponto isoelétrico, patofisiologia da Anemia Falciforme, Efeito Bohr e Colágeno.",
-    resumo: "Proteínas são polímeros de aminoácidos unidos por ligações peptídicas. Suas propriedades derivam da sequência de aminoácidos (estrutura primária) e da conformação tridimensional (secundária, terciária e quaternária). Mutações pontuais podem alterar drasticamente a função proteica.",
-    conceitosFundamentais: [
-      "Ponto Isoelétrico (pI): pH em que a carga líquida da proteína/aminoácido é exatamente zero.",
-      "Desnaturação destrói arranjos secundários/terciários/quaternários, mantendo a estrutura primária intocada.",
-      "Anemia Falciforme (HbS): Mutação de ponto trocando Glutamato (polar) por Valina (apolar) na posição β6.",
-      "Efeito Bohr: Redução do pH ou elevação da pCO2 desvia a curva de O2 para a DIREITA, liberando O2 nos tecidos.",
-      "Vitamina C (Ascorbato): Cofator para hidroxilação de Prolina/Lisina no Colágeno. Sua falta causa Escorbuto."
-    ],
-    relacaoMedicina: "Compreensão da patogênese da Anemia Falciforme, fragilidade capilar no Escorbuto, transporte tecidual de oxigênio em pacientes graves e diagnóstico por eletroforese de proteínas.",
-    errosComuns: [
-      "Achar que a desnaturação quebra ligações peptídicas covalentes (isso é proteólise).",
-      "Confundir o desvio para a direita da hemoglobina (libera O2 nos tecidos) com desvio para a esquerda (capta O2 no pulmão).",
-      "Esquecer que a mutação da HbS introduz um resíduo apolar/hidrofóbico (Valina)."
-    ],
-    questoesRelacionadas: [16, 17, 18, 19, 20]
-  },
-  {
-    id: 5,
-    assunto: "Metabolismo das proteínas, ciclo da ureia, estresse oxidativo e função renal",
-    icone: "ShieldAlert",
-    descricao: "Transaminação, eliminação de amônia, deficiência de OTC, estresse oxidativo na G6PD e marcadores renais.",
-    resumo: "O catabolismo de aminoácidos gera amônia (NH3), altamente neurotóxica. O fígado converte amônia em ureia no Ciclo da Ureia para excreção renal. A Via das Pentoses Fosfato (G6PD) produz NADPH para proteger hemácias do estresse oxidativo.",
-    conceitosFundamentais: [
-      "Transporte seguro de amônia: Glutamina (tecidos gerais) e Alanina (músculo via Ciclo de Cahill).",
-      "Deficiência de OTC (ligada ao X): Causa hiperamonemia congênita com elevação marcante de Ácido Orotótico na urina.",
-      "Neurotoxicidade da amônia: Acúmulo de Glutamina nos astrócitos atrai água, gerando edema cerebral citotóxico.",
-      "G6PD gera NADPH nas hemácias para regenerar a Glutationa Reduzida (GSH). Sua falta causa hemólise induzida por drogas.",
-      "Creatinina: Derivada da ciclização não-enzimática da fosfocreatina muscular; melhor marcador endógeno da TFG."
-    ],
-    relacaoMedicina: "Diagnóstico de erro inato do metabolismo no teste do pezinho, investigação de icterícia induzida por fármacos em pacientes deficientes em G6PD e monitoramento da taxa de filtração glomerular em nefrologia.",
-    errosComuns: [
-      "Confundir a deficiência de CPS-I (sem ácido orotótico) com a deficiência de OTC (com ácido orotótico alto).",
-      "Achar que a urina contém amônia livre como forma primária de excreção de nitrogênio em vez de ureia.",
-      "Esquecer que o NADPH da G6PD é o único escudo antioxidante das hemácias adultas."
-    ],
-    questoesRelacionadas: [21, 22, 23, 24, 25]
-  },
-  {
-    id: 6,
-    assunto: "Lipídios, metabolismo lipídico e dislipidemias",
-    icone: "HeartPulse",
-    descricao: "β-oxidação, carnitina, cetogênese, lipoproteínas (LPL / ApoC-II), estatinas e Hipercolesterolemia Familiar.",
-    resumo: "Lipídios são biomoléculas energéticas e estruturais apolares. Os ácidos graxos são degradados na matriz mitocondrial via β-oxidação. O transporte no sangue ocorre via lipoproteínas (Quilomícrons, VLDL, LDL, HDL). O excesso de LDL favorece a aterosclerose.",
-    conceitosFundamentais: [
-      "Transporte de ácidos graxos longos para a mitocôndria exige a Lançadeira de Carnitina (CPT-I e CPT-II).",
-      "O fígado produz corpos cetônicos, mas NÃO os consome por não expressar a enzima Tioforase.",
-      "ApoC-II é o ativador indispensável da Lipoproteína Lipase (LPL) no endotélio vascular.",
-      "Estatinas inibem competitivamente a HMG-CoA Redutase, induzindo superexpressão de Receptores de LDL (LDLR).",
-      "Hipercolesterolemia Familiar: Mutação no gene do LDLR impede a endocitose do LDL, causando xantomas e infarto precoce."
-    ],
-    relacaoMedicina: "Cardiologia preventiva, prescrição de estatinas, manejo de dislipidemias graves, rastreamento familiar de xantomas e manejo da cetoacidose em diabetes mellitus tipo 1.",
-    errosComuns: [
-      "Achar que o fígado consome corpos cetônicos para energia própria.",
-      "Confundir a função do LDL (leva colesterol do fígado aos tecidos) com o HDL (transporte reverso dos tecidos ao fígado).",
-      "Esquecer que as estatinas agem inibindo a enzima chave inicial de biossíntese do colesterol (HMG-CoA Redutase)."
-    ],
-    questoesRelacionadas: [26, 27, 28, 29, 30]
-  },
-  {
-    id: 7,
-    assunto: "Enzimas, cinética enzimática, regulação e inibidores",
-    icone: "Cpu",
-    descricao: "Cinética de Michaelis-Menten, inibição competitiva e não-competitiva, PFK-1 e regulação por fosforilação.",
-    resumo: "Enzimas são catalisadores biológicos altamente específicos. Sua atividade é ajustada por temperatura, pH, efetores alostéricos e modificações covalentes (fosforilação). Inibidores enzimáticos alteram os parâmetros cinéticos Km e Vmax.",
-    conceitosFundamentais: [
-      "Km: Concentração de substrato necessária para atingir a metade da velocidade máxima (Vmax / 2). Mede a afinidade.",
-      "Inibição Competitiva: Compete pelo sítio ativo. Eleva o Km aparente; Vmax permanece inalterada.",
-      "Inibição Não-Competitiva: Liga-se a sítio alostérico. Reduz a Vmax; Km permanece inalterado.",
-      "Frutose-2,6-bisfosfato (F-2,6-BP) é o efetor alostérico positivo mais potente da PFK-1 glicolítica.",
-      "Glucagon fosforila e INIBE a Glicogênio Sintase, enquanto ATIVA a Glicogênio Fosforilase."
-    ],
-    relacaoMedicina: "Base para a farmacologia clínica moderna (inibidores de ECA, metotrexato, estatinas, aspirina, pesticidas organofosforados) e diagnósticos de zimogênios / marcadores de lesão celular (Troponina, CK-MB, TGO/TGP).",
-    errosComuns: [
-      "Confundir Km com velocidade (Km é uma CONCENTRAÇÃO de substrato em Molar).",
-      "Achar que a Vmax na inibição competitiva é alterada (com substrato suficiente, o inibidor é deslocado e atinge-se a Vmax original).",
-      "Esquecer que a fosforilação pode inibir algumas enzimas (Glicogênio Sintase) e ativar outras (Glicogênio Fosforilase)."
-    ],
-    questoesRelacionadas: [31, 32, 33, 34, 35]
+    questoesRelacionadas: [51, 52, 53, 54, 55]
   }
 ];
