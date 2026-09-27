@@ -33,6 +33,8 @@
       icone: "Zap",
       descricao: "Bioenergética, acoplamento de ATP, compartimentação celular e regulação por insulina/glucagon.",
       resumo: "O metabolismo celular se divide em catabolismo (degradação oxidativa exergônica para síntese de ATP) e anabolismo (biossíntese endergônica de moléculas complexas). O acoplamento termodinâmico com a hidrólise de ATP impulsiona reações biologicamente desfavoráveis.",
+      svgDiagrama: `<svg viewBox="0 0 700 200" class="w-full h-auto font-sans" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="20" width="200" height="160" rx="16" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2"/><text x="120" y="50" text-anchor="middle" font-weight="bold" font-size="14" fill="#1e40af">CATABOLISMO</text><text x="120" y="70" text-anchor="middle" font-size="11" fill="#3b82f6">Degradação Oxidativa</text><text x="120" y="100" text-anchor="middle" font-weight="bold" font-size="12" fill="#1e3a8a">Glicose, Lipídios, PTN</text><text x="120" y="125" text-anchor="middle" font-size="20" fill="#2563eb">↓</text><text x="120" y="150" text-anchor="middle" font-weight="bold" font-size="12" fill="#166534">Libera Energia (ΔG &lt; 0)</text><circle cx="350" cy="100" r="50" fill="#2563eb" stroke="#1d4ed8" stroke-width="3"/><text x="350" y="98" text-anchor="middle" font-weight="900" font-size="20" fill="#ffffff">ATP</text><text x="350" y="118" text-anchor="middle" font-weight="bold" font-size="10" fill="#dbeafe">Moeda Energética</text><path d="M 225 100 L 295 100" stroke="#2563eb" stroke-width="3" fill="none"/><path d="M 405 100 L 475 100" stroke="#2563eb" stroke-width="3" fill="none"/><rect x="480" y="20" width="200" height="160" rx="16" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="2"/><text x="580" y="50" text-anchor="middle" font-weight="bold" font-size="14" fill="#166534">ANABOLISMO</text><text x="580" y="70" text-anchor="middle" font-size="11" fill="#15803d">Biossíntese Celular</text><text x="580" y="100" text-anchor="middle" font-weight="bold" font-size="12" fill="#14532d">Proteínas, DNA, Glicogênio</text><text x="580" y="125" text-anchor="middle" font-size="20" fill="#16a34a">↑</text><text x="580" y="150" text-anchor="middle" font-weight="bold" font-size="12" fill="#991b1b">Consome ATP (ΔG &gt; 0)</text></svg>`,
+      imagemLegenda: "Esquema LUmed de Bioenergética: Catabolismo Exergônico vs Anabolismo Endergônico acoplados pela hidrólise de ATP.",
       capitulos: [
         {
           titulo: "1. Conceito e Escopo da Bioenergética",
@@ -71,6 +73,8 @@
       icone: "Droplet",
       descricao: "Propriedades da água, pontes de hidrogênio, equação de Henderson-Hasselbalch e tampão bicarbonato.",
       resumo: "A água é o solvente biológico universal. A equação de Henderson-Hasselbalch descreve o comportamento dos sistemas tampão biológicos, dos quais o tampão bicarbonato/CO2 é o principal regulador do pH plasmático.",
+      svgDiagrama: `<svg viewBox="0 0 700 180" class="w-full h-auto font-sans" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="10" width="680" height="160" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/><rect x="30" y="30" width="170" height="120" rx="12" fill="#eff6ff" stroke="#93c5fd" stroke-width="2"/><text x="115" y="55" text-anchor="middle" font-weight="bold" font-size="12" fill="#1e40af">🫁 PULMÕES</text><text x="115" y="85" text-anchor="middle" font-weight="900" font-size="18" fill="#2563eb">CO₂</text><text x="115" y="110" text-anchor="middle" font-size="11" fill="#475569">Regulação Respiratória</text><text x="115" y="130" text-anchor="middle" font-size="10" font-weight="bold" fill="#1d4ed8">Controla PaCO₂ (Ácido)</text><text x="250" y="95" text-anchor="middle" font-weight="bold" font-size="15" fill="#334155">CO₂ + H₂O</text><text x="340" y="95" text-anchor="middle" font-weight="900" font-size="20" fill="#2563eb">⇄</text><text x="420" y="95" text-anchor="middle" font-weight="bold" font-size="15" fill="#b91c1c">HCO₃⁻ + H⁺</text><rect x="500" y="30" width="170" height="120" rx="12" fill="#f0fdf4" stroke="#86efac" stroke-width="2"/><text x="585" y="55" text-anchor="middle" font-weight="bold" font-size="12" fill="#166534">🫘 RINS</text><text x="585" y="85" text-anchor="middle" font-weight="900" font-size="18" fill="#16a34a">HCO₃⁻</text><text x="585" y="110" text-anchor="middle" font-size="11" fill="#475569">Regulação Renal</text><text x="585" y="130" text-anchor="middle" font-size="10" font-weight="bold" fill="#15803d">Excreta H⁺ / Reabsorve Base</text></svg>`,
+      imagemLegenda: "Equilíbrio do Tampão Bicarbonato LUmed: Integração entre Ventilação Pulmonar (PaCO2) e Excreção Renal (HCO3-).",
       capitulos: [
         {
           titulo: "1. Propriedades Físico-Químicas da Água",
@@ -105,6 +109,8 @@
       icone: "Activity",
       descricao: "Anion Gap, potássio, sódio, acidose metabólica/respiratória e alcalose.",
       resumo: "O equilíbrio eletrolítico e ácido-base é mantido pela integração renal e pulmonar. O Anion Gap permite diferenciar acidoses metabólicas por acúmulo de ácidos orgânicos de acidoses hiperclorêmicas.",
+      svgDiagrama: `<svg viewBox="0 0 700 160" class="w-full h-auto font-sans" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="10" width="680" height="140" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/><text x="350" y="35" text-anchor="middle" font-weight="extrabold" font-size="14" fill="#0f172a">FÓRMULA DO ANION GAP PLASMÁTICO</text><rect x="40" y="50" width="620" height="45" rx="12" fill="#2563eb"/><text x="350" y="78" text-anchor="middle" font-weight="900" font-size="16" fill="#ffffff">Anion Gap = [ Na⁺ ]  −  ( [ Cl⁻ ] + [ HCO₃⁻ ] )</text><text x="200" y="125" text-anchor="middle" font-weight="bold" font-size="12" fill="#166534">Valor Normal: 8 a 12 mEq/L</text><text x="500" y="125" text-anchor="middle" font-weight="bold" font-size="12" fill="#991b1b">Elevado: Cetoacidose / Lactato / Salicilatos</text></svg>`,
+      imagemLegenda: "Cálculo e Significado do Anion Gap LUmed nas Emergências Metabólicas.",
       capitulos: [
         {
           titulo: "1. Anion Gap e Acidoses Metabólicas",
@@ -131,6 +137,8 @@
       icone: "Layers",
       descricao: "Estrutura proteica, curva de saturação da hemoglobina, mioglobina e efeito Bohr.",
       resumo: "As proteínas exercem funções estruturais, catalíticas e de transporte. A hemoglobina exibe cooperatividade alostérica sigmoide na ligação com O2, modulada pelo pH, CO2 e 2,3-BPG (efeito Bohr).",
+      svgDiagrama: `<svg viewBox="0 0 700 200" class="w-full h-auto font-sans" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="10" width="680" height="180" rx="16" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/><line x1="60" y1="160" x2="650" y2="160" stroke="#64748b" stroke-width="2"/><line x1="60" y1="25" x2="60" y2="160" stroke="#64748b" stroke-width="2"/><text x="350" y="182" text-anchor="middle" font-size="10" font-weight="bold" fill="#475569">Pressão Parcial de O₂ (PaO₂ mmHg)</text><text x="25" y="95" text-anchor="middle" font-size="10" font-weight="bold" fill="#475569" transform="rotate(-90 25 95)">% Saturação O₂</text><path d="M 60 160 Q 90 35 650 30" fill="none" stroke="#dc2626" stroke-width="3"/><text x="170" y="40" font-weight="bold" font-size="10" fill="#dc2626">Mioglobina (Hiperbólica)</text><path d="M 60 160 C 180 155, 240 60, 650 40" fill="none" stroke="#2563eb" stroke-width="3"/><text x="330" y="70" font-weight="bold" font-size="10" fill="#2563eb">Hemoglobina pH 7.4 (Sigmoide)</text><path d="M 60 160 C 220 158, 300 90, 650 55" fill="none" stroke="#f59e0b" stroke-width="3" stroke-dasharray="4"/><text x="440" y="110" font-weight="bold" font-size="10" fill="#d97706">Efeito Bohr ↓pH / ↑CO₂ (Desvio Direita)</text></svg>`,
+      imagemLegenda: "Curva de Dissociação de Oxigênio LUmed: Hemoglobina Sigmoide vs Mioglobina Hiperbólica e Efeito Bohr.",
       capitulos: [
         {
           titulo: "1. Transporte de Oxigênio: Hemoglobina vs. Mioglobina",
@@ -157,6 +165,8 @@
       icone: "ShieldAlert",
       descricao: "Transaminação, desaminação oxidativa, ciclo da ureia, amônia, ureia e creatinina.",
       resumo: "O catabolismo de aminoácidos gera amônia tóxica (NH3), convertida em ureia no fígado via ciclo da ureia. A creatinina e uréia séricas são marcadores clássicos de filtração glomerular.",
+      svgDiagrama: `<svg viewBox="0 0 700 160" class="w-full h-auto font-sans" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="10" width="680" height="140" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/><rect x="30" y="35" width="130" height="90" rx="12" fill="#eff6ff" stroke="#93c5fd" stroke-width="2"/><text x="95" y="60" text-anchor="middle" font-weight="bold" font-size="12" fill="#1e40af">Aminoácidos</text><text x="95" y="85" text-anchor="middle" font-size="10" fill="#3b82f6">Transaminação</text><text x="95" y="105" text-anchor="middle" font-weight="bold" font-size="11" fill="#1d4ed8">ALT / AST</text><text x="195" y="85" text-anchor="middle" font-weight="bold" font-size="18" fill="#2563eb">➔</text><rect x="230" y="35" width="130" height="90" rx="12" fill="#fef2f2" stroke="#fca5a5" stroke-width="2"/><text x="295" y="60" text-anchor="middle" font-weight="bold" font-size="13" fill="#991b1b">Amônia (NH₃)</text><text x="295" y="85" text-anchor="middle" font-weight="bold" font-size="10" fill="#dc2626">⚠️ Neurotóxica</text><text x="295" y="105" text-anchor="middle" font-size="10" fill="#7f1d1d">Entra no Fígado</text><text x="395" y="85" text-anchor="middle" font-weight="bold" font-size="18" fill="#2563eb">➔</text><rect x="430" y="35" width="110" height="90" rx="12" fill="#f0fdf4" stroke="#86efac" stroke-width="2"/><text x="485" y="60" text-anchor="middle" font-weight="bold" font-size="12" fill="#166534">Ciclo Ureia</text><text x="485" y="85" text-anchor="middle" font-weight="bold" font-size="11" fill="#15803d">Hepatócito</text><text x="485" y="105" text-anchor="middle" font-size="10" fill="#14532d">CPS-I</text><text x="565" y="85" text-anchor="middle" font-weight="bold" font-size="18" fill="#2563eb">➔</text><rect x="585" y="35" width="90" height="90" rx="12" fill="#f0fdf4" stroke="#4ade80" stroke-width="2"/><text x="630" y="68" text-anchor="middle" font-weight="extrabold" font-size="13" fill="#166534">UREIA</text><text x="630" y="95" text-anchor="middle" font-size="10" fill="#15803d">Excreção Renal</text></svg>`,
+      imagemLegenda: "Caminho Metabólico da Ureia LUmed: Das transaminases hepáticas até a excreção renal solúvel.",
       capitulos: [
         {
           titulo: "1. Ciclo da Ureia e Destoxificação de Amônia",
@@ -183,6 +193,8 @@
       icone: "PieChart",
       descricao: "Triacilgliceróis, quilomícrons, VLDL, LDL, HDL, β-oxidação e cetogênese.",
       resumo: "Lipídios são transportados no sangue em lipoproteínas plasmáticas. O LDL transporta colesterol para tecidos periféricos, enquanto o HDL realiza o transporte reverso. A β-oxidação mitocondrial fornece energia no jejum.",
+      svgDiagrama: `<svg viewBox="0 0 700 160" class="w-full h-auto font-sans" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="10" width="330" height="140" rx="16" fill="#fef2f2" stroke="#fca5a5" stroke-width="2"/><text x="175" y="38" text-anchor="middle" font-weight="extrabold" font-size="13" fill="#991b1b">LDL (Colesterol "Ruim")</text><text x="175" y="60" text-anchor="middle" font-weight="bold" font-size="11" fill="#b91c1c">Contém Apolipoproteína ApoB-100</text><text x="175" y="85" text-anchor="middle" font-size="11" fill="#7f1d1d">Fígado ➔ Tecidos Periféricos &amp; Artérias</text><text x="175" y="110" text-anchor="middle" font-weight="bold" font-size="11" fill="#dc2626">Risco Aterogênico / Placa de Ateroma</text><text x="175" y="130" text-anchor="middle" font-size="10" fill="#991b1b">Alvo das Estatinas (HMG-CoA Redutase)</text><rect x="360" y="10" width="330" height="140" rx="16" fill="#f0fdf4" stroke="#86efac" stroke-width="2"/><text x="525" y="38" text-anchor="middle" font-weight="extrabold" font-size="13" fill="#166534">HDL (Colesterol "Bom")</text><text x="525" y="60" text-anchor="middle" font-weight="bold" font-size="11" fill="#15803d">Contém Apolipoproteína ApoA-I</text><text x="525" y="85" text-anchor="middle" font-size="11" fill="#14532d">Transporte Reverso: Artérias ➔ Fígado</text><text x="525" y="110" text-anchor="middle" font-weight="bold" font-size="11" fill="#16a34a">Proteção Cardiovascular</text><text x="525" y="130" text-anchor="middle" font-size="10" fill="#15803d">Excreção Biliar de Colesterol</text></svg>`,
+      imagemLegenda: "Fisiopatologia das Lipoproteínas LUmed: LDL Aterogênico (ApoB-100) vs HDL com Transporte Reverso.",
       capitulos: [
         {
           titulo: "1. Transporte de Lipídios e Lipoproteínas",
@@ -209,6 +221,8 @@
       icone: "Sliders",
       descricao: "Modelo de Michaelis-Menten (Km, Vmax), inibição competitiva, não competitiva e alostérica.",
       resumo: "Enzimas aumentam a velocidade das reações diminuindo a energia de ativação. A cinética de Michaelis-Menten caracteriza a afinidade (Km) e velocidade máxima (Vmax). Inibidores competitivos alteram o Km aparente sem alterar Vmax.",
+      svgDiagrama: `<svg viewBox="0 0 700 200" class="w-full h-auto font-sans" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="10" width="680" height="180" rx="16" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/><line x1="60" y1="160" x2="650" y2="160" stroke="#64748b" stroke-width="2"/><line x1="60" y1="25" x2="60" y2="160" stroke="#64748b" stroke-width="2"/><text x="350" y="182" text-anchor="middle" font-size="10" font-weight="bold" fill="#475569">Concentração de Substrato [S]</text><text x="25" y="95" text-anchor="middle" font-size="10" font-weight="bold" fill="#475569" transform="rotate(-90 25 95)">Velocidade Reação (V)</text><path d="M 60 160 Q 140 45 650 40" fill="none" stroke="#2563eb" stroke-width="3"/><text x="280" y="35" font-weight="bold" font-size="10" fill="#2563eb">Enzima Sem Inibidor (Vmax / Km)</text><path d="M 60 160 Q 280 80 650 40" fill="none" stroke="#d97706" stroke-width="3" stroke-dasharray="5"/><text x="400" y="75" font-weight="bold" font-size="10" fill="#d97706">Inibição Competitiva (Km AUMENTA, Vmax IGUAL)</text><path d="M 60 160 Q 140 100 650 90" fill="none" stroke="#dc2626" stroke-width="3" stroke-dasharray="3"/><text x="400" y="115" font-weight="bold" font-size="10" fill="#dc2626">Inibição Não-Competitiva (Vmax DIMINUI, Km IGUAL)</text></svg>`,
+      imagemLegenda: "Cinética Enzimática LUmed: Curvas de Michaelis-Menten e Efeitos dos Inibidores Competitivos vs Não-Competitivos.",
       capitulos: [
         {
           titulo: "1. Cinética de Michaelis-Menten e Inibidores",
@@ -1184,6 +1198,20 @@ Raciocínio: ${question.explicacao}`;
                   <i data-lucide="image" class="w-4 h-4 text-blue-400 shrink-0"></i>
                   <span>${activeMat.imagemLegenda || activeMat.assunto}</span>
                 </div>
+              </div>
+            ` : activeMat.svgDiagrama ? `
+              <!-- Infográfico Vetorial LUmed -->
+              <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-white p-5 my-4 space-y-3">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                  <span class="text-xs font-extrabold text-blue-700 uppercase tracking-wider flex items-center gap-1.5">
+                    <i data-lucide="activity" class="w-4 h-4"></i> Esquema Visual Bioquímico LUmed
+                  </span>
+                  <span class="text-[11px] font-bold text-slate-400">Infográfico Didático</span>
+                </div>
+                <div class="w-full overflow-x-auto pt-1">
+                  ${activeMat.svgDiagrama}
+                </div>
+                ${activeMat.imagemLegenda ? `<p class="text-xs font-semibold text-slate-600 pt-1 flex items-center gap-1.5"><i data-lucide="info" class="w-3.5 h-3.5 text-blue-600"></i> ${activeMat.imagemLegenda}</p>` : ''}
               </div>
             ` : ''}
 
