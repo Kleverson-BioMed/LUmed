@@ -240,6 +240,8 @@
       icone: "Microscope",
       descricao: "Conceito, escopo, biotecnologia, diferenciação estrutural (bactérias, fungos, protozoários, vírus), ubiquidade e microbiota humana.",
       resumo: "A Microbiologia é a ciência dedicada ao estudo dos organismos microscópicos. Abrange a Medicina (diagnóstico e antibiogramas), biotecnologia (insulina recombinante, fármacos), indústria (fermentações, ácido cítrico, vinagre) e ecologia (ciclos biogeoquímicos de N2 e C). Abrange a diferenciação celular entre procariontes (bactérias com peptidoglicano), eucariontes (fungos com quitina, protozoários) e agentes acelulares (vírus). A microbiota humana comensal/mutualista atua na proteção contra patógenos por exclusão competitiva e síntese de vitaminas K e B12.",
+      imagemUrl: "/images/microbiology_overview.jpg",
+      imagemLegenda: "Esquema Anatômico LUmed: Comparativo Estrutural entre Bactérias (Peptidoglicano), Fungos (Quitina), Protozoários e Vírus (Acelulares).",
       capitulos: [
         {
           titulo: "1. Conceito, Escopo e Aplicações Práticas",
@@ -294,6 +296,8 @@
       icone: "Shield",
       descricao: "Propriedades virais, vírion, genoma, capsídeo, simetrias, envelope lipídico, marcos históricos e vacinas de Poliomielite (Salk vs. Sabin).",
       resumo: "Vírus são elementos genéticos (DNA ou RNA) envoltos por um capsídeo proteico (com simetria icosaédrica, helicoidal ou complexa). O vírion é a partícula extracelular completa e infecciosa. Vírus envelopados possuem bicamada lipídica da célula hospedeira, tornando-se mais sensíveis a detergentes, sabão, álcool 70% e desidratação. Destacam-se os marcos históricos de Edward Jenner (varíola), Beijerinck, a microscopia eletrônica e as vacinas de poliomielite desenvolvidas por Salk (IPV - inativada injetável) e Sabin (OPV - atenuada oral) no Programa Nacional de Imunizações (PNI).",
+      imagemUrl: "/images/viral_structure.jpg",
+      imagemLegenda: "Arquitetura Viral LUmed: Comparação entre Vírus Envelopados (lábeis a álcool 70%) e Vírus Nus/Não Envelopados (resistentes em fômites).",
       capitulos: [
         {
           titulo: "1. Conceitos e Propriedades Gerais dos Vírus",
@@ -355,6 +359,8 @@
       icone: "Thermometer",
       descricao: "Família Orthomyxoviridae, Hemaglutinina (HA), Neuraminidase (NA), Canal M2, Antigenic Drift vs. Shift, clínica, complicações e antiviral Oseltamivir.",
       resumo: "O vírus Influenza (família Orthomyxoviridae) possui genoma de RNA fita simples de polaridade negativa (-ssRNA) segmentado em 8 fragmentos (Influenza A e B). A Hemaglutinina (HA) medeia a acoplagem ao ácido siálico e fusão. A Neuraminidase (NA) cliva o ácido siálico liberando novas partículas virais. O canal M2 promove a acidificação endossômica para o desnudamento (uncoating). A Deriva Antigênica (Antigenic Drift) gera mutações pontuais sazonais (epidemias). O Salto Antigênico (Antigenic Shift) gera rearranjos genéticos drásticos entre cepas em hospedeiro intermediário (PANDEMIAS). O Oseltamivir (Tamiflu) é inibidor seletivo da Neuraminidase.",
+      imagemUrl: "/images/influenza_structure.jpg",
+      imagemLegenda: "Mapeamento Molecular LUmed: Vírus Influenza A com 8 Segmentos de RNA, Trímeros HA (Entrada), Tetrâmeros NA (Liberação) e Canal M2.",
       capitulos: [
         {
           titulo: "1. Classificação, Genoma e Estrutura",
@@ -1169,6 +1175,17 @@ Raciocínio: ${question.explicacao}`;
               </span>
               <p class="text-xs md:text-sm text-slate-800 leading-relaxed font-medium">${activeMat.resumo}</p>
             </div>
+
+            ${activeMat.imagemUrl ? `
+              <!-- Ilustração Médica Didática LUmed -->
+              <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-md bg-slate-900 my-4">
+                <img src="${activeMat.imagemUrl}" alt="${activeMat.assunto}" class="w-full h-auto max-h-[440px] object-cover" />
+                <div class="p-3 bg-slate-900 text-slate-200 text-xs font-medium border-t border-slate-800 flex items-center gap-2">
+                  <i data-lucide="image" class="w-4 h-4 text-blue-400 shrink-0"></i>
+                  <span>${activeMat.imagemLegenda || activeMat.assunto}</span>
+                </div>
+              </div>
+            ` : ''}
 
             <!-- Capítulos / Tópicos Detalhados em Cards -->
             <div class="space-y-6">
