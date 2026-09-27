@@ -1,808 +1,22 @@
-// LUmed — Plataforma Inteligente de Estudos Médicos (Autocontido Sem Dependência de Server HTTP / CORS)
-// Funciona 100% nativamente abrindo o index.html direto no navegador ou hospedado na Vercel
+// LUmed — Plataforma Inteligente de Estudos Médicos
+// Autocontido, empacotável pelo Vite, com suporte completo a 4 disciplinas, 145 questões comentadas,
+// repetição espaçada, calculadora antropométrica e Tutor Inteligente IA.
+
+import { DISCIPLINES, STUDY_MATERIALS } from '../data/studyMaterials.js';
+import { QUESTIONS } from '../data/questionsData.js';
 
 (function() {
-  // 1. TÓPICOS PROGRAMÁTICOS (Bioquímica Médica + Microbiologia, Virologia e Síndromes Gripais)
-  const TOPICS = [
-    // Bioquímica Médica
-    "Introdução às biomoléculas e ao metabolismo",
-    "Água nos sistemas biológicos, pH e tampões",
-    "Eletrólitos e equilíbrio ácido-base",
-    "Aminoácidos, peptídeos e proteínas de interesse clínico",
-    "Metabolismo das proteínas, ciclo da ureia, estresse oxidativo e função renal",
-    "Lipídios, metabolismo lipídico e dislipidemias",
-    "Enzimas, cinética enzimática, regulação e inibidores",
-    // Microbiologia, Virologia e Síndromes Gripais
-    "Módulo 1 — Introdução à Microbiologia",
-    "Módulo 2 — Introdução à Virologia",
-    "Módulo 3 — Vírus Influenza (Gripe)",
-    "Módulo 4 — Síndromes Gripais e Principais Vírus Respiratórios"
-  ];
+  // 1. TÓPICOS PROGRAMÁTICOS (Dinamizados a partir dos Guias Teóricos)
+  const TOPICS = [...new Set(STUDY_MATERIALS.map(m => m.assunto))];
 
-  // 2. GUIAS TEÓRICOS DE ESTUDO LUmed (COMPLETOS COM ESQUEMAS VISUAIS, TABELAS E MNEMÔNICOS)
-  const STUDY_MATERIALS = [
-    // =========================================================================
-    // DISCIPLINA 1: BIOQUÍMICA MÉDICA (Módulos 1 a 7)
-    // =========================================================================
-    {
-      id: 1,
-      discipline: "bioquimica",
-      disciplineName: "Bioquímica Médica",
-      moduloNumero: 1,
-      assunto: "Introdução às biomoléculas e ao metabolismo",
-      icone: "Zap",
-      descricao: "Bioenergética, acoplamento de ATP, compartimentação celular e regulação por insulina/glucagon.",
-      resumo: "O metabolismo celular é a rede integrada de reações exergônicas (catabolismo) e endergônicas (anabolismo). A hidrólise de ATP (ΔG°' ≈ -30,5 kJ/mol) fornece energia livre para acoplar reações desfavoráveis. A enzima AMPK atua como o principal sensor de esgotamento energético celular.",
-      svgDiagrama: `<svg viewBox="0 0 700 200" class="w-full h-auto font-sans" xmlns="http://www.w3.org/2000/svg">
-        <rect x="20" y="20" width="200" height="160" rx="16" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2"/>
-        <text x="120" y="50" text-anchor="middle" font-weight="extrabold" font-size="14" fill="#1e40af">CATABOLISMO</text>
-        <text x="120" y="72" text-anchor="middle" font-size="11" font-weight="semibold" fill="#3b82f6">Degradação Oxidativa</text>
-        <text x="120" y="100" text-anchor="middle" font-weight="bold" font-size="12" fill="#1e3a8a">Glicose, Lipídios, PTN</text>
-        <text x="120" y="125" text-anchor="middle" font-size="20" fill="#2563eb">↓</text>
-        <text x="120" y="150" text-anchor="middle" font-weight="bold" font-size="12" fill="#166534">Libera Energia (ΔG &lt; 0)</text>
-
-        <circle cx="350" cy="100" r="50" fill="#2563eb" stroke="#1d4ed8" stroke-width="3"/>
-        <text x="350" y="96" text-anchor="middle" font-weight="900" font-size="22" fill="#ffffff">ATP</text>
-        <text x="350" y="116" text-anchor="middle" font-weight="bold" font-size="10" fill="#dbeafe">Moeda Energética</text>
-        
-        <path d="M 225 100 L 295 100" stroke="#2563eb" stroke-width="3.5" marker-end="url(#arrow)" fill="none"/>
-        <path d="M 405 100 L 475 100" stroke="#2563eb" stroke-width="3.5" fill="none"/>
-
-        <rect x="480" y="20" width="200" height="160" rx="16" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="2"/>
-        <text x="580" y="50" text-anchor="middle" font-weight="extrabold" font-size="14" fill="#166534">ANABOLISMO</text>
-        <text x="580" y="72" text-anchor="middle" font-size="11" font-weight="semibold" fill="#15803d">Biossíntese Celular</text>
-        <text x="580" y="100" text-anchor="middle" font-weight="bold" font-size="12" fill="#14532d">Proteínas, DNA, Glicogênio</text>
-        <text x="580" y="125" text-anchor="middle" font-size="20" fill="#16a34a">↑</text>
-        <text x="580" y="150" text-anchor="middle" font-weight="bold" font-size="12" fill="#991b1b">Consome ATP (ΔG &gt; 0)</text>
-      </svg>`,
-      imagemLegenda: "Esquema Bioquímico LUmed: Acoplamento do Catabolismo Exergônico ao Anabolismo Endergônico via ATP.",
-      capitulos: [
-        {
-          titulo: "1. Conceito e Escopo da Bioenergética Celular",
-          subtitulo: "Fluxo metabólico dinâmico vs. Concentração estática",
-          conteudo: "• Fluxo Metabólico: É a velocidade com que metabólitos fluem através de uma via enzimática. Um estado de equilíbrio estático (steady-state) mantém concentrações constantes mesmo com um fluxo extremamente rápido.\n• Variação de Energia Livre (ΔG): Reações exergônicas (ΔG < 0) ocorrem espontaneamente; reações endergônicas (ΔG > 0) exigem aporte de energia.",
-          conceitoChave: "Concentração estática de metabólitos não equivale à velocidade da via; o fluxo metabólico expressa o turnover real.",
-          importanteMedicina: "Avaliação da taxa metabólica basal e identificação de bloqueios por Erros Inatos do Metabolismo."
-        },
-        {
-          titulo: "2. Acoplamento de ATP e Sensor Energético AMPK",
-          subtitulo: "Impulsão de reações biologicamente desfavoráveis",
-          conteudo: "• Acoplamento de ATP: A hidrólise de ligações fosfoanidrido do ATP libera -30.5 kJ/mol. Ao acoplar-se a uma reação endergônica, o ΔG total torna-se negativo.\n• Papel da Enzima AMPK: Quando a célula esgota ATP e acumula AMP (alta razão AMP/ATP), a AMPK é ativada por fosforilação, desligando vias anabólicas (síntese de ácidos graxos) e ativando vias catabólicas (glicólise, β-oxidação).",
-          conceitoChave: "AMPK é o interruptor energético celular: desliga anabolismo e liga catabolismo em estresse bioenergético.",
-          tabelaComparativa: {
-            headers: ["Estado Metabólico", "Hormônio Dominante", "Razão AMP/ATP", "Atividade da AMPK", "Via Ativada"],
-            rows: [
-              ["Estado Alimentado", "Insulina", "Baixa (Alto ATP)", "Inibida", "Anabolismo (Glicogenogênese, Lipogênese)"],
-              ["Jejum / Exercício / Hipóxia", "Glucagon / Adrenalina", "Elevada (Baixo ATP)", "Altamente Ativada", "Catabolismo (Glicogenólise, β-oxidação)"],
-              ["Uso de Metformina", "N/A (Farmacológico)", "Elevada (Inibe Complexo I)", "Ativada", "Inibe Gliconeogênese Hepática"]
-            ]
-          },
-          importanteMedicina: "A Metformina (antidiabético de 1ª linha) inibe o Complexo I mitocondrial, ativando a AMPK para reduzir a gliconeogênese hepática no Diabetes Tipo 2."
-        }
-      ],
-      conceitosFundamentais: [
-        "Fluxo metabólico expressa a rotatividade real da via, não apenas a concentração da substância.",
-        "ATP atua como moeda energética universal para acoplamento de reações.",
-        "AMPK é o sensor metabólico ativado por alta razão AMP/ATP.",
-        "Insulina sinaliza anabolismo no estado alimentado; Glucagon sinaliza catabolismo no jejum."
-      ],
-      relacaoMedicina: "Compreender a bioenergética é a base para o manejo da Cetoacidose Diabética, Síndrome Metabólica e farmacologia dos antidiabéticos orais.",
-      errosComuns: [
-        "Confundir concentração estática de metabólito com velocidade de fluxo metabólico.",
-        "Acreditar que enzimas alteram o ΔG ou o equilíbrio de uma reação."
-      ],
-      questoesRelacionadas: [1, 2, 3, 4, 5]
-    },
-    {
-      id: 2,
-      discipline: "bioquimica",
-      disciplineName: "Bioquímica Médica",
-      moduloNumero: 2,
-      assunto: "Água nos sistemas biológicos, pH e tampões",
-      icone: "Droplet",
-      descricao: "Propriedades da água, pontes de hidrogênio, equação de Henderson-Hasselbalch e tampão bicarbonato.",
-      resumo: "A água forma pontes de hidrogênio responsáveis por suas propriedades térmicas e solventes. O pH plasmático normal (7.35 a 7.45) é mantido primariamente pelo Tampão Bicarbonato, descrito pela Equação de Henderson-Hasselbalch.",
-      svgDiagrama: `<svg viewBox="0 0 700 180" class="w-full h-auto font-sans" xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="10" width="680" height="160" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
-        <rect x="30" y="30" width="170" height="120" rx="12" fill="#eff6ff" stroke="#93c5fd" stroke-width="2"/>
-        <text x="115" y="55" text-anchor="middle" font-weight="extrabold" font-size="13" fill="#1e40af">🫁 PULMÕES</text>
-        <text x="115" y="85" text-anchor="middle" font-weight="900" font-size="20" fill="#2563eb">CO₂</text>
-        <text x="115" y="110" text-anchor="middle" font-size="11" fill="#475569">Regulação Respiratória</text>
-        <text x="115" y="130" text-anchor="middle" font-size="10" font-weight="bold" fill="#1d4ed8">Controla PaCO₂ (Minutos)</text>
-        
-        <text x="250" y="95" text-anchor="middle" font-weight="bold" font-size="15" fill="#334155">CO₂ + H₂O</text>
-        <text x="340" y="95" text-anchor="middle" font-weight="900" font-size="22" fill="#2563eb">⇄</text>
-        <text x="420" y="95" text-anchor="middle" font-weight="bold" font-size="15" fill="#b91c1c">HCO₃⁻ + H⁺</text>
-
-        <rect x="500" y="30" width="170" height="120" rx="12" fill="#f0fdf4" stroke="#86efac" stroke-width="2"/>
-        <text x="585" y="55" text-anchor="middle" font-weight="extrabold" font-size="13" fill="#166534">🫘 RINS</text>
-        <text x="585" y="85" text-anchor="middle" font-weight="900" font-size="20" fill="#16a34a">HCO₃⁻</text>
-        <text x="585" y="110" text-anchor="middle" font-size="11" fill="#475569">Regulação Renal</text>
-        <text x="585" y="130" text-anchor="middle" font-size="10" font-weight="bold" fill="#15803d">Reabsorve Base (Horas/Dias)</text>
-      </svg>`,
-      imagemLegenda: "Esquema do Tampão Bicarbonato LUmed: Integração entre Pulmões (PaCO2) e Rins (HCO3-).",
-      capitulos: [
-        {
-          titulo: "1. Fisiologia da Água e Tampão Bicarbonato",
-          subtitulo: "Equação de Henderson-Hasselbalch no Plasma Sanguíneo",
-          conteudo: "• A Equação de Henderson-Hasselbalch rege o pH sanguíneo:\n  pH = pKa + log([HCO3-] / (0.03 x PaCO2))\n  O pKa do sistema ácido carbônico/bicarbonato é 6.1. O fator 0.03 converte a pressão parcial de CO2 (mmHg) em concentração de ácido carbônico dissolvido (mM).\n• PaCO2 normal: 35 a 45 mmHg. HCO3- normal: 22 a 26 mEq/L.",
-          conceitoChave: "O Tampão Bicarbonato é um sistema aberto: os pulmões ajustam o ácido (PaCO2 em minutos) e os rins ajustam a base (HCO3- em dias).",
-          importanteMedicina: "Em hiperventilação (ataque de pânico), a queda da PaCO2 causa Alcalose Respiratória. Em hipoventilação (DPOC), a elevação de PaCO2 causa Acidose Respiratória."
-        }
-      ],
-      conceitosFundamentais: [
-        "pH plasmático fisiológico oscila entre 7.35 e 7.45.",
-        "Henderson-Hasselbalch relaciona pH, pKa e a razão entre base conjugada (HCO3-) e ácido (PaCO2).",
-        "Pulmões compensam distúrbios metabólicos rapidamente; Rins compensam distúrbios respiratórios lentamente."
-      ],
-      relacaoMedicina: "Diagnóstico e manejo de acidose/alcalose metabólica e respiratória em UTI e emergências.",
-      errosComuns: ["Esquecer de multiplicar a PaCO2 por 0.03 para obter a concentração de ácido dissolvido."],
-      questoesRelacionadas: [6, 7, 8, 9, 10]
-    },
-    {
-      id: 3,
-      discipline: "bioquimica",
-      disciplineName: "Bioquímica Médica",
-      moduloNumero: 3,
-      assunto: "Eletrólitos e equilíbrio ácido-base",
-      icone: "Activity",
-      descricao: "Anion Gap, potássio, sódio, acidose metabólica/respiratória e alcalose.",
-      resumo: "O Anion Gap plasmático avalia a presença de ânions orgânicos não mensurados no sangue. É essencial para o diagnóstico diferencial das acidoses metabólicas em UTI.",
-      svgDiagrama: `<svg viewBox="0 0 700 160" class="w-full h-auto font-sans" xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="10" width="680" height="140" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
-        <text x="350" y="35" text-anchor="middle" font-weight="extrabold" font-size="14" fill="#0f172a">FÓRMULA DO ANION GAP PLASMÁTICO</text>
-        <rect x="40" y="50" width="620" height="45" rx="12" fill="#2563eb"/>
-        <text x="350" y="78" text-anchor="middle" font-weight="900" font-size="16" fill="#ffffff">Anion Gap = [ Na⁺ ]  −  ( [ Cl⁻ ] + [ HCO₃⁻ ] )</text>
-        <text x="200" y="125" text-anchor="middle" font-weight="bold" font-size="12" fill="#166534">Valor Normal: 8 a 12 mEq/L</text>
-        <text x="500" y="125" text-anchor="middle" font-weight="bold" font-size="12" fill="#991b1b">Elevado: Cetoacidose / Lactato / Salicilatos</text>
-      </svg>`,
-      imagemLegenda: "Cálculo e Significado do Anion Gap LUmed nas Emergências Metabólicas.",
-      capitulos: [
-        {
-          titulo: "1. Diagnóstico do Anion Gap Elevado",
-          subtitulo: "Acrostático MUDPILES e GOLD MARK",
-          conteudo: "• Anion Gap Elevado (> 12 mEq/L): Ocorre quando ocorre consumo de HCO3- por tamponamento de ácidos orgânicos não mensurados no exame de rotina.\n• Mnemônico MUDPILES:\n  - M: Metanol\n  - U: Uremia (Insuficiência Renal Aguda/Crônica)\n  - D: Diabetes (Cetoacidose Diabética)\n  - P: Paralcóol / Propilenoglicol\n  - I: Isoniazida / Infecção / Iatrogênico\n  - L: Lactato (Acidose Láctica por Choque/Sepse)\n  - E: Etilenoglicol\n  - S: Salicilatos (Aspirina)",
-          conceitoChave: "Anion Gap elevado confirma consumo de bicarbonato por adição de ácidos orgânicos fixos.",
-          importanteMedicina: "No choque séptico com má perfusão tecidual, o acúmulo de Ácido Láctico gera Acidose Metabólica com Anion Gap Elevado."
-        }
-      ],
-      conceitosFundamentais: [
-        "Anion Gap = Na+ - (Cl- + HCO3-). Normal: 8-12 mEq/L.",
-        "Anion Gap elevado indica adição de ácidos orgânicos (Lactato, Acetoacetato, Salicilatos).",
-        "Potássio sofre desvio transcelular: Acidose metabólica induz hipercalemia por saída celular de K+."
-      ],
-      relacaoMedicina: "Abordagem rápida de pacientes graves na sala de emergência e UTI.",
-      errosComuns: ["Ignorar a necessidade de corrigir o potássio sérico durante a correção do pH na cetoacidose."],
-      questoesRelacionadas: [11, 12, 13, 14, 15]
-    },
-    {
-      id: 4,
-      discipline: "bioquimica",
-      disciplineName: "Bioquímica Médica",
-      moduloNumero: 4,
-      assunto: "Aminoácidos, peptídeos e proteínas de interesse clínico",
-      icone: "Layers",
-      descricao: "Estrutura proteica, curva de saturação da hemoglobina, mioglobina e efeito Bohr.",
-      resumo: "A Mioglobina apresenta curva hiperbólica de alta afinidade. A Hemoglobina é um tetrâmero com cooperatividade alostérica (curva sigmoide), modulada pelo pH, PaCO2 e 2,3-BPG (Efeito Bohr).",
-      svgDiagrama: `<svg viewBox="0 0 700 200" class="w-full h-auto font-sans" xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="10" width="680" height="180" rx="16" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
-        <line x1="60" y1="160" x2="650" y2="160" stroke="#64748b" stroke-width="2"/>
-        <line x1="60" y1="25" x2="60" y2="160" stroke="#64748b" stroke-width="2"/>
-        <text x="350" y="185" text-anchor="middle" font-size="10" font-weight="bold" fill="#475569">Pressão Parcial de O₂ (PaO₂ mmHg)</text>
-        <text x="25" y="95" text-anchor="middle" font-size="10" font-weight="bold" fill="#475569" transform="rotate(-90 25 95)">% Saturação O₂</text>
-        
-        <path d="M 60 160 Q 90 35 650 30" fill="none" stroke="#dc2626" stroke-width="3"/>
-        <text x="170" y="40" font-weight="extrabold" font-size="11" fill="#dc2626">Mioglobina (Hiperbólica)</text>
-
-        <path d="M 60 160 C 180 155, 240 60, 650 40" fill="none" stroke="#2563eb" stroke-width="3"/>
-        <text x="330" y="70" font-weight="extrabold" font-size="11" fill="#2563eb">Hemoglobina pH 7.4 (Sigmoide)</text>
-
-        <path d="M 60 160 C 220 158, 300 90, 650 55" fill="none" stroke="#f59e0b" stroke-width="3" stroke-dasharray="5"/>
-        <text x="440" y="115" font-weight="extrabold" font-size="11" fill="#d97706">Efeito Bohr ↓pH / ↑CO₂ / ↑Temp (Desvio Direita)</text>
-      </svg>`,
-      imagemLegenda: "Curvas de Ligação de Oxigênio LUmed: Hemoglobina Sigmoide vs Mioglobina Hiperbólica e Efeito Bohr.",
-      capitulos: [
-        {
-          titulo: "1. Cooperatividade e Efeito Bohr",
-          subtitulo: "Transição do Estado T (Tenso) para o Estado R (Relaxado)",
-          conteudo: "• A Hemoglobina alterna entre a conformação T (baixa afinidade por O2) e R (alta afinidade). A ligação do 1º O2 facilita os subsequentes (cooperatividade alostérica).\n• Efeito Bohr: Nos tecidos metabolicamente ativos, a produção de H+ e CO2 reduz o pH. H+ liga-se aos resíduos de histidina estabilizando a forma T (desoxigenada), deslocando a curva para a DIREITA e promovendo a liberação de O2.",
-          conceitoChave: "Efeito Bohr desvia a curva da hemoglobina para a DIREITA (libera O2 no tecido metabólico ativo).",
-          importanteMedicina: "Adaptação a altitudes e fisiopatologia da Anemia Falciforme (HbS polimeriza no Estado T desoxigenado)."
-        }
-      ],
-      conceitosFundamentais: [
-        "Mioglobina é monomérica de reserva muscular (curva hiperbólica).",
-        "Hemoglobina é tetramérica de transporte sistêmico (curva sigmoide).",
-        "Fatores que desviam a curva para a DIREITA: ↓pH, ↑PaCO2, ↑2,3-BPG, ↑Temperatura."
-      ],
-      relacaoMedicina: "Compreensão do aporte tecidual de oxigênio em choque e anemia.",
-      errosComuns: ["Confundir desvio para a direita (liberação) com desvio para a esquerda (retenção)."],
-      questoesRelacionadas: [16, 17, 18, 19, 20]
-    },
-    {
-      id: 5,
-      discipline: "bioquimica",
-      disciplineName: "Bioquímica Médica",
-      moduloNumero: 5,
-      assunto: "Metabolismo das proteínas, ciclo da ureia, estresse oxidativo e função renal",
-      icone: "ShieldAlert",
-      descricao: "Transaminação, desaminação oxidativa, ciclo da ureia, amônia, ureia e creatinina.",
-      resumo: "O catabolismo proteico gera amônia tóxica (NH3), convertida em ureia no fígado. A creatinina é derivada da fosfocreatina muscular e serve de marcador de filtração glomerular renal.",
-      svgDiagrama: `<svg viewBox="0 0 700 160" class="w-full h-auto font-sans" xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="10" width="680" height="140" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
-        <rect x="30" y="35" width="130" height="90" rx="12" fill="#eff6ff" stroke="#93c5fd" stroke-width="2"/>
-        <text x="95" y="60" text-anchor="middle" font-weight="extrabold" font-size="12" fill="#1e40af">Aminoácidos</text>
-        <text x="95" y="85" text-anchor="middle" font-size="10" fill="#3b82f6">Transaminação</text>
-        <text x="95" y="105" text-anchor="middle" font-weight="bold" font-size="11" fill="#1d4ed8">ALT / AST</text>
-        <text x="195" y="85" text-anchor="middle" font-weight="bold" font-size="18" fill="#2563eb">➔</text>
-        
-        <rect x="230" y="35" width="130" height="90" rx="12" fill="#fef2f2" stroke="#fca5a5" stroke-width="2"/>
-        <text x="295" y="60" text-anchor="middle" font-weight="extrabold" font-size="13" fill="#991b1b">Amônia (NH₃)</text>
-        <text x="295" y="85" text-anchor="middle" font-weight="bold" font-size="10" fill="#dc2626">⚠️ Neurotóxica</text>
-        <text x="295" y="105" text-anchor="middle" font-size="10" fill="#7f1d1d">Entra no Fígado</text>
-        <text x="395" y="85" text-anchor="middle" font-weight="bold" font-size="18" fill="#2563eb">➔</text>
-        
-        <rect x="430" y="35" width="110" height="90" rx="12" fill="#f0fdf4" stroke="#86efac" stroke-width="2"/>
-        <text x="485" y="60" text-anchor="middle" font-weight="extrabold" font-size="12" fill="#166534">Ciclo Ureia</text>
-        <text x="485" y="85" text-anchor="middle" font-weight="bold" font-size="11" fill="#15803d">Hepatócito</text>
-        <text x="485" y="105" text-anchor="middle" font-size="10" fill="#14532d">CPS-I (CPS1)</text>
-        <text x="565" y="85" text-anchor="middle" font-weight="bold" font-size="18" fill="#2563eb">➔</text>
-        
-        <rect x="585" y="35" width="90" height="90" rx="12" fill="#f0fdf4" stroke="#4ade80" stroke-width="2"/>
-        <text x="630" y="68" text-anchor="middle" font-weight="900" font-size="13" fill="#166534">UREIA</text>
-        <text x="630" y="95" text-anchor="middle" font-size="10" fill="#15803d">Excreção Renal</text>
-      </svg>`,
-      imagemLegenda: "Rotas de Destoxificação de Nitrogênio LUmed: Amônia Hepática convertida em Ureia Solúvel.",
-      capitulos: [
-        {
-          titulo: "1. Ciclo da Ureia e Encefalopatia Hepática",
-          subtitulo: "Enzima-Chave CPS-I e Toxicidade Cerebral da Amônia",
-          conteudo: "• A enzima Carbamoil-Fosfato Sintetase I (CPS-I) mitocondrial inicia o ciclo da ureia no fígado.\n• Hiperamonemia: Em cirrose hepática ou insuficiência hepática fulminante, a amônia não é convertida em ureia, atravessando a barreira hematoencefálica. No astrócito, a amônia consome α-cetoglutarato para formar glutamina, gerando edema cerebral e Encefalopatia Hepática.",
-          conceitoChave: "Ureia é sintetizada exclusivamente no FÍGADO e excretada pelos RINS.",
-          importanteMedicina: "Tratamento da encefalopatia hepática com Lactulosa (acidifica a luz intestinal convertendo NH3 no íon NH4+ não absorvível)."
-        }
-      ],
-      conceitosFundamentais: [
-        "ALT e AST realizam transaminação de aminoácidos para glutamato.",
-        "Amônia é altamente neurotóxica; Ureia é o composto atóxico e solúvel de descarte.",
-        "Creatinina é derivada da creatina muscular proporcional à massa magra."
-      ],
-      relacaoMedicina: "Avaliação da função hepática, renal e estresse oxidativo.",
-      errosComuns: ["Confundir o local de síntese da ureia (fígado) com o local de excreção (rim)."],
-      questoesRelacionadas: [21, 22, 23, 24, 25]
-    },
-    {
-      id: 6,
-      discipline: "bioquimica",
-      disciplineName: "Bioquímica Médica",
-      moduloNumero: 6,
-      assunto: "Lipídios, metabolismo lipídico e dislipidemias",
-      icone: "PieChart",
-      descricao: "Triacilgliceróis, quilomícrons, VLDL, LDL, HDL, β-oxidação e cetogênese.",
-      resumo: "Lipoproteínas transportam lipídios no plasma. O LDL (ApoB-100) deposita colesterol na parede arterial (aterogênico), enquanto o HDL (ApoA-I) realiza o Transporte Reverso de Colesterol.",
-      svgDiagrama: `<svg viewBox="0 0 700 160" class="w-full h-auto font-sans" xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="10" width="330" height="140" rx="16" fill="#fef2f2" stroke="#fca5a5" stroke-width="2"/>
-        <text x="175" y="38" text-anchor="middle" font-weight="900" font-size="13" fill="#991b1b">LDL (Colesterol "Ruim")</text>
-        <text x="175" y="60" text-anchor="middle" font-weight="bold" font-size="11" fill="#b91c1c">Apolipoproteína ApoB-100</text>
-        <text x="175" y="85" text-anchor="middle" font-size="11" fill="#7f1d1d">Fígado ➔ Artérias Periféricas</text>
-        <text x="175" y="110" text-anchor="middle" font-weight="bold" font-size="11" fill="#dc2626">Risco de Placa de Ateroma</text>
-        <text x="175" y="130" text-anchor="middle" font-size="10" fill="#991b1b">Alvo das Estatinas (HMG-CoA Redutase)</text>
-
-        <rect x="360" y="10" width="330" height="140" rx="16" fill="#f0fdf4" stroke="#86efac" stroke-width="2"/>
-        <text x="525" y="38" text-anchor="middle" font-weight="900" font-size="13" fill="#166534">HDL (Colesterol "Bom")</text>
-        <text x="525" y="60" text-anchor="middle" font-weight="bold" font-size="11" fill="#15803d">Apolipoproteína ApoA-I</text>
-        <text x="525" y="85" text-anchor="middle" font-size="11" fill="#14532d">Transporte Reverso: Artérias ➔ Fígado</text>
-        <text x="525" y="110" text-anchor="middle" font-weight="bold" font-size="11" fill="#16a34a">Proteção Cardiovascular</text>
-        <text x="525" y="130" text-anchor="middle" font-size="10" fill="#15803d">Excreção Biliar de Colesterol</text>
-      </svg>`,
-      imagemLegenda: "Metabolismo Lipídico LUmed: LDL Aterogênico (ApoB-100) vs HDL com Transporte Reverso.",
-      capitulos: [
-        {
-          titulo: "1. Lipoproteínas e Farmacologia das Estatinas",
-          subtitulo: "ApoB-100, ApoA-I e Inibição da HMG-CoA Redutase",
-          conteudo: "• LDL carrega a apolipoproteína ApoB-100. Quando retido no subendotélio arterial, sofre oxidação e captação por macrófagos (scavenger), formando Células Espumosas e placas de Ateroma.\n• Estatinas (ex: Atorvastatina, Simvastatina): Inibem competitivamente a enzima HMG-CoA Redutase no fígado, bloqueando a síntese endógena de colesterol. Isso induz superexpressão de receptores de LDL no hepatócito, reduzindo o LDL circulante.",
-          conceitoChave: "Estatinas inibem a HMG-CoA Redutase e aumentam a captação hepática de LDL do sangue.",
-          importanteMedicina: "Prevenção primária e secundária de Infarto Agudo do Miocárdio (IAM) e AVC isquêmico."
-        }
-      ],
-      conceitosFundamentais: [
-        "Quilomícrons transportam lipídios exógenos da dieta.",
-        "VLDL e LDL transportam lipídios endógenos hepáticos para a periferia.",
-        "HDL realiza o Transporte Reverso de Colesterol para excreção biliar."
-      ],
-      relacaoMedicina: "Manejo da Aterosclerose, Dislipidemias e Cetoacidose Diabética.",
-      errosComuns: ["Ignorar que o HDL depende da apolipoproteína ApoA-I para atuar na proteção cardiovascular."],
-      questoesRelacionadas: [26, 27, 28, 29, 30]
-    },
-    {
-      id: 7,
-      discipline: "bioquimica",
-      disciplineName: "Bioquímica Médica",
-      moduloNumero: 7,
-      assunto: "Enzimas, cinética enzimática, regulação e inibidores",
-      icone: "Sliders",
-      descricao: "Modelo de Michaelis-Menten (Km, Vmax), inibição competitiva, não competitiva e alostérica.",
-      resumo: "As enzimas reduzem a energia de ativação sem alterar o ΔG. A constante de Michaelis (Km) reflete a afinidade. Inibidores competitivos aumentam o Km sem alterar a Vmax; Inibidores não-competitivos diminuem a Vmax sem alterar o Km.",
-      svgDiagrama: `<svg viewBox="0 0 700 200" class="w-full h-auto font-sans" xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="10" width="680" height="180" rx="16" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
-        <line x1="60" y1="160" x2="650" y2="160" stroke="#64748b" stroke-width="2"/>
-        <line x1="60" y1="25" x2="60" y2="160" stroke="#64748b" stroke-width="2"/>
-        <text x="350" y="182" text-anchor="middle" font-size="10" font-weight="bold" fill="#475569">Concentração de Substrato [S]</text>
-        <text x="25" y="95" text-anchor="middle" font-size="10" font-weight="bold" fill="#475569" transform="rotate(-90 25 95)">Velocidade Reação (V)</text>
-        
-        <path d="M 60 160 Q 140 45 650 40" fill="none" stroke="#2563eb" stroke-width="3"/>
-        <text x="280" y="35" font-weight="extrabold" font-size="11" fill="#2563eb">Enzima Sem Inibidor (Vmax / Km)</text>
-
-        <path d="M 60 160 Q 280 80 650 40" fill="none" stroke="#d97706" stroke-width="3" stroke-dasharray="5"/>
-        <text x="380" y="75" font-weight="extrabold" font-size="11" fill="#d97706">Inibição Competitiva (Km AUMENTA, Vmax IGUAL)</text>
-
-        <path d="M 60 160 Q 140 100 650 90" fill="none" stroke="#dc2626" stroke-width="3" stroke-dasharray="3"/>
-        <text x="380" y="115" font-weight="extrabold" font-size="11" fill="#dc2626">Inibição Não-Competitiva (Vmax DIMINUI, Km IGUAL)</text>
-      </svg>`,
-      imagemLegenda: "Cinética Enzimática LUmed: Curvas de Michaelis-Menten e Tipos de Inibição Farmacológica.",
-      capitulos: [
-        {
-          titulo: "1. Cinética Enzimática e Farmacologia dos Inibidores",
-          subtitulo: "Diferenciação Prática entre Inibidor Competitivo e Não-Competitivo",
-          conteudo: "• Km (Constante de Michaelis): É a [S] necessária para atingir Vmax/2. Km e afinidade são INVERSAMENTE proporcionais.\n• Inibição Competitiva: O inibidor liga-se ao sítio ativo. Elevação da [S] supera a inibição. Consequência: Km aumenta (parece menor afinidade), mas Vmax permanece inalterada.\n• Inibição Não-Competitiva: O inibidor liga-se a um sítio alostérico distinto. Elevação da [S] NÃO supera o bloqueio. Consequência: Vmax diminui, enquanto o Km permanece inalterado.",
-          conceitoChave: "Inibição Competitiva: Km aumenta, Vmax IGUAL. Inibição Não-Competitiva: Vmax diminui, Km IGUAL.",
-          tabelaComparativa: {
-            headers: ["Tipo de Inibidor", "Local de Ligação", "Efeito no Km", "Efeito na Vmax", "Superado por +Substrato?"],
-            rows: [
-              ["Competitivo", "Sítio Ativo", "AUMENTA", "INALTERADA", "SIM (ex: Captopril, Estatinas)"],
-              ["Não-Competitivo", "Sítio Alostérico", "INALTERADO", "DIMINUI", "NÃO (ex: Cianeto na Citocromo C)"],
-              ["Incompetitivo", "Complexo Enzima-Substrato", "DIMINUI", "DIMINUI", "NÃO"]
-            ]
-          },
-          importanteMedicina: "O Captopril (IECA) inibe competitivamente a ECA, impedindo a conversão de Angiotensina I em Angiotensina II na hipertensão."
-        }
-      ],
-      conceitosFundamentais: [
-        "Km é a concentração de substrato na qual V = Vmax / 2.",
-        "Menor Km = Maior afinidade da enzima pelo substrato.",
-        "Inibidor competitivo atua no sítio ativo; pode ser deslocado por excesso de substrato."
-      ],
-      relacaoMedicina: "Compreensão de mecanismos farmacológicos e diagnóstico enzimático (Troponina, CK-MB, ALT/AST).",
-      errosComuns: ["Afirmar erradamente que inibidores competitivos reduzem a velocidade máxima (Vmax)."],
-      questoesRelacionadas: [31, 32, 33, 34, 35]
-    },
-
-    // =========================================================================
-    // DISCIPLINA 2: MICROBIOLOGIA, VIROLOGIA E SÍNDROMES GRIPAIS (Módulos 1 a 4)
-    // =========================================================================
-    {
-      id: 8,
-      discipline: "microbiologia",
-      disciplineName: "Microbiologia, Virologia e Síndromes Gripais",
-      moduloNumero: 1,
-      assunto: "Módulo 1 — Introdução à Microbiologia",
-      icone: "Microscope",
-      descricao: "Conceito, escopo, biotecnologia, diferenciação estrutural (bactérias, fungos, protozoários, vírus), ubiquidade e microbiota humana.",
-      resumo: "A Microbiologia é a ciência dedicada aos organismos microscópicos. Abrange a medicina (diagnóstico, antibiogramas), biotecnologia e ecologia. Diferencia procariontes (bactérias com peptidoglicano), eucariontes (fungos com quitina, protozoários) e acelulares (vírus). A microbiota humana protege o hospedeiro por exclusão competitiva e síntese de vitaminas K e B12.",
-      imagemUrl: "/images/microbiology_overview.jpg",
-      imagemLegenda: "Esquema Anatômico LUmed: Comparativo Estrutural entre Bactérias (Peptidoglicano), Fungos (Quitina), Protozoários e Vírus (Acelulares).",
-      svgDiagrama: `<svg viewBox="0 0 700 160" class="w-full h-auto font-sans" xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="10" width="680" height="140" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
-        <rect x="30" y="35" width="140" height="90" rx="12" fill="#eff6ff" stroke="#93c5fd" stroke-width="2"/>
-        <text x="100" y="60" text-anchor="middle" font-weight="extrabold" font-size="12" fill="#1e40af">BACTÉRIAS</text>
-        <text x="100" y="80" text-anchor="middle" font-size="10" fill="#3b82f6">Procarionte</text>
-        <text x="100" y="102" text-anchor="middle" font-weight="bold" font-size="11" fill="#1d4ed8">Peptidoglicano</text>
-
-        <rect x="195" y="35" width="140" height="90" rx="12" fill="#f0fdf4" stroke="#86efac" stroke-width="2"/>
-        <text x="265" y="60" text-anchor="middle" font-weight="extrabold" font-size="12" fill="#166534">FUNGOS</text>
-        <text x="265" y="80" text-anchor="middle" font-size="10" fill="#15803d">Eucarionte</text>
-        <text x="265" y="102" text-anchor="middle" font-weight="bold" font-size="11" fill="#14532d">Quitina / Ergosterol</text>
-
-        <rect x="360" y="35" width="140" height="90" rx="12" fill="#fffbeb" stroke="#fde68a" stroke-width="2"/>
-        <text x="430" y="60" text-anchor="middle" font-weight="extrabold" font-size="12" fill="#b45309">PROTOZOÁRIOS</text>
-        <text x="430" y="80" text-anchor="middle" font-size="10" fill="#d97706">Eucarionte</text>
-        <text x="430" y="102" text-anchor="middle" font-weight="bold" font-size="11" fill="#92400e">Sem Parede Celular</text>
-
-        <rect x="525" y="35" width="145" height="90" rx="12" fill="#fef2f2" stroke="#fca5a5" stroke-width="2"/>
-        <text x="597" y="60" text-anchor="middle" font-weight="extrabold" font-size="12" fill="#991b1b">VÍRUS</text>
-        <text x="597" y="80" text-anchor="middle" font-size="10" fill="#dc2626">Acelular</text>
-        <text x="597" y="102" text-anchor="middle" font-weight="bold" font-size="11" fill="#7f1d1d">Parasita Obrigatório</text>
-      </svg>`,
-      capitulos: [
-        {
-          titulo: "1. Conceito, Escopo e Aplicações Práticas",
-          subtitulo: "Medicina, Biotecnologia, Indústria e Ecologia",
-          conteudo: "• Medicina e Diagnóstico: Identificação de agentes patogênicos, testes de sensibilidade aos antimicrobianos (TSA/antibiogramas) e controle hospitalar (CCIH).\n• Biotecnologia: Síntese de proteínas recombinantes (ex: insulina humana em E. coli), vacinas e enzimas.\n• Indústria e Ecologia: Produção de alimentos fermentados (queijos, vinagre) e fixação de nitrogênio no solo.",
-          conceitoChave: "Microrganismos são ferramentas biotecnológicas cruciais e mantenedores dos ecossistemas.",
-          importanteMedicina: "O uso consciente de antibióticos evita a seleção de superfungos e bactérias multirresistentes (MDR)."
-        },
-        {
-          titulo: "2. Diferenciação Celular e Microbiota Humana",
-          subtitulo: "Procariontes, Eucariontes, Acelulares e Exclusão Competitiva",
-          conteudo: "• Bactérias: Procariontes unicelulares sem carioteca, com parede de Peptidoglicano.\n• Fungos: Eucariontes unicelulares (leveduras) ou filamentosos (bolores), com parede de Quitina e membrana com Ergosterol.\n• Protozoários: Eucariontes unicelulares sem parede celular rígida.\n• Vírus: Acelulares, parasitas intracelulares obrigatórios.\n• Microbiota Humana: Protege por exclusão competitiva e produz Vitaminas K e B12.",
-          conceitoChave: "Microbiota intestinal protege por exclusão competitiva e sintetiza vitaminas K e B12.",
-          tabelaComparativa: {
-            headers: ["Grupo", "Organização Celular", "Invólucro Nuclear", "Parede Celular", "Metabolismo Próprio"],
-            rows: [
-              ["Bactérias", "Procarionte", "Ausente (Nucleoide)", "Peptidoglicano", "Sim"],
-              ["Fungos", "Eucarionte", "Presente (Carioteca)", "Quitina", "Sim"],
-              ["Protozoários", "Eucarionte", "Presente (Carioteca)", "Ausente", "Sim"],
-              ["Vírus", "Acelular", "Ausente", "Ausente (Capsídeo proteico)", "Não (Parasita obrigatório)"]
-            ]
-          },
-          importanteMedicina: "Antibióticos de amplo espectro destroem a microbiota intestinal, podendo induzir colite pseudomembranosa por Clostridioides difficile."
-        }
-      ],
-      conceitosFundamentais: [
-        "Bactérias são procariontes unicelulares com parede de peptidoglicano.",
-        "Fungos são eucariontes com parede de quitina.",
-        "Vírus são acelulares e parasitas intracelulares obrigatórios.",
-        "Microbiota humana protege por exclusão competitiva e sintetiza vitaminas K e B12."
-      ],
-      relacaoMedicina: "Base para microbiologia clínica, racional de antibiogramas e infectologia.",
-      errosComuns: ["Confundir bactérias (procariontes) com fungos (eucariontes)."],
-      questoesRelacionadas: [36, 37, 38, 39, 40]
-    },
-    {
-      id: 9,
-      discipline: "microbiologia",
-      disciplineName: "Microbiologia, Virologia e Síndromes Gripais",
-      moduloNumero: 2,
-      assunto: "Módulo 2 — Introdução à Virologia",
-      icone: "Shield",
-      descricao: "Propriedades virais, vírion, genoma, capsídeo, simetrias, envelope lipídico, marcos históricos e vacinas de Poliomielite (Salk vs. Sabin).",
-      resumo: "Vírus são parasitas intracelulares obrigatórios. Vírion é a partícula extracelular madura. Vírus envelopados (com bicamada lipídica) são sensíveis a detergentes e álcool 70%. Destacam-se as vacinas de poliomielite: Salk (IPV - inativada injetável) e Sabin (OPV - atenuada oral).",
-      imagemUrl: "/images/viral_structure.jpg",
-      imagemLegenda: "Arquitetura Viral LUmed: Comparação entre Vírus Envelopados (lábeis a álcool 70%) e Vírus Nus/Não Envelopados.",
-      svgDiagrama: `<svg viewBox="0 0 700 160" class="w-full h-auto font-sans" xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="10" width="330" height="140" rx="16" fill="#fef2f2" stroke="#fca5a5" stroke-width="2"/>
-        <text x="175" y="38" text-anchor="middle" font-weight="900" font-size="13" fill="#991b1b">VÍRUS ENVELOPADOS</text>
-        <text x="175" y="60" text-anchor="middle" font-weight="bold" font-size="11" fill="#b91c1c">Possuem Bicamada Lipídica</text>
-        <text x="175" y="85" text-anchor="middle" font-size="11" fill="#7f1d1d">Sensíveis a Álcool 70%, Sabão e Calor</text>
-        <text x="175" y="110" text-anchor="middle" font-weight="bold" font-size="11" fill="#dc2626">Transmissão por Gotículas Secreção</text>
-        <text x="175" y="130" text-anchor="middle" font-size="10" fill="#991b1b">Ex: Influenza, SARS-CoV-2, VSR, HIV</text>
-
-        <rect x="360" y="10" width="330" height="140" rx="16" fill="#eff6ff" stroke="#93c5fd" stroke-width="2"/>
-        <text x="525" y="38" text-anchor="middle" font-weight="900" font-size="13" fill="#1e40af">VÍRUS NÃO ENVELOPADOS (NUS)</text>
-        <text x="525" y="60" text-anchor="middle" font-weight="bold" font-size="11" fill="#1d4ed8">Capsídeo Proteico Rígido</text>
-        <text x="525" y="85" text-anchor="middle" font-size="11" fill="#1e3a8a">Resistentes a Álcool, pH Ácido e Fômites</text>
-        <text x="525" y="110" text-anchor="middle" font-weight="bold" font-size="11" fill="#2563eb">Transmissão Fecal-Oral / Fômites</text>
-        <text x="525" y="130" text-anchor="middle" font-size="10" fill="#1d4ed8">Ex: Rinovírus, Adenovírus, Poliovírus</text>
-      </svg>`,
-      capitulos: [
-        {
-          titulo: "1. Estrutura Viral e Labilidade ao Álcool 70%",
-          subtitulo: "Vírus Envelopados vs. Vírus Nus",
-          conteudo: "• O envelope lipídico é derivado de membranas celulares durante o brotamento. O uso de álcool 70% ou sabão solubiliza essa camada lipídica, destruindo as glicoproteínas de ancoragem e inativando o vírus infectante.\n• Vírus nus (não envelopados) possuem capsídeo rígido que resiste ao ressecamento, permitindo longa sobrevivência em superfícies inanimadas (fômites).",
-          conceitoChave: "Álcool 70% e detergentes inativam vírus ENVELOPADOS dissolvendo o envelope lipídico.",
-          importanteMedicina: "Higienização das mãos e superfícies na prevenção da COVID-19 e Influenza."
-        },
-        {
-          titulo: "2. Vacinas da Poliomielite: Salk vs. Sabin",
-          subtitulo: "IPV (Inativada Injetável) vs. OPV (Atenuada Oral)",
-          conteudo: "• Jonas Salk (1955): Vacina de vírus inativados por formaldeído (IPV - injetável). Induz anticorpos IgG circulantes.\n• Albert Sabin (1961): Vacina de vírus vivo atenuado (OPV - oral / gotinha). Induz imunidade local de mucosa intestinal (IgA secreta) + IgG sistêmica.\n• PNI Atual: Transição para o esquema 100% IPV (injetável) para eliminar o risco residual de paralisia associada ao vírus vacinal atenuado.",
-          conceitoChave: "Salk = Inativada Injetável (IPV); Sabin = Oral Vivo Atenuado (OPV).",
-          tabelaComparativa: {
-            headers: ["Característica", "Vacina Salk (IPV)", "Vacina Sabin (OPV)"],
-            rows: [
-              ["Mecanismo Biológico", "Vírus Inativado (Morto)", "Vírus Vivo Atenuado"],
-              ["Via de Administração", "Intramuscular / Injetável", "Oral (Gotinha)"],
-              ["Imunidade Gerada", "Humoral Sistêmica (IgG)", "Humoral (IgG) + Mucosa Intestinal (IgA)"],
-              ["Risco de Paralisia por Reversão", "ZERO Risco", "Risco Raro de Reversão Recombinante"],
-              ["Uso no PNI Atual", "Esquema Principal Preferencial", "Substituída Progressivamente por IPV"]
-            ]
-          },
-          importanteMedicina: "Reconhecimento das estratégias do PNI para erradicação global da poliomielite."
-        }
-      ],
-      conceitosFundamentais: [
-        "Vírion é a partícula viral completa e infectante.",
-        "Envelope lipídico confere sensibilidade ao álcool 70% e detergentes.",
-        "Vacina Salk é inativada injetável (IPV); Sabin é atenuada oral (OPV)."
-      ],
-      relacaoMedicina: "Fundamento de biossegurança hospitalar, higienização e vacinologia.",
-      errosComuns: ["Confundir a vacina Salk (injetável inativada) com a Sabin (oral viva atenuada)."],
-      questoesRelacionadas: [41, 42, 43, 44, 45]
-    },
-    {
-      id: 10,
-      discipline: "microbiologia",
-      disciplineName: "Microbiologia, Virologia e Síndromes Gripais",
-      moduloNumero: 3,
-      assunto: "Módulo 3 — Vírus Influenza (Gripe)",
-      icone: "Wind",
-      descricao: "Tipos (A, B, C), estrutura (HA, NA, M2), mecanismos de variação antigênica (Drift vs Shift), pandemias e antiviral Oseltamivir.",
-      resumo: "Influenza é um vírus -ssRNA segmentado envelopado. Possui espículas de Hemaglutinina (HA - entrada) e Neuraminidase (NA - liberação). A Deriva Antigênica (Drift) causa epidemias sazonais anuais; o Salto Antigênico (Shift) gera PANDEMIAS. O Oseltamivir inibe a Neuraminidase.",
-      imagemUrl: "/images/influenza_structure.jpg",
-      imagemLegenda: "Arquitetura do Vírus Influenza A LUmed: Glicoproteínas HA (Entrada), NA (Liberação) e Canal M2.",
-      svgDiagrama: `<svg viewBox="0 0 700 160" class="w-full h-auto font-sans" xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="10" width="330" height="140" rx="16" fill="#eff6ff" stroke="#93c5fd" stroke-width="2"/>
-        <text x="175" y="38" text-anchor="middle" font-weight="900" font-size="13" fill="#1e40af">DERIVA ANTIGÊNICA (DRIFT)</text>
-        <text x="175" y="60" text-anchor="middle" font-weight="bold" font-size="11" fill="#1d4ed8">Mutações Pontuais Contínuas (RNA Pol)</text>
-        <text x="175" y="85" text-anchor="middle" font-size="11" fill="#1e3a8a">Altera Pequenos Epitopos de HA/NA</text>
-        <text x="175" y="110" text-anchor="middle" font-weight="bold" font-size="11" fill="#2563eb">Causa EPIDEMIAS SAZONAIS Anuais</text>
-        <text x="175" y="130" text-anchor="middle" font-size="10" fill="#1d4ed8">Exige reformulação anual da vacina</text>
-
-        <rect x="360" y="10" width="330" height="140" rx="16" fill="#fef2f2" stroke="#fca5a5" stroke-width="2"/>
-        <text x="525" y="38" text-anchor="middle" font-weight="900" font-size="13" fill="#991b1b">SALTO ANTIGÊNICO (SHIFT)</text>
-        <text x="525" y="60" text-anchor="middle" font-weight="bold" font-size="11" fill="#b91c1c">Rearranjo Drástico de Segmentos RNA</text>
-        <text x="525" y="85" text-anchor="middle" font-size="11" fill="#7f1d1d">Recombinação entre Cepas Humana e Animal</text>
-        <text x="525" y="110" text-anchor="middle" font-weight="bold" font-size="11" fill="#dc2626">Causa PANDEMIAS GLOBAIS</text>
-        <text x="525" y="130" text-anchor="middle" font-size="10" fill="#991b1b">Ex: Pandemia H1N1 de 2009</text>
-      </svg>`,
-      capitulos: [
-        {
-          titulo: "1. Proteínas Estruturais e Farmacologia do Tamiflu",
-          subtitulo: "Hemaglutinina (HA), Neuraminidase (NA) e Oseltamivir",
-          conteudo: "• Hemaglutinina (HA): Liga-se ao receptor de ácido siálico da célula epitelial respiratória, promovendo a fusão do envelope e a entrada do vírus.\n• Neuraminidase (NA): Cliva enzimaticamente os resíduos de ácido siálico na célula hospedeira ao final da replicação, soltando os vírions recém-brotados para infectar novas células.\n• Oseltamivir (Tamiflu®): É um inibidor competitivo seletivo da Neuraminidase (NA). Bloqueia a clivagem do ácido siálico, fazendo com que os vírus fiquem 'presos' à superfície da célula hospedeira, contendo a disseminação tecidual.",
-          conceitoChave: "HA = Ligação receptórica e entrada; NA = Clivagem e liberação das partículas virais. Oseltamivir inibe a NA.",
-          importanteMedicina: "O Oseltamivir deve ser iniciado idealmente nas primeiras 48 horas do início dos sintomas em pacientes de risco para Síndrome Respiratória Aguda Grave (SRAG)."
-        },
-        {
-          titulo: "2. Genética Viral: Antigenic Drift vs. Antigenic Shift",
-          subtitulo: "Epidemias Sazonais vs. Pandemias Globais",
-          conteudo: "• Antigenic Drift (Deriva Antigênica): Mutações pontuais induzidas por erros da RNA polimerase viral nas espículas HA e NA. Responsável pelas epidemias sazonais anuais (exige vacina anual).\n• Antigenic Shift (Salto Antigênico): Exclusivo do Influenza A devido ao genoma segmentado em 8 fragmentos de RNA. Ocorre quando duas cepas distintas (ex: aviária e humana) co-infectam o mesmo hospedeiro (ex: porco), havendo troca drástica de segmentos genéticos, gerando um vírus totalmente inédito causador de PANDEMIAS (ex: H1N1 em 2009).",
-          conceitoChave: "Drift = Mutações pontuais (Epidemias Sazonais); Shift = Rearranjo de segmentos RNA (PANDEMIAS).",
-          tabelaComparativa: {
-            headers: ["Mecanismo", "Tipo de Alteração", "Vírus Envolvidos", "Impacto Epidemiológico"],
-            rows: [
-              ["Antigenic Drift (Deriva)", "Mutações pontuais em HA/NA", "Influenza A e B", "Epidemias Sazonais Anuais"],
-              ["Antigenic Shift (Salto)", "Rearranjo completo de fragmentos RNA", "Apenas Influenza A", "PANDEMIAS Globais (ex: H1N1)"]
-            ]
-          },
-          importanteMedicina: "Identificação da gravidade clínica da Gripe (febre alta, prostração, mialgia intensa) vs Resfriado Comum."
-        }
-      ],
-      conceitosFundamentais: [
-        "HA é responsável pela ligação ao ácido siálico e entrada celular.",
-        "NA cliva o ácido siálico permitindo a liberação viral.",
-        "Oseltamivir (Tamiflu) inibe a Neuraminidase.",
-        "Drift causa epidemias sazonais; Shift gera pandemias globais."
-      ],
-      relacaoMedicina: "Tratamento precoce de SRAG e vigilância epidemiológica global.",
-      errosComuns: ["Achar que o Antigenic Shift ocorre no Influenza B (ocorre prioritariamente no Influenza A)."],
-      questoesRelacionadas: [46, 47, 48, 49, 50]
-    },
-    {
-      id: 11,
-      discipline: "microbiologia",
-      disciplineName: "Microbiologia, Virologia e Síndromes Gripais",
-      moduloNumero: 4,
-      assunto: "Módulo 4 — Síndromes Gripais e Principais Vírus Respiratórios",
-      icone: "Stethoscope",
-      descricao: "Rinovírus (tropismo a 33-35°C), Adenovírus (dsDNA, fibras, exsudato), VSR (Sincícios, Proteína F, Abrysvo, Palivizumabe, Nirsevimabe) e SARS-CoV-2 (Spike, ACE2, TMPRSS2).",
-      resumo: "Compreende a fisiopatologia dos principais agentes do trato respiratório: Rinovírus (resfriado por tropismo a 33-35°C), Adenovírus (faringite com conjuntivite), VSR (sincícios via Proteína F, bronquiolite pediátrica com prevenções por Abrysvo® materna, Palivizumabe e Nirsevimabe) e SARS-CoV-2 (Spike no receptor ACE2 via TMPRSS2).",
-      imagemUrl: "/images/microbiology_overview.jpg",
-      imagemLegenda: "Principais Vírus Respiratórios LUmed: Rinovírus, Adenovírus, VSR e SARS-CoV-2.",
-      svgDiagrama: `<svg viewBox="0 0 700 160" class="w-full h-auto font-sans" xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="10" width="160" height="140" rx="14" fill="#eff6ff" stroke="#93c5fd" stroke-width="2"/>
-        <text x="90" y="38" text-anchor="middle" font-weight="900" font-size="12" fill="#1e40af">RINOVÍRUS</text>
-        <text x="90" y="60" text-anchor="middle" font-size="10" fill="#3b82f6">+ssRNA Nu</text>
-        <text x="90" y="85" text-anchor="middle" font-weight="bold" font-size="10" fill="#1d4ed8">Replica 33-35°C</text>
-        <text x="90" y="110" text-anchor="middle" font-size="10" fill="#1e3a8a">Resfriado Comum</text>
-
-        <rect x="180" y="10" width="160" height="140" rx="14" fill="#f0fdf4" stroke="#86efac" stroke-width="2"/>
-        <text x="260" y="38" text-anchor="middle" font-weight="900" font-size="12" fill="#166534">ADENOVÍRUS</text>
-        <text x="260" y="60" text-anchor="middle" font-size="10" fill="#15803d">dsDNA Nu (Fibras)</text>
-        <text x="260" y="85" text-anchor="middle" font-weight="bold" font-size="10" fill="#14532d">Febre + Conjuntivite</text>
-        <text x="260" y="110" text-anchor="middle" font-size="10" fill="#15803d">Exsudato Amigdaliano</text>
-
-        <rect x="350" y="10" width="160" height="140" rx="14" fill="#fffbeb" stroke="#fde68a" stroke-width="2"/>
-        <text x="430" y="38" text-anchor="middle" font-weight="900" font-size="12" fill="#b45309">VSR (PNEUMO)</text>
-        <text x="430" y="60" text-anchor="middle" font-size="10" fill="#d97706">-ssRNA Envelopado</text>
-        <text x="430" y="85" text-anchor="middle" font-weight="bold" font-size="10" fill="#92400e">Proteína F ➔ Sincícios</text>
-        <text x="430" y="110" text-anchor="middle" font-size="10" fill="#b45309">Bronquiolite Pediátrica</text>
-
-        <rect x="520" y="10" width="170" height="140" rx="14" fill="#fef2f2" stroke="#fca5a5" stroke-width="2"/>
-        <text x="605" y="38" text-anchor="middle" font-weight="900" font-size="12" fill="#991b1b">SARS-CoV-2</text>
-        <text x="605" y="60" text-anchor="middle" font-size="10" fill="#dc2626">+ssRNA Envelopado</text>
-        <text x="605" y="85" text-anchor="middle" font-weight="bold" font-size="10" fill="#7f1d1d">Spike ➔ ACE2 / TMPRSS2</text>
-        <text x="605" y="110" text-anchor="middle" font-size="10" fill="#991b1b">COVID-19 / SDRA</text>
-      </svg>`,
-      capitulos: [
-        {
-          titulo: "1. Rinovírus e Adenovírus Humanos",
-          subtitulo: "Tropismo Térmico e Diagnóstico Diferencial de Faringite",
-          conteudo: "• Rinovírus: Vírus +ssRNA não envelopado. Sua RNA polimerase replica prioritariamente a 33-35°C (temperatura do vestíbulo e cavidade nasal). A 37°C (trato inferior), sua replicação é contida, explicando a benignidade do Resfriado Comum sem febre alta.\n• Adenovírus: Vírus dsDNA não envelopado com projeções proteicas em 'fibras'. Causa Febre Faringoconjuntival (tríade: febre + faringite + conjuntivite folicular). Seu exsudato amigdaliano mimetiza infecção por Streptococcus pyogenes, mas o hemograma e swabs confirmam etiologia viral.",
-          conceitoChave: "Rinovírus replica a 33-35°C na cavidade nasal; Adenovírus (dsDNA) causa faringoconjuntivite com exsudato amigdaliano mimetizando bactéria.",
-          importanteMedicina: "Evita o uso equivocado de antibióticos na faringite por Adenovírus."
-        },
-        {
-          titulo: "2. Vírus Sincicial Respiratório (VSR) e Prevenção",
-          subtitulo: "Proteína F, Bronquiolite Pediátrica, Vacina Abrysvo, Palivizumabe e Nirsevimabe",
-          conteudo: "• Proteína F (Fusão): Induz a fusão da membrana da célula infectada com as células epiteliais brônquicas vizinhas, formando massas multinucleadas gigantes necróticas chamadas SINCÍCIOS.\n• Bronquiolite Viral Aguda (BVA): Obstrução bronquiolar por muco e sincícios necróticos em lactentes abaixo de 2 anos (taquipneia, tiragem intercostal e sibilos).\n• Imunoprofilaxia e Vacinas:\n  1. Vacina Abrysvo®: Imunização ativa da gestante no 3º trimestre com transferência transplacentária de anticorpos IgG para o recém-nascido.\n  2. Palivizumabe: Monoclonal anti-proteína F mensal para prematuros e cardiopatas.\n  3. Nirsevimabe: Monoclonal de ação estendida (long-acting) em dose única para recém-nascidos na 1ª estação do VSR.",
-          conceitoChave: "Proteína F forma SINCÍCIOS; VSR causa Bronquiolite; Prevenção com Abrysvo® (gestante), Palivizumabe e Nirsevimabe.",
-          tabelaComparativa: {
-            headers: ["Imunobiológico", "Natureza", "Público-Alvo", "Mecanismo"],
-            rows: [
-              ["Vacina Abrysvo®", "Vacina Proteína F Recombinante", "Gestantes no 3º trimestre", "Imunização ativa materna com passagem IgG transplacentária"],
-              ["Palivizumabe", "Anticorpo Monoclonal Humanizado", "Prematuros / Cardiopatas", "Imunoprofilaxia passiva mensal na estação VSR"],
-              ["Nirsevimabe", "Anticorpo Monoclonal Long-Acting", "Todos os recém-nascidos", "Dose única com proteção para toda a temporada"]
-            ]
-          },
-          importanteMedicina: "Reconhecer a tiragem subcostal e batimento de asa nasal na BVA por VSR para rápida oxigenoterapia."
-        },
-        {
-          titulo: "3. SARS-CoV-2 (COVID-19)",
-          subtitulo: "Proteína Spike (S), Receptor ACE2, Protease TMPRSS2 e Tratamento",
-          conteudo: "• Entrada Molecular: A proteína Spike (S) conecta-se ao receptor ACE2 na célula epitelial e endotelial. A protease transmembrana de serina TMPRSS2 realiza a clivagem ativadora de fusão.\n• Fase Inflamatória e SDRA: O dano celular endotelial desencadeia tempestade de citocinas (IL-6, TNF-α), microtromboses e Síndrome do Desconforto Respiratório Agudo (SDRA).\n• Tratamento em Hospitalizados: Corticoterapia (Dexametasona) na fase hipoxêmica + Anticoagulação profilática.",
-          conceitoChave: "SARS-CoV-2 liga a Proteína Spike ao receptor ACE2 com ativação por TMPRSS2.",
-          importanteMedicina: "Uso oportuno de Dexametasona em pacientes com necessidade de oxigenoterapia suplementar na COVID-19."
-        }
-      ],
-      conceitosFundamentais: [
-        "Rinovírus é +ssRNA nu com replicação restrita a 33-35°C na cavidade nasal.",
-        "Adenovírus é dsDNA nu com fibras; causa febre faringoconjuntival.",
-        "VSR forma sincícios via Proteína F e causa Bronquiolite em lactentes.",
-        "SARS-CoV-2 liga Spike ao receptor ACE2 com clivagem por TMPRSS2."
-      ],
-      relacaoMedicina: "Conduta clínica nas infecções respiratórias virais da infância e adultos.",
-      errosComuns: ["Prescrever antibióticos para faringite por Adenovírus ou bronquiolite por VSR."],
-      questoesRelacionadas: [51, 52, 53, 54, 55]
-    }
-  ];
-
-  // 3. BANCO DE QUESTÕES CLÍNICAS (55 Questões com Gabarito Comentado Item por Item)
-  const QUESTIONS = [
-    // Assunto 1: Bioquímica - Bioenergética (Q1 - Q5)
-    {
-      id: 1, numero: 1, assunto: "Introdução às biomoléculas e ao metabolismo", subassunto: "Bioenergética e Fluxo Metabólico", dificuldade: "Médio",
-      enunciado: "Em um experimento de rastreamento metabólico com marcadores isotópicos em hepatócitos isolados, observou-se que a concentração do metabólito X permaneceu praticamente constante, enquanto a taxa de incorporação do isótopo radioativo no produto final Y aumentou três vezes. Qual é a interpretação bioquímica correta dessa observação?",
-      alternativas: [
-        { id: "A", texto: "A via metabólica foi inibida, acumulando o metabólito X na célula." },
-        { id: "B", texto: "O fluxo metabólico através da via aumentou, com síntese e consumo do metabólito X ocorrendo em taxas elevadas equivalentes." },
-        { id: "C", texto: "A concentração constante de X prova que a velocidade da reação catalisada pela enzima chave permaneceu inalterada." },
-        { id: "D", texto: "O metabólito X é um efetor alostérico negativo que bloqueou a conversão no produto Y." }
-      ],
-      respostaCorreta: "B",
-      explicacao: "A concentração de um metabólito representa seu pool estático momentâneo, enquanto o fluxo metabólico expressa a velocidade real de conversão ao longo da via. Em steady-state, produção e consumo ocorrem em velocidade igual e elevada.",
-      explicacaoAlternativas: { A: "Incorreta. Se fosse inibida, a incorporação no produto Y não aumentaria.", B: "Correta. Concentração constante com aumento de turnover isotópico reflete fluxo metabólico elevado.", C: "Incorreta. A concentração estática não afere a velocidade de fluxo.", D: "Incorreta. X é intermediário ativo da via." },
-      conceitoPrincipal: "Diferença entre concentração estática de metabólito e fluxo metabólico dinâmico."
-    },
-    {
-      id: 2, numero: 2, assunto: "Introdução às biomoléculas e ao metabolismo", subassunto: "Acoplamento Energético de ATP", dificuldade: "Fácil",
-      enunciado: "As células realizam reações endergônicas (ΔG > 0) que seriam termodinamicamente desfavoráveis isoladamente. Como o metabolismo celular torna essas reações viáveis?",
-      alternativas: [
-        { id: "A", texto: "Alterando a constante de equilíbrio através de enzimas." },
-        { id: "B", texto: "Acoplando a reação endergônica à hidrólise de compostos de alta energia como o ATP, resultando em ΔG global negativo." },
-        { id: "C", texto: "Elevando a temperatura intracelular para níveis térmicos extremos." },
-        { id: "D", texto: "Aumentando a energia de ativação." }
-      ],
-      respostaCorreta: "B",
-      explicacao: "Reações endergônicas são impulsionadas pelo acoplamento com a hidrólise altamente exergônica do ATP (ΔG°' ≈ -30,5 kJ/mol).",
-      explicacaoAlternativas: { A: "Incorreta. Enzimas aceleram reações mas não mudam a constante de equilíbrio Keq.", B: "Correta. Acoplamento à hidrólise de ATP torna o ΔG global negativo e espontâneo.", C: "Incorreta.", D: "Incorreta." },
-      conceitoPrincipal: "Princípio do acoplamento energético via hidrólise de ATP."
-    },
-    {
-      id: 36, numero: 36, assunto: "Módulo 1 — Introdução à Microbiologia", subassunto: "Diferenciação Celular dos Microrganismos", dificuldade: "Fácil",
-      enunciado: "Na classificação dos grupos de microrganismos de interesse médico, as bactérias se diferenciam dos fungos e protozoários por apresentarem qual característica celular estrutural marcante?",
-      alternativas: [
-        { id: "A", texto: "Presença de carioteca delimitando um núcleo individualizado." },
-        { id: "B", texto: "Estrutura celular procarionte sem organelas membranosas e com parede celular rígida de peptidoglicano." },
-        { id: "C", texto: "Parede celular constituída exclusivamente por polímeros de quitina." },
-        { id: "D", texto: "Ausência completa de material genético próprio." }
-      ],
-      respostaCorreta: "B",
-      explicacao: "As bactérias são organismos procariontes unicelulares sem núcleo individualizado nem organelas membranosas, apresentando parede celular rica em peptidoglicano.",
-      explicacaoAlternativas: { A: "Incorreta. Núcleo individualizado com carioteca é exclusivo de eucariontes.", B: "Correta. Bactérias são procariontes com parede de peptidoglicano.", C: "Incorreta. Quitina é encontrada na parede de fungos.", D: "Incorreta. Bactérias possuem DNA circular." },
-      conceitoPrincipal: "Diferenciação estrutural entre procariotos (bactérias com peptidoglicano) e eucariotos."
-    },
-    {
-      id: 41, numero: 41, assunto: "Módulo 2 — Introdução à Virologia", subassunto: "Envelope Lipídico Viral e Sensibilidade", dificuldade: "Médio",
-      enunciado: "Os vírus são agentes acelulares considerados parasitas intracelulares obrigatórios. Em relação aos vírus ENVELOPADOS quando comparados aos NÃO ENVELOPADOS (nus), qual propriedade físico-química é verdadeira?",
-      alternativas: [
-        { id: "A", texto: "Os vírus envelopados são mais resistentes a detergentes, álcool 70% e desidratação." },
-        { id: "B", texto: "O envelope lipídico deriva das membranas da célula hospedeira e torna o vírus mais sensível a solventes lipídicos, álcool 70%, calor e desinfetantes." },
-        { id: "C", texto: "Vírus não envelopados não possuem capsídeo proteico." },
-        { id: "D", texto: "O envelope é sintetizado do zero por ribossomos próprios do vírus." }
-      ],
-      respostaCorreta: "B",
-      explicacao: "O envelope lipídico é derivado da célula hospedeira durante o brotamento. Por conter lipídios, ele é rapidamente solubilizado por sabão, álcool 70% e saneantes, inativando o vírus.",
-      explicacaoAlternativas: { A: "Incorreta. Vírus nus são mais resistentes no ambiente.", B: "Correta. O envelope lipídico confere alta sensibilidade ao álcool 70% e detergentes.", C: "Incorreta.", D: "Incorreta." },
-      conceitoPrincipal: "Labilidade dos vírus envelopados perante saneantes e álcool 70%."
-    },
-    {
-      id: 42, numero: 42, assunto: "Módulo 2 — Introdução à Virologia", subassunto: "Vacinas de Poliomielite: Salk vs. Sabin", dificuldade: "Médio",
-      enunciado: "O Programa Nacional de Imunizações (PNI) utilizou historicamente duas vacinas fundamentais contra a Poliomielite: Salk e Sabin. Qual a diferença biológica crucial entre a Vacina Salk e a Sabin?",
-      alternativas: [
-        { id: "A", texto: "Salk é vírus vivo atenuado oral (OPV); Sabin é poliovírus inativado injetável (IPV)." },
-        { id: "B", texto: "Salk utiliza poliovírus inativado (IPV - injetável); Sabin utiliza poliovírus vivo atenuado (OPV - oral / gotinha)." },
-        { id: "C", texto: "Ambas utilizam vetores adenovirais não replicantes." },
-        { id: "D", texto: "Sabin utiliza vacina de mRNA mensageiro." }
-      ],
-      respostaCorreta: "B",
-      explicacao: "Jonas Salk desenvolveu a vacina de vírus inativados por formaldeído (IPV - injetável). Albert Sabin desenvolveu a vacina de vírus vivo atenuado (OPV - oral / 'gotinha').",
-      explicacaoAlternativas: { A: "Incorreta.", B: "Correta. Salk = Inativada Injetável (IPV); Sabin = Oral Atenuada (OPV).", C: "Incorreta.", D: "Incorreta." },
-      conceitoPrincipal: "Diferenciação metodológica entre a vacina inativada Salk (IPV) e a vacina atenuada Sabin (OPV)."
-    },
-    {
-      id: 46, numero: 46, assunto: "Módulo 3 — Vírus Influenza (Gripe)", subassunto: "Hemaglutinina e Neuraminidase", dificuldade: "Difícil",
-      enunciado: "O vírus Influenza A possui duas espículas glicoproteicas no envelope: Hemaglutinina (HA) e Neuraminidase (NA). Quais são as funções biológicas específicas da HA e da NA no ciclo replicativo?",
-      alternativas: [
-        { id: "A", texto: "HA cliva o ácido siálico para liberar novos vírions; NA medeia a entrada." },
-        { id: "B", texto: "HA liga-se ao ácido siálico e medeia a fusão; NA cliva o ácido siálico prevenindo autoagregação e permitindo a liberação das novas partículas virais." },
-        { id: "C", texto: "HA sintetiza o RNA viral; NA atua como canal iônico." },
-        { id: "D", texto: "Ambas possuem função de degradação da parede celular." }
-      ],
-      respostaCorreta: "B",
-      explicacao: "A Hemaglutinina (HA) reconhece o receptor de ácido siálico e promove a fusão para entrada. A Neuraminidase (NA) possui atividade enzimática de clivagem do ácido siálico para soltar e liberar os vírions recém-brotados.",
-      explicacaoAlternativas: { A: "Incorreta.", B: "Correta. HA = Ligação receptórica e entrada; NA = Clivagem de ácido siálico e liberação.", C: "Incorreta.", D: "Incorreta." },
-      conceitoPrincipal: "Papéis funcionais complementares da Hemaglutinina (entrada) e Neuraminidase (liberação)."
-    },
-    {
-      id: 47, numero: 47, assunto: "Módulo 3 — Vírus Influenza (Gripe)", subassunto: "Antigenic Drift vs. Antigenic Shift", dificuldade: "Difícil",
-      enunciado: "A emergência de grandes Pandemias de Influenza A (como a de 2009 H1N1) ocorre por qual mecanismo genético de alteração antigênica em comparação às epidemias sazonais anuais?",
-      alternativas: [
-        { id: "A", texto: "Pandemias surgem por Deriva Antigênica (Antigenic Drift); epidemias por transcrição reversa." },
-        { id: "B", texto: "Epidemias sazonais decorrem da Deriva Antigênica (mutações pontuais contínuas); Pandemias decorrem do Salto Antigênico (Antigenic Shift), que é o rearranjo/recombinação drástica de segmentos RNA de diferentes cepas em um mesmo hospedeiro." },
-        { id: "C", texto: "Pandemias surgem por fusão do Influenza com o Rinovírus." },
-        { id: "D", texto: "Epidemias sazonais ocorrem por mutação do DNA celular." }
-      ],
-      respostaCorreta: "B",
-      explicacao: "A Deriva Antigênica (Drift) consiste em mutações pontuais acumuladas que causam epidemias sazonais anuais. O Salto Antigênico (Shift) é a troca/rearranjo de fragmentos de RNA entre cepas distintas (ex: aviária e humana) num hospedeiro intermediário, criando vírus inédito causador de PANDEMIAS.",
-      explicacaoAlternativas: { A: "Incorreta.", B: "Correta. Drift (mutações pontuais) = Epidemias Sazonais; Shift (rearranjo de segmentos RNA) = PANDEMIAS.", C: "Incorreta.", D: "Incorreta." },
-      conceitoPrincipal: "Diferenciação patogenética entre Deriva Antigênica (Drift - sazonal) e Salto Antigênico (Shift - pandêmico)."
-    },
-    {
-      id: 48, numero: 48, assunto: "Módulo 3 — Vírus Influenza (Gripe)", subassunto: "Tratamento Antiviral com Oseltamivir", dificuldade: "Médio",
-      enunciado: "O antiviral Oseltamivir (Tamiflu®) é o medicamento de escolha no tratamento da Síndrome Gripal por Influenza. Qual é o seu mecanismo de ação molecular específico?",
-      alternativas: [
-        { id: "A", texto: "Inibição seletiva da enzima Neuraminidase (NA), impedindo a clivagem do ácido siálico e a liberação de novos vírions infectantes." },
-        { id: "B", texto: "Bloqueio dos canais de sódio no epitélio nasal." },
-        { id: "C", texto: "Inibição da protease celular TMPRSS2." },
-        { id: "D", texto: "Ação surfactante direta sobre o envelope." }
-      ],
-      respostaCorreta: "A",
-      explicacao: "O Oseltamivir é um inibidor seletivo da Neuraminidase (NA), impedindo que os vírions recém-formados se desanquem da superfície celular, contendo a disseminação viral no trato respiratório.",
-      explicacaoAlternativas: { A: "Correta. Oseltamivir inibe a Neuraminidase viral.", B: "Incorreta.", C: "Incorreta.", D: "Incorreta." },
-      conceitoPrincipal: "Mecanismo farmacológico do Oseltamivir como inibidor da Neuraminidase."
-    },
-    {
-      id: 51, numero: 51, assunto: "Módulo 4 — Síndromes Gripais e Principais Vírus Respiratórios", subassunto: "Rinovírus e Tropismo Térmico", dificuldade: "Médio",
-      enunciado: "O Rinovírus humano é a causa mais comum do Resfriado Comum. Qual propriedade biológica explica a limitação da infecção por Rinovírus predominantemente ao Trato Respiratório Superior?",
-      alternativas: [
-        { id: "A", texto: "Destruição do vírus pelo oxigênio alveolar." },
-        { id: "B", texto: "A replicação do Rinovírus é otimizada na faixa de temperatura entre 33°C e 35°C (temperatura da cavidade nasal), sendo ineficiente na temperatura de 37°C do pulmão." },
-        { id: "C", texto: "Ligação aos receptores de insulina gástricos." },
-        { id: "D", texto: "Incapacidade de produzir capsídeo proteico." }
-      ],
-      respostaCorreta: "B",
-      explicacao: "A RNA polimerase do Rinovírus apresenta tropismo térmico específico: replica em capacidade máxima entre 33°C e 35°C (temperatura da cavidade nasal superior). Em 37°C (trato inferior), sua replicação é contida.",
-      explicacaoAlternativas: { A: "Incorreta.", B: "Correta. Replicação otimizada a 33-35°C restringe a infecção à nasofaringe.", C: "Incorreta.", D: "Incorreta." },
-      conceitoPrincipal: "Tropismo térmico do Rinovírus (33-35°C) e a limitação ao trato respiratório superior."
-    },
-    {
-      id: 52, numero: 52, assunto: "Módulo 4 — Síndromes Gripais e Principais Vírus Respiratórios", subassunto: "VSR e Formação de Sincícios via Proteína F", dificuldade: "Difícil",
-      enunciado: "O Vírus Sincicial Respiratório (VSR) é o principal agente etiológico da Bronquiolite Viral Aguda (BVA) em lactentes. Qual é o papel da Proteína de Fusão (Proteína F) na patogênese da doença?",
-      alternativas: [
-        { id: "A", texto: "Causar fragmentação dos macrófagos alveolares." },
-        { id: "B", texto: "Promover a fusão da membrana da célula infectada com as membranas das células vizinhas não infectadas, formando massas multinucleadas gigantes chamadas Sincícios." },
-        { id: "C", texto: "Destruir a síntese de surfactante pulmonar." },
-        { id: "D", texto: "Inibir a imunoglobulina E." }
-      ],
-      respostaCorreta: "B",
-      explicacao: "A Proteína F do VSR promove a fusão de células epiteliais brônquicas adjacentes, criando massas celulares multinucleadas necróticas chamadas Sincícios, que obstruem os bronquíolos.",
-      explicacaoAlternativas: { A: "Incorreta.", B: "Correta. A Proteína F induz fusão celular formando Sincícios multinucleados.", C: "Incorreta.", D: "Incorreta." },
-      conceitoPrincipal: "Formação de sincícios citopáticos pela Proteína F do VSR na Bronquiolite Viral Aguda."
-    },
-    {
-      id: 53, numero: 53, assunto: "Módulo 4 — Síndromes Gripais e Principais Vírus Respiratórios", subassunto: "SARS-CoV-2: Receptor ACE2 e Protease TMPRSS2", dificuldade: "Difícil",
-      enunciado: "Na infecção pelo SARS-CoV-2 (COVID-19), qual receptor da célula hospedeira é reconhecido pela Proteína Spike (S), e qual protease celular realiza a clivagem ativadora de fusão?",
-      alternativas: [
-        { id: "A", texto: "Receptor ICAM-1 e protease Neuraminidase." },
-        { id: "B", texto: "Receptor da Enzima Conversora de Angiotensina 2 (ACE2) e protease TMPRSS2 (Protease Transmembrana de Serina 2)." },
-        { id: "C", texto: "Receptor CD4 e protease DPP4." },
-        { id: "D", texto: "Receptor de ácido siálico e M2." }
-      ],
-      respostaCorreta: "B",
-      explicacao: "A proteína Spike (S) do SARS-CoV-2 acopla-se ao receptor ACE2 no epitélio e endotélio, sofrendo clivagem ativadora pela protease celular TMPRSS2 para fusão e entrada.",
-      explicacaoAlternativas: { A: "Incorreta.", B: "Correta. Spike acopla no ACE2 e é ativada pela TMPRSS2.", C: "Incorreta.", D: "Incorreta." },
-      conceitoPrincipal: "Entrada do SARS-CoV-2 via receptor ACE2 e clivagem proteolítica por TMPRSS2."
-    }
-  ];
-
-  // 4. ARMAZENAMENTO LOCAL (STORAGE)
+  // 2. CHAVES DE ARMAZENAMENTO LOCAL
   const STORAGE_KEYS = {
-    USER_ANSWERS: 'lumed_user_answers_v4',
-    REVISION_ITEMS: 'lumed_revision_items_v4',
-    SIMULATED_EXAMS: 'lumed_simulated_exams_v4'
+    USER_ANSWERS: 'lumed_user_answers_v5',
+    REVISION_ITEMS: 'lumed_revision_items_v5',
+    SIMULATED_EXAMS: 'lumed_simulated_exams_v5'
   };
 
+  // 3. PERSISTÊNCIA LOCAL (STORAGE & PROGRESSO DO ALUNO)
   function getUserAnswers() {
     try {
       const raw = localStorage.getItem(STORAGE_KEYS.USER_ANSWERS);
@@ -811,18 +25,18 @@
   }
 
   function recordAnswer({ questionId, chosenOption }) {
-    const question = QUESTIONS.find(q => q.id === questionId);
+    const question = QUESTIONS.find(q => q.id === questionId || q.numero === questionId);
     if (!question) return null;
 
     const isCorrect = chosenOption === question.respostaCorreta;
     const existing = getUserAnswers();
-    const prev = existing.filter(a => a.questionId === questionId);
+    const prev = existing.filter(a => a.questionId === question.id);
     const hits = prev.filter(a => a.isCorrect).length + (isCorrect ? 1 : 0);
     const errors = prev.filter(a => !a.isCorrect).length + (!isCorrect ? 1 : 0);
 
     const newAns = {
       id: Date.now().toString(),
-      questionId,
+      questionId: question.id,
       assunto: question.assunto,
       subassunto: question.subassunto,
       dificuldade: question.dificuldade,
@@ -834,7 +48,7 @@
     };
 
     localStorage.setItem(STORAGE_KEYS.USER_ANSWERS, JSON.stringify([...existing, newAns]));
-    updateRevisionSchedule(questionId, isCorrect, hits, errors);
+    updateRevisionSchedule(question.id, isCorrect, hits, errors);
     return newAns;
   }
 
@@ -896,7 +110,7 @@
 
     if (weakTopics.length === 0) {
       if (stats.questoesUnicasRespondidas === 0) {
-        return { hasWeakPoints: false, title: "Nenhum ponto fraco detectado ainda", message: "Comece a praticar questões para mapear seus tópicos prioritários de estudo.", sugestao: "Inicie por Microbiologia ou Bioquímica Médica." };
+        return { hasWeakPoints: false, title: "Nenhum ponto fraco detectado ainda", message: "Comece a praticar questões para mapear seus tópicos prioritários de estudo.", sugestao: "Inicie por Microbiologia, Bioquímica, Parasitologia ou Propedêutica Médica." };
       }
       return { hasWeakPoints: false, title: "Excelente aproveitamento!", message: "Seus acertos estão elevados em todas as matérias praticadas.", sugestao: "Mantenha a rotina de repetição espaçada no LUmed." };
     }
@@ -906,16 +120,16 @@
     return { hasWeakPoints: true, title: `Ponto de atenção: ${worst.assunto}`, message: `Aproveitamento de ${worst.percentual}% (${worst.erros} erro(s) em ${worst.totalRespondidas} questões).`, sugestao: mat ? `Sugestão: Revise ${mat.conceitosFundamentais[0]}` : "Revise este módulo no guia." };
   }
 
-  // 5. ENGINE INTELIGENTE DO TUTOR LUmed (BASE DE CONHECIMENTO MÉDICO AMPLIADA)
+  // 4. BASE DE CONHECIMENTO & ENGINE DO TUTOR INTELIGENTE LUmed
   async function queryAITutorMock({ question, promptType, customPrompt, selectedOption }) {
     await new Promise(r => setTimeout(r, 350));
     const textQuery = (customPrompt || '').toLowerCase();
-    const opt = selectedOption || 'A';
+    const opt = selectedOption !== null && selectedOption !== undefined ? selectedOption : 0;
     const currentQ = question || QUESTIONS[0];
-    const alt = currentQ.alternativas.find(a => a.id === opt);
 
     // Se for uma dúvida customizada digitada pelo usuário no chat:
     if (promptType === 'custom' && textQuery) {
+      // Bioquímica
       if (textQuery.includes('bohr') || textQuery.includes('oxigenio') || textQuery.includes('hemoglobina')) {
         return `🩺 **Tutor LUmed — Efeito Bohr & Oxigênio**:
 • **O que é**: O Efeito Bohr descreve o desvio da curva de dissociação da Hemoglobina para a DIREITA em resposta ao aumento de H+ (queda de pH) e da PaCO2.
@@ -925,33 +139,8 @@
       if (textQuery.includes('anion gap') || textQuery.includes('acidose')) {
         return `🧮 **Tutor LUmed — Anion Gap Plasmático**:
 • **Fórmula**: Anion Gap = [Na+] - ([Cl-] + [HCO3-]). Normal: 8 a 12 mEq/L.
-• **Interpretação**: Se > 12 mEq/L, há consumo de bicarbonato por ácidos orgânicos não mensurados no sangue.
-• **Mnemônico MUDPILES**: Metanol, Uremia, Diabetes (Cetoacidose), Paralcóol, Isoniazida/Infecção, Lactato (Choque/Sepse), Etilenoglicol, Salicilatos.`;
-      }
-      if (textQuery.includes('salk') || textQuery.includes('sabin') || textQuery.includes('polio')) {
-        return `💉 **Tutor LUmed — Vacinas da Poliomielite**:
-• **Vacina Salk (IPV)**: Vírus INATIVADO (morto) injetável. Gera imunidade sistêmica IgG sem risco de paralisia vacinal. É o esquema preferencial do PNI.
-• **Vacina Sabin (OPV)**: Vírus VIVO ATENUADO oral (gotinha). Gera imunidade de mucosa intestinal (IgA) + IgG sistêmica.
-• **Macete de Prova**: *Salk = Seringa (IPV/Injetável/Inativada); Sabin = Sabor/Gotinha (OPV/Atenuada).*`;
-      }
-      if (textQuery.includes('influenza') || textQuery.includes('oseltamivir') || textQuery.includes('tamiflu') || textQuery.includes('drift') || textQuery.includes('shift')) {
-        return `🦠 **Tutor LUmed — Vírus Influenza & Antivirais**:
-• **Hemaglutinina (HA)**: Espícula de ligação ao ácido siálico para ENTRADA celular.
-• **Neuraminidase (NA)**: Espícula de clivagem enzimática do ácido siálico para LIBERAÇÃO das partículas virais.
-• **Oseltamivir (Tamiflu)**: Inibe a Neuraminidase (NA), prendendo os vírus à célula hospedeira.
-• **Drift vs Shift**: Drift = Mutações pontuais (Epidemias sazonais anuais); Shift = Rearranjo de fragmentos de RNA (PANDEMIAS Globais).`;
-      }
-      if (textQuery.includes('vsr') || textQuery.includes('sincicio') || textQuery.includes('bronquiolite') || textQuery.includes('abrysvo') || textQuery.includes('palivizumabe') || textQuery.includes('nirsevimabe')) {
-        return `🫁 **Tutor LUmed — VSR & Bronquiolite Aguda**:
-• **Patogênese**: A Proteína F (Fusão) funde células epiteliais brônquicas adjacentes formando SINCÍCIOS multinucleados.
-• **Quadro Clínico**: Bronquiolite em lactentes < 2 anos (taquipneia, sibilos, tiragem).
-• **Prevenção**: Vacina Abrysvo® (gestante 3º trimestre), Palivizumabe (monoclonal mensal para prematuros) e Nirsevimabe (monoclonal de dose única).`;
-      }
-      if (textQuery.includes('spike') || textQuery.includes('ace2') || textQuery.includes('tmprss2') || textQuery.includes('covid') || textQuery.includes('sars')) {
-        return `🧬 **Tutor LUmed — SARS-CoV-2 (COVID-19)**:
-• **Mecanismo de Entrada**: A Proteína Spike (S) acopla no receptor ACE2 celular e sofre clivagem ativadora pela protease TMPRSS2.
-• **Fisiopatologia**: Fase inicial viral seguida por tempestade de citocinas (IL-6), vasculite e risco de SDRA com microtromboses.
-• **Tratamento**: Dexametasona na fase hipoxêmica em hospitalizados.`;
+• **Interpretação**: Se > 12 mEq/L, há acúmulo de ânions não mensurados no sangue.
+• **Mnemônico MUDPILES**: Metanol, Uremia, Diabetes (Cetoacidose), Paralcóol, Isoniazida, Lactato, Etilenoglicol, Salicilatos.`;
       }
       if (textQuery.includes('ldl') || textQuery.includes('hdl') || textQuery.includes('estatina') || textQuery.includes('colesterol')) {
         return `🩸 **Tutor LUmed — Lipoproteínas & Estatinas**:
@@ -959,58 +148,112 @@
 • **HDL**: Carrega ApoA-I. Realiza o Transporte Reverso de Colesterol (retira das artérias para o fígado).
 • **Estatinas**: Inibem a HMG-CoA Redutase no fígado, aumentando os receptores que limpam o LDL da circulação.`;
       }
-      if (textQuery.includes('km') || textQuery.includes('vmax') || textQuery.includes('competitiv')) {
-        return `⚡ **Tutor LUmed — Cinética Enzimática**:
-• **Km**: Concentração de substrato para Vmax/2. Menor Km = Maior afinidade.
-• **Inibidor Competitivo**: Atua no sítio ativo. Km AUMENTA, Vmax permanece IGUAL (superado por +substrato).
-• **Inibidor Não-Competitivo**: Atua no sítio alostérico. Vmax DIMINUI, Km permanece IGUAL (não superado).`;
+
+      // Virologia & Influenza
+      if (textQuery.includes('influenza') || textQuery.includes('oseltamivir') || textQuery.includes('tamiflu') || textQuery.includes('drift') || textQuery.includes('shift')) {
+        return `🦠 **Tutor LUmed — Vírus Influenza & Antivirais**:
+• **Hemaglutinina (HA)**: Espícula de ligação ao ácido siálico para ENTRADA celular.
+• **Neuraminidase (NA)**: Espícula de clivagem enzimática do ácido siálico para LIBERAÇÃO das partículas virais.
+• **Oseltamivir (Tamiflu)**: Inibe a Neuraminidase (NA), prendendo os vírus à célula hospedeira.
+• **Drift vs Shift**: Drift = Mutações pontuais (Epidemias sazonais anuais); Shift = Rearranjo de 8 fragmentos de RNA (PANDEMIAS Globais de Influenza A).`;
       }
-      if (textQuery.includes('ureia') || textQuery.includes('amonia') || textQuery.includes('hepati') || textQuery.includes('encefalopatia')) {
-        return `🫀 **Tutor LUmed — Amônia & Ciclo da Ureia**:
-• **Amônia (NH3)**: Neurotóxica liberada na transaminação (ALT/AST).
-• **Ciclo da Ureia**: Ocorre no FÍGADO (enzima CPS-I) convertendo amônia em ureia atóxica excretada pelo RIM.
-• **Encefalopatia Hepática**: Falha hepática acumula amônia no cérebro causando edema de astrócitos.`;
+
+      // Parasitologia
+      if (textQuery.includes('tricuri') || textQuery.includes('trichiura') || textQuery.includes('chicote') || textQuery.includes('prolapso')) {
+        return `🪱 **Tutor LUmed — Tricuríase (Trichuris trichiura)**:
+• **Morfologia**: 'Verme em chicote' (anterior afilada na mucosa colônica, posterior espessa no lúmen).
+• **Ovos no EPF**: Formato patognomônico de BARRIL ou LIMÃO com rolhas polares hialinas.
+• **Clínica Grave**: Em crianças com infecção maciça, causa PROLAPSO RETAL, tenesmo, diarreia mucossanguinolenta e anemia ferropriva.
+• **Tratamento**: Mebendazol ou Albendazol por 3 dias. Não faz ciclo de Loos.`;
+      }
+      if (textQuery.includes('ascaris') || textQuery.includes('ascaridiase') || textQuery.includes('löffler') || textQuery.includes('loos') || textQuery.includes('piperazina')) {
+        return `🪱 **Tutor LUmed — Ascaridíase (Ascaris lumbricoides)**:
+• **Ciclo de Loos**: Intestino -> Fígado -> Coração Direito -> Pulmões (ruptura de capilares alveolares) -> Laringe (deglutição) -> Intestino Delgado.
+• **Síndrome de Löffler**: Pneumonia eosinofílica migratória com tosse, infiltrado pulmonar migratório ao Rx e alta eosinofilia.
+• **Suboclusão Intestinal**: Tratar com PIPERAZINA (provoca paralisia flácida dos vermes) + Óleo Mineral + Jejum por SNG.
+• **Ovos**: Férteis com casca espessa mamilonada marrom. Tratamento ambulatorial: Albendazol 400 mg dose única.`;
+      }
+      if (textQuery.includes('chagas') || textQuery.includes('cruzi') || textQuery.includes('barbeiro') || textQuery.includes('romaña') || textQuery.includes('benznidazol') || textQuery.includes('mega') || textQuery.includes('brd')) {
+        return `🪱 **Tutor LUmed — Doença de Chagas (Trypanosoma cruzi)**:
+• **Vetor & Transmissão**: Triatomíneo ('Barbeiro') por contaminação das fezes/urina (estercorária) ou via oral (açaí/caldo de cana).
+• **Formas**: Amastigota (intracelular tecidual), Tripomastigota (sanguíneo e metacíclico infectante).
+• **Fase Aguda**: Sinal de Romaña (edema bipalpebral unilateral indolor) e alta parassitemia (pesquisa direta no sangue). Tratamento: BENZNIDAZOL.
+• **Fase Crônica**: 2 testes sorológicos distintos IgG positivos (ELISA + IFI). Forma Cardíaca (BRD + BDAE, arritmias, aneurisma apical) e Digestiva (Megaesôfago e Megacólon por destruição dos plexos entéricos de Auerbach/Meissner).`;
+      }
+
+      // Propedêutica Médica
+      if (textQuery.includes('glasgow') || textQuery.includes('consciencia') || textQuery.includes('decerebracao') || textQuery.includes('decorticao')) {
+        return `🩺 **Tutor LUmed — Escala de Coma de Glasgow (GCS)**:
+• **Parâmetros Comportamentais**: Abertura Ocular (1-4), Resposta Verbal (1-5) e Resposta Motora (1-6). Pontuação de 3 a 15.
+• **Resposta Motora à Dor**:
+  - 6: Obedece ordens
+  - 5: Localiza a dor
+  - 4: Flexão normal (retirada)
+  - 3: Flexão anormal (Postura de Decorticação)
+  - 2: Extensão anormal (Postura de Decerebração)
+  - 1: Sem resposta motora.`;
+      }
+      if (textQuery.includes('imc') || textQuery.includes('antropometria') || textQuery.includes('circunferencia abdominal')) {
+        return `⚖️ **Tutor LUmed — Antropometria & IMC**:
+• **Cálculo do IMC**: Peso (kg) / [Altura (m)]². Faixas OMS: Eutrofia (18,5 - 24,9), Sobrepeso (25,0 - 29,9), Obesidade I (30,0 - 34,9), Obesidade II (35,0 - 39,9), Obesidade III (>= 40,0).
+• **Circunferência Abdominal (Risco Cardiovascular Elevated)**: > 88 cm em mulheres / > 102 cm em homens.`;
+      }
+      if (textQuery.includes('exame fisico') || textQuery.includes('percussao') || textQuery.includes('plessimetro') || textQuery.includes('ausculta')) {
+        return `🩺 **Tutor LUmed — Técnicas Propedêuticas**:
+• **Sequência Clássica**: Inspeção -> Palpação -> Percussão -> Ausculta (Examinador posicionado à DIREITA do paciente).
+• **Exceção Abdominal**: Inspeção -> Ausculta -> Percussão -> Palpação (para não alterar ruídos hidroaéreos).
+• **Percussão Digito-Digital**: Dedo Plessímetro (apoiado) e Dedo Plessor (golpeador).
+• **Sons Percutórios**: Som Claro Pulmonar (pulmão aerado), Som Timpânico (bolha gástrica/gás), Som Maciço (fígado/órgão sólido).
+• **Estetoscópio**: Campânula (sons graves/baixa frequência) vs Diafragma (sons agudos/alta frequência).`;
+      }
+      if (textQuery.includes('virchow') || textQuery.includes('troisier') || textQuery.includes('tireoide') || textQuery.includes('turgencia') || textQuery.includes('facies')) {
+        return `🩺 **Tutor LUmed — Propedêutica da Cabeça e Pescoço**:
+• **Linfonodo de Virchow (Sinal de Troisier)**: Enfartamento ganglionar supraclavicular esquerdo = metástase de adenocarcinoma gástrico/abdominal via ducto torácico.
+• **Tireoide**: Mobilidade vertical ao DEGLUTIR facilita a palpação bimanual (Manobra de Quervain).
+• **Turgência Jugular a 45º**: Indicador de hipertensão venosa central (PVC elevada) e insuficiência cardíaca direita.
+• **Fácies**: Parkinsoniana (em máscara), Cushingóide (lua cheia), Basedowiana (exoftalmia).`;
       }
 
       return `👨‍⚕️ **Tutor LUmed**:
 Dúvida: "${customPrompt}"
-Sobre o módulo de **${currentQ.assunto}**:
+Sobre o tópico de **${currentQ.assunto}**:
 ${currentQ.explicacao}
 
 💡 **Conceito Chave de Medicina**: ${currentQ.conceitoPrincipal}`;
     }
 
     // Botões de sugestão rápida
+    const letter = ['A', 'B', 'C', 'D'][opt] || 'A';
     switch (promptType) {
       case 'why_wrong':
         return `🧠 **Tutor LUmed**:
-Sobre a **Alternativa ${opt}** ("${alt ? alt.texto : ''}"):
-${currentQ.explicacaoAlternativas?.[opt] || 'Esta alternativa contém um distrator conceitual comum em provas.'}
+Sobre a **Alternativa (${letter})**:
+${currentQ.explicacaoAlternativas?.[letter] || currentQ.explicacaoAlternativas?.[opt] || 'Esta alternativa é um distrator conceitual.'}
 
-💡 **Gabarito Correto**: Alternativa **${currentQ.respostaCorreta}**.
+💡 **Gabarito Correto**: Alternativa **(${['A', 'B', 'C', 'D'][currentQ.respostaCorreta]})**.
 🔑 **Conceito-Chave**: ${currentQ.conceitoPrincipal}`;
       case 'explain_beginner':
         return `🩺 **Explicação Simplificada LUmed**:
 ${currentQ.explicacao}
 
-Gabarito: **${currentQ.respostaCorreta}**. Conceito: *"${currentQ.conceitoPrincipal}"*.`;
+Gabarito: **(${['A', 'B', 'C', 'D'][currentQ.respostaCorreta]})**. Conceito: *"${currentQ.conceitoPrincipal}"*.`;
       case 'core_concept':
         return `🔑 **Conceito Chave para Dominar**:
 **${currentQ.conceitoPrincipal}**
 
 • Assunto: ${currentQ.assunto}
-• Gabarito: ${currentQ.respostaCorreta}`;
+• Gabarito: Alternativa (${['A', 'B', 'C', 'D'][currentQ.respostaCorreta]})`;
       case 'clinical_example':
         return `🏥 **Aplicação na Prática Médica**:
-Na rotina clínica de *${currentQ.assunto}*, reconhecer por que a **Alternativa ${currentQ.respostaCorreta}** é correta previne condutas errôneas: ${currentQ.explicacao}`;
+Na rotina clínica de *${currentQ.assunto}*, entender a **Alternativa (${['A', 'B', 'C', 'D'][currentQ.respostaCorreta]})** é fundamental: ${currentQ.explicacao}`;
       default:
         return `👨‍⚕️ **Tutor LUmed**:
-Gabarito: **${currentQ.respostaCorreta}**.
+Gabarito: **(${['A', 'B', 'C', 'D'][currentQ.respostaCorreta]})**.
 Raciocínio Clínico: ${currentQ.explicacao}`;
     }
   }
 
-  // 6. ESTADO GLOBAL LUmed
+  // 5. ESTADO GLOBAL LUmed
   const state = {
     activeTab: 'dashboard', // 'dashboard' | 'questions' | 'review' | 'exam' | 'study'
     questionState: { currentFilter: 'all', currentQuestionIndex: 0, selectedOption: null, isConfirmed: false, confirmedResult: null },
@@ -1019,8 +262,7 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
     aiTutorState: { isOpen: false, activeQuestion: null, selectedOption: null, chatHistory: [], isLoading: false }
   };
 
-  // 7. RENDERIZADORES DE COMPONENTES HTML
-
+  // 6. COMPONENTES E INTERFACES HTML
   function renderNavbarHTML() {
     const stats = getPerformanceStats();
     const pendingCount = getPendingRevisions().length;
@@ -1046,7 +288,7 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
               <i data-lucide="layout-dashboard" class="w-4 h-4"></i> Dashboard
             </button>
             <button type="button" onclick="window.medbioNav('questions')" class="px-3.5 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center gap-2 ${state.activeTab === 'questions' ? 'bg-blue-50 text-blue-700' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'}">
-              <i data-lucide="help-circle" class="w-4 h-4"></i> Questões
+              <i data-lucide="help-circle" class="w-4 h-4"></i> Questões (${QUESTIONS.length})
             </button>
             <button type="button" onclick="window.medbioNav('study')" class="px-3.5 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center gap-2 ${state.activeTab === 'study' ? 'bg-blue-50 text-blue-700' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'}">
               <i data-lucide="book-open" class="w-4 h-4"></i> Estudar
@@ -1114,18 +356,24 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
             </div>
             <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight text-white">Preparatório Médico LUmed</h1>
             <p class="text-blue-100 text-xs md:text-sm leading-relaxed">
-              Bioquímica Médica, Microbiologia, Virologia e Síndromes Gripais integrados com repetição espaçada e IA Didática.
+              Bioquímica Médica, Microbiologia & Virologia, Parasitologia Médica e Propedêutica Médica integradas com repetição espaçada e IA Didática.
             </p>
 
-            <div class="pt-2 flex flex-wrap items-center gap-3">
-              <button type="button" onclick="window.medbioNav('questions')" class="px-5 py-2.5 rounded-xl bg-white text-blue-700 font-extrabold text-xs shadow-md hover:bg-blue-50 transition-all flex items-center gap-2">
-                <i data-lucide="play" class="w-4 h-4"></i> Praticar Questões
+            <div class="pt-2 flex flex-wrap items-center gap-2.5">
+              <button type="button" onclick="window.medbioNav('questions')" class="px-4 py-2.5 rounded-xl bg-white text-blue-700 font-extrabold text-xs shadow-md hover:bg-blue-50 transition-all flex items-center gap-1.5">
+                <i data-lucide="play" class="w-4 h-4"></i> Praticar Questões (${QUESTIONS.length})
               </button>
-              <button type="button" onclick="window.medbioSelectDisciplineAndTopic('bioquimica', 1)" class="px-5 py-2.5 rounded-xl bg-blue-800/60 hover:bg-blue-800 text-white font-bold text-xs border border-white/20 transition-all flex items-center gap-2">
-                <i data-lucide="book-open" class="w-4 h-4"></i> Bioquímica Médica
+              <button type="button" onclick="window.medbioSelectDisciplineAndTopic('microbiologia', 8)" class="px-3.5 py-2.5 rounded-xl bg-blue-800/60 hover:bg-blue-800 text-white font-bold text-xs border border-white/20 transition-all">
+                🦠 Microbiologia
               </button>
-              <button type="button" onclick="window.medbioSelectDisciplineAndTopic('microbiologia', 8)" class="px-5 py-2.5 rounded-xl bg-blue-800/60 hover:bg-blue-800 text-white font-bold text-xs border border-white/20 transition-all flex items-center gap-2">
-                <i data-lucide="microscope" class="w-4 h-4"></i> Microbiologia & Virologia
+              <button type="button" onclick="window.medbioSelectDisciplineAndTopic('parasitologia', 5)" class="px-3.5 py-2.5 rounded-xl bg-blue-800/60 hover:bg-blue-800 text-white font-bold text-xs border border-white/20 transition-all">
+                🪱 Parasitologia
+              </button>
+              <button type="button" onclick="window.medbioSelectDisciplineAndTopic('propedeutica', 8)" class="px-3.5 py-2.5 rounded-xl bg-blue-800/60 hover:bg-blue-800 text-white font-bold text-xs border border-white/20 transition-all">
+                🩺 Propedêutica
+              </button>
+              <button type="button" onclick="window.medbioSelectDisciplineAndTopic('bioquimica', 1)" class="px-3.5 py-2.5 rounded-xl bg-blue-800/60 hover:bg-blue-800 text-white font-bold text-xs border border-white/20 transition-all">
+                🧪 Bioquímica
               </button>
             </div>
           </div>
@@ -1152,12 +400,12 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
           </div>
 
           <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-2">
-            <span class="text-xs font-bold uppercase text-slate-400">Gabarito com Tutor IA</span>
+            <span class="text-xs font-bold uppercase text-slate-400">Banco de Questões Verificado</span>
             <div class="flex items-baseline gap-2">
-              <span class="text-3xl md:text-4xl font-black text-indigo-600">55/55</span>
+              <span class="text-3xl md:text-4xl font-black text-indigo-600">${QUESTIONS.length}</span>
               <span class="text-xs font-bold text-slate-500">questões</span>
             </div>
-            <p class="text-xs text-slate-500 font-medium">Disponível em tempo real no app</p>
+            <p class="text-xs text-slate-500 font-medium">Gabarito detalhado item a item + Tutor IA</p>
           </div>
         </div>
 
@@ -1178,15 +426,15 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
 
         <!-- Grade de Módulos Rápidos por Disciplina -->
         <div class="space-y-4">
-          <h3 class="text-lg font-extrabold text-slate-900">Navegação Rápida por Módulo de Estudo</h3>
+          <h3 class="text-lg font-extrabold text-slate-900">Disciplinas e Módulos de Estudo LUmed (${STUDY_MATERIALS.length} Módulos)</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             ${STUDY_MATERIALS.map(mat => `
               <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:border-blue-300 transition-all space-y-3">
                 <div class="flex items-center justify-between">
-                  <span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold ${mat.discipline === 'bioquimica' ? 'bg-amber-50 text-amber-800 border border-amber-200' : 'bg-blue-50 text-blue-800 border border-blue-200'}">
+                  <span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-blue-50 text-blue-800 border border-blue-200">
                     ${mat.disciplineName} • Módulo ${mat.moduloNumero}
                   </span>
-                  <span class="text-xs font-bold text-slate-400">${mat.questoesRelacionadas.length} questões</span>
+                  <span class="text-xs font-bold text-slate-400">${mat.questoesRelacionadas ? mat.questoesRelacionadas.length : 0} questões</span>
                 </div>
                 <h4 class="text-sm md:text-base font-extrabold text-slate-900">${mat.assunto}</h4>
                 <p class="text-xs text-slate-600 line-clamp-2">${mat.descricao}</p>
@@ -1216,8 +464,16 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
     } else if (currentFilter === 'unanswered') {
       const ansIds = getUserAnswers().map(a => a.questionId);
       filtered = QUESTIONS.filter(q => !ansIds.includes(q.id));
+    } else if (currentFilter === 'bioquimica') {
+      filtered = QUESTIONS.filter(q => q.assunto === 'bioquimica');
+    } else if (currentFilter === 'microbiologia') {
+      filtered = QUESTIONS.filter(q => q.assunto === 'microbiologia');
+    } else if (currentFilter === 'parasitologia') {
+      filtered = QUESTIONS.filter(q => q.assunto === 'parasitologia');
+    } else if (currentFilter === 'propedeutica') {
+      filtered = QUESTIONS.filter(q => q.assunto === 'propedeutica');
     } else if (currentFilter !== 'all') {
-      filtered = QUESTIONS.filter(q => q.assunto === currentFilter);
+      filtered = QUESTIONS.filter(q => q.assunto === currentFilter || q.subassunto === currentFilter);
     }
 
     const currentQ = filtered[currentQuestionIndex];
@@ -1228,7 +484,11 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
         <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-3">
           <div class="flex items-center gap-2 overflow-x-auto py-1">
             <button type="button" onclick="window.medbioSetQuestionFilter('all')" class="px-3 py-1.5 rounded-xl text-xs font-bold ${currentFilter === 'all' ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-700'}">Todas (${QUESTIONS.length})</button>
-            <button type="button" onclick="window.medbioSetQuestionFilter('unanswered')" class="px-3 py-1.5 rounded-xl text-xs font-bold ${currentFilter === 'unanswered' ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-700'}">Não Respondidas</button>
+            <button type="button" onclick="window.medbioSetQuestionFilter('bioquimica')" class="px-3 py-1.5 rounded-xl text-xs font-bold ${currentFilter === 'bioquimica' ? 'bg-amber-600 text-white' : 'bg-slate-100 text-slate-700'}">🧪 Bioquímica</button>
+            <button type="button" onclick="window.medbioSetQuestionFilter('microbiologia')" class="px-3 py-1.5 rounded-xl text-xs font-bold ${currentFilter === 'microbiologia' ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-700'}">🦠 Microbiologia</button>
+            <button type="button" onclick="window.medbioSetQuestionFilter('parasitologia')" class="px-3 py-1.5 rounded-xl text-xs font-bold ${currentFilter === 'parasitologia' ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-700'}">🪱 Parasitologia</button>
+            <button type="button" onclick="window.medbioSetQuestionFilter('propedeutica')" class="px-3 py-1.5 rounded-xl text-xs font-bold ${currentFilter === 'propedeutica' ? 'bg-purple-600 text-white' : 'bg-slate-100 text-slate-700'}">🩺 Propedêutica</button>
+            <button type="button" onclick="window.medbioSetQuestionFilter('unanswered')" class="px-3 py-1.5 rounded-xl text-xs font-bold ${currentFilter === 'unanswered' ? 'bg-slate-800 text-white' : 'bg-slate-100 text-slate-700'}">Não Respondidas</button>
             <button type="button" onclick="window.medbioSetQuestionFilter('wrong')" class="px-3 py-1.5 rounded-xl text-xs font-bold ${currentFilter === 'wrong' ? 'bg-red-600 text-white' : 'bg-slate-100 text-slate-700'}">Erradas</button>
           </div>
           <span class="text-xs font-extrabold text-slate-500">Questão ${filtered.length > 0 ? currentQuestionIndex + 1 : 0} de ${filtered.length}</span>
@@ -1242,36 +502,40 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
         ` : `
           <div class="bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-sm space-y-6">
             <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4">
-              <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-blue-50 text-blue-800 border border-blue-100">${currentQ.assunto}</span>
-              <span class="text-xs font-semibold text-slate-400">Nível: ${currentQ.dificuldade || 'Médio'}</span>
+              <div class="flex items-center gap-2">
+                <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-blue-50 text-blue-800 border border-blue-100">Questão #${currentQ.numero || currentQ.id}</span>
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700">${currentQ.subassunto || currentQ.assunto}</span>
+              </div>
+              <span class="text-xs font-semibold text-slate-400 uppercase">Dificuldade: ${currentQ.dificuldade || 'Média'}</span>
             </div>
 
             <p class="text-base md:text-lg font-semibold text-slate-900 leading-relaxed">${currentQ.enunciado}</p>
 
             <div class="space-y-3 pt-2">
-              ${currentQ.alternativas.map(alt => {
+              ${currentQ.alternativas.map((altText, idx) => {
                 let cardClass = 'border-slate-200 bg-white hover:border-slate-300';
                 let iconClass = 'bg-slate-100 text-slate-700';
+                const letter = ['A', 'B', 'C', 'D'][idx];
 
-                if (selectedOption === alt.id) {
+                if (selectedOption === idx) {
                   cardClass = 'border-blue-600 bg-blue-50/70 shadow-sm';
                   iconClass = 'bg-blue-600 text-white';
                 }
 
                 if (isConfirmed) {
-                  if (alt.id === currentQ.respostaCorreta) {
+                  if (idx === currentQ.respostaCorreta) {
                     cardClass = 'border-emerald-500 bg-emerald-50/80 font-semibold';
                     iconClass = 'bg-emerald-600 text-white';
-                  } else if (selectedOption === alt.id && selectedOption !== currentQ.respostaCorreta) {
+                  } else if (selectedOption === idx && selectedOption !== currentQ.respostaCorreta) {
                     cardClass = 'border-red-400 bg-red-50/80';
                     iconClass = 'bg-red-600 text-white';
                   }
                 }
 
                 return `
-                  <div type="button" onclick="window.medbioSelectOption('${alt.id}')" class="option-card p-4 rounded-2xl border ${cardClass} transition-all cursor-pointer flex items-start gap-3.5">
-                    <span class="w-8 h-8 rounded-xl ${iconClass} flex items-center justify-center text-sm font-bold shrink-0 mt-0.5">${alt.id}</span>
-                    <p class="text-sm md:text-base text-slate-800 font-medium pt-0.5">${alt.texto}</p>
+                  <div type="button" onclick="window.medbioSelectOption(${idx})" class="option-card p-4 rounded-2xl border ${cardClass} transition-all cursor-pointer flex items-start gap-3.5">
+                    <span class="w-8 h-8 rounded-xl ${iconClass} flex items-center justify-center text-sm font-bold shrink-0 mt-0.5">${letter}</span>
+                    <p class="text-sm md:text-base text-slate-800 font-medium pt-0.5">${altText}</p>
                   </div>
                 `;
               }).join('')}
@@ -1283,7 +547,7 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
               </button>
 
               ${!isConfirmed ? `
-                <button type="button" onclick="window.medbioConfirmAnswer()" ${!selectedOption ? 'disabled class="px-6 py-3 rounded-2xl bg-slate-200 text-slate-400 font-extrabold text-sm cursor-not-allowed"' : 'class="px-6 py-3 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-sm shadow-md transition-all"'}>
+                <button type="button" onclick="window.medbioConfirmAnswer()" ${selectedOption === null || selectedOption === undefined ? 'disabled class="px-6 py-3 rounded-2xl bg-slate-200 text-slate-400 font-extrabold text-sm cursor-not-allowed"' : 'class="px-6 py-3 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-sm shadow-md transition-all"'}>
                   Confirmar Resposta
                 </button>
               ` : `
@@ -1296,15 +560,32 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
             ${isConfirmed ? `
               <div class="p-6 rounded-2xl bg-slate-900 text-white space-y-4 animate-fade-in mt-6">
                 <div class="flex items-center justify-between">
-                  <span class="font-extrabold text-sm text-emerald-400">Gabarito Comentado: Alternativa ${currentQ.respostaCorreta}</span>
-                  <button type="button" onclick="window.medbioOpenAITutorForQuestion(${currentQ.id})" class="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs flex items-center gap-1.5">
+                  <span class="font-extrabold text-sm text-emerald-400">Gabarito Comentado: Alternativa (${['A', 'B', 'C', 'D'][currentQ.respostaCorreta]})</span>
+                  <button type="button" onclick="window.medbioOpenAITutorForQuestion('${currentQ.id}')" class="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs flex items-center gap-1.5">
                     <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Tutor LUmed
                   </button>
                 </div>
                 <p class="text-xs md:text-sm text-slate-200 leading-relaxed">${currentQ.explicacao}</p>
+                
+                ${currentQ.explicacaoAlternativas ? `
+                  <div class="space-y-1.5 pt-2 border-t border-white/10 text-xs">
+                    <span class="font-bold text-slate-300 block">Análise das Alternativas:</span>
+                    ${Object.entries(currentQ.explicacaoAlternativas).map(([letra, explic]) => `
+                      <p class="text-slate-300"><strong>${letra}:</strong> ${explic}</p>
+                    `).join('')}
+                  </div>
+                ` : ''}
+
                 <div class="p-3 rounded-xl bg-white/10 text-xs text-blue-200 font-medium">
                   <strong>Conceito-Chave:</strong> ${currentQ.conceitoPrincipal}
                 </div>
+
+                ${currentQ.source ? `
+                  <div class="text-[11px] text-slate-400 border-t border-white/10 pt-2 flex items-center justify-between">
+                    <span>Fonte: <strong>${currentQ.source}</strong> (${currentQ.sourceYear || '2023'})</span>
+                    ${currentQ.sourceUrl ? `<a href="${currentQ.sourceUrl}" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Ver referência ↗</a>` : ''}
+                  </div>
+                ` : ''}
               </div>
             ` : ''}
           </div>
@@ -1327,17 +608,16 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
             <div class="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">
               <span>Estudar</span> • <span>${activeMat.disciplineName}</span>
             </div>
-            <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900">Guia de Estudos LUmed</h1>
+            <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900">Guia Teórico de Estudos LUmed</h1>
           </div>
 
-          <!-- Tabs de Disciplina -->
-          <div class="flex items-center bg-slate-100 p-1.5 rounded-2xl border border-slate-200">
-            <button type="button" onclick="window.medbioSelectDiscipline('microbiologia')" class="px-4 py-2 rounded-xl text-xs font-extrabold transition-all ${selectedDiscipline === 'microbiologia' ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-600 hover:text-slate-900'}">
-              🦠 Microbiologia & Virologia
-            </button>
-            <button type="button" onclick="window.medbioSelectDiscipline('bioquimica')" class="px-4 py-2 rounded-xl text-xs font-extrabold transition-all ${selectedDiscipline === 'bioquimica' ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-600 hover:text-slate-900'}">
-              🧪 Bioquímica Médica
-            </button>
+          <!-- Tabs de Disciplinas -->
+          <div class="flex flex-wrap items-center bg-slate-100 p-1.5 rounded-2xl border border-slate-200 gap-1">
+            ${DISCIPLINES.map(d => `
+              <button type="button" onclick="window.medbioSelectDiscipline('${d.id}')" class="px-3.5 py-2 rounded-xl text-xs font-extrabold transition-all ${selectedDiscipline === d.id ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-600 hover:text-slate-900'}">
+                ${d.name}
+              </button>
+            `).join('')}
           </div>
         </div>
 
@@ -1376,6 +656,35 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
               </span>
               <p class="text-xs md:text-sm text-slate-800 leading-relaxed font-medium">${activeMat.resumo}</p>
             </div>
+
+            <!-- Calculadora de IMC Propedêutica (Exclusiva do Módulo 9 - Antropometria) -->
+            ${activeMat.id === 9 ? `
+              <div class="p-6 rounded-2xl bg-gradient-to-r from-blue-50 to-emerald-50 border border-blue-200 shadow-sm space-y-4 my-6">
+                <div class="flex items-center gap-2">
+                  <div class="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-sm">⚖️</div>
+                  <div>
+                    <h4 class="text-base font-extrabold text-slate-900">Calculadora de IMC Propedêutica LUmed</h4>
+                    <p class="text-xs text-slate-600">Ferramenta antropométrica interativa baseada na Classificação da OMS.</p>
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Peso do Paciente (kg):</label>
+                    <input type="number" id="imc-peso" placeholder="Ex: 70" step="0.1" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm font-semibold text-slate-800 focus:outline-none focus:border-blue-500" />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Altura (cm ou m):</label>
+                    <input type="number" id="imc-altura" placeholder="Ex: 175 ou 1.75" step="0.01" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm font-semibold text-slate-800 focus:outline-none focus:border-blue-500" />
+                  </div>
+                </div>
+                <button type="button" onclick="window.medbioCalcularIMC()" class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs shadow-md transition-all">
+                  Calcular IMC & Classificar
+                </button>
+                <div id="imc-resultado" class="hidden p-4 rounded-xl bg-white border border-blue-200 space-y-2 text-xs animate-fade-in">
+                  <!-- Preenchido via JavaScript -->
+                </div>
+              </div>
+            ` : ''}
 
             <!-- Renderização de Imagens e Esquemas Didáticos -->
             ${activeMat.imagemUrl ? `
@@ -1488,7 +797,7 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
               return `
                 <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-3">
                   <div class="flex items-center justify-between">
-                    <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-100">Questão ${q.numero || q.id}</span>
+                    <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-100">Questão #${q.numero || q.id}</span>
                     ${item.isWeakPoint ? `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-red-100 text-red-700">Ponto Fraco</span>` : `<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-100 text-amber-800">Revisão em ${item.daysInterval}d</span>`}
                   </div>
                   <h4 class="text-sm font-bold text-slate-900 line-clamp-2">${q.enunciado}</h4>
@@ -1497,7 +806,7 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
                   </div>
                   <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
                     <span class="text-[11px] text-slate-400 font-medium">${item.totalHits} acerto(s) / ${item.totalErrors} erro(s)</span>
-                    <button type="button" onclick="window.medbioReviewQuestion(${q.id})" class="px-3 py-1.5 rounded-lg bg-slate-900 text-white font-bold text-xs">Revisar esta</button>
+                    <button type="button" onclick="window.medbioReviewQuestion('${q.id}')" class="px-3 py-1.5 rounded-lg bg-slate-900 text-white font-bold text-xs">Revisar esta</button>
                   </div>
                 </div>
               `;
@@ -1524,7 +833,7 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
             <div class="space-y-2">
               <label class="text-xs font-bold uppercase text-slate-500">Quantidade de Questões:</label>
               <div class="grid grid-cols-4 gap-3">
-                ${[5, 10, 15, 25].map(c => `
+                ${[5, 10, 20, 35].map(c => `
                   <button type="button" onclick="window.medbioSetExamConfig('questionCount', ${c})" class="py-3 rounded-2xl border text-sm font-bold ${questionCount === c ? 'border-blue-600 bg-blue-50 text-blue-700' : 'border-slate-200 text-slate-700'}">${c} questões</button>
                 `).join('')}
               </div>
@@ -1558,10 +867,10 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
           <div class="bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-sm space-y-6">
             <p class="text-base md:text-lg font-semibold text-slate-900">${q.enunciado}</p>
             <div class="space-y-3 pt-2">
-              ${q.alternativas.map(alt => `
-                <div type="button" onclick="window.medbioAnswerExamQuestion(${q.id}, '${alt.id}')" class="option-card p-4 rounded-2xl border ${answers[q.id] === alt.id ? 'border-blue-600 bg-blue-50/70' : 'border-slate-200 bg-white'} cursor-pointer flex items-start gap-3.5">
-                  <span class="w-8 h-8 rounded-xl ${answers[q.id] === alt.id ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-700'} flex items-center justify-center text-sm font-bold shrink-0">${alt.id}</span>
-                  <p class="text-sm md:text-base text-slate-800 font-medium pt-1">${alt.texto}</p>
+              ${q.alternativas.map((altText, idx) => `
+                <div type="button" onclick="window.medbioAnswerExamQuestion('${q.id}', ${idx})" class="option-card p-4 rounded-2xl border ${answers[q.id] === idx ? 'border-blue-600 bg-blue-50/70' : 'border-slate-200 bg-white'} cursor-pointer flex items-start gap-3.5">
+                  <span class="w-8 h-8 rounded-xl ${answers[q.id] === idx ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-700'} flex items-center justify-center text-sm font-bold shrink-0">${['A', 'B', 'C', 'D'][idx]}</span>
+                  <p class="text-sm md:text-base text-slate-800 font-medium pt-1">${altText}</p>
                 </div>
               `).join('')}
             </div>
@@ -1579,7 +888,7 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
       let hits = 0;
       questions.forEach(q => {
         if (answers[q.id] === q.respostaCorreta) hits++;
-        if (answers[q.id]) recordAnswer({ questionId: q.id, chosenOption: answers[q.id] });
+        if (answers[q.id] !== undefined) recordAnswer({ questionId: q.id, chosenOption: answers[q.id] });
       });
       const pct = Math.round((hits / questions.length) * 100);
 
@@ -1611,7 +920,7 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
               <div class="w-8 h-8 rounded-xl bg-white/20 flex items-center justify-center font-black text-xs">LU</div>
               <div>
                 <h3 class="font-extrabold text-base leading-none">Tutor Inteligente LUmed</h3>
-                <span class="text-[10px] text-indigo-200 font-medium">Medicina • Bioquímica & Microbiologia</span>
+                <span class="text-[10px] text-indigo-200 font-medium">Medicina • Microbiologia, Parasitologia, Propedêutica & Bioquímica</span>
               </div>
             </div>
             <button type="button" onclick="window.medbioCloseAITutor()" class="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
@@ -1621,7 +930,7 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
             ${chatHistory.length === 0 ? `
               <div class="p-4 rounded-2xl bg-white border border-slate-200 text-xs text-slate-700 shadow-sm space-y-2">
                 <p class="font-bold text-indigo-600 text-sm">Olá! Sou o Tutor Inteligente do LUmed 🩺</p>
-                <p class="leading-relaxed">Estou pronto para te explicar qualquer dúvida conceitual ou clínica sobre Bioquímica Médica, Microbiologia, Virologia e Síndromes Gripais!</p>
+                <p class="leading-relaxed">Estou pronto para te explicar qualquer dúvida conceitual ou clínica sobre Bioquímica Médica, Microbiologia, Virologia, Parasitologia e Propedêutica Médica!</p>
                 <p class="text-slate-500 font-medium">Pergunte livremente ou selecione uma sugestão rápida abaixo.</p>
               </div>
             ` : ''}
@@ -1647,7 +956,7 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
 
           <div class="p-4 bg-white border-t border-slate-200">
             <form onsubmit="window.medbioSubmitAICustomQuestion(event)" class="flex items-center gap-2">
-              <input id="ai-custom-input" type="text" placeholder="Digite sua dúvida (ex: Efeito Bohr, Salk vs Sabin, Anion Gap...)" class="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-indigo-500" />
+              <input id="ai-custom-input" type="text" placeholder="Digite sua dúvida (ex: Chagas, Sinal de Romaña, Glasgow, IMC...)" class="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-indigo-500" />
               <button type="submit" class="p-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold shadow-sm"><i data-lucide="send" class="w-4 h-4"></i></button>
             </form>
           </div>
@@ -1656,7 +965,7 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
     `;
   }
 
-  // 8. RENDERIZADOR PRINCIPAL LUmed
+  // 7. RENDERIZADOR PRINCIPAL LUmed
   function renderApp() {
     const root = document.getElementById('app-root');
     if (!root) return;
@@ -1687,7 +996,7 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
     }
   }
 
-  // 9. HANDLERS GLOBAIS DE EVENTOS (window.medbio*)
+  // 8. HANDLERS GLOBAIS DE EVENTOS (window.medbio*)
   window.medbioNav = function(tab) { state.activeTab = tab; renderApp(); };
 
   window.medbioSelectDiscipline = function(disc) {
@@ -1751,7 +1060,7 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
 
   window.medbioConfirmAnswer = function() {
     const { currentFilter, currentQuestionIndex, selectedOption } = state.questionState;
-    if (!selectedOption) return;
+    if (selectedOption === null || selectedOption === undefined) return;
 
     let filtered = QUESTIONS;
     if (currentFilter === 'wrong') {
@@ -1760,8 +1069,16 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
     } else if (currentFilter === 'unanswered') {
       const ansIds = getUserAnswers().map(a => a.questionId);
       filtered = QUESTIONS.filter(q => !ansIds.includes(q.id));
+    } else if (currentFilter === 'bioquimica') {
+      filtered = QUESTIONS.filter(q => q.assunto === 'bioquimica');
+    } else if (currentFilter === 'microbiologia') {
+      filtered = QUESTIONS.filter(q => q.assunto === 'microbiologia');
+    } else if (currentFilter === 'parasitologia') {
+      filtered = QUESTIONS.filter(q => q.assunto === 'parasitologia');
+    } else if (currentFilter === 'propedeutica') {
+      filtered = QUESTIONS.filter(q => q.assunto === 'propedeutica');
     } else if (currentFilter !== 'all') {
-      filtered = QUESTIONS.filter(q => q.assunto === currentFilter);
+      filtered = QUESTIONS.filter(q => q.assunto === currentFilter || q.subassunto === currentFilter);
     }
 
     const currentQ = filtered[currentQuestionIndex];
@@ -1791,7 +1108,7 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
 
   window.medbioStartReviewSession = function() { window.medbioSetQuestionFilter('wrong'); };
   window.medbioReviewQuestion = function(qId) {
-    const idx = QUESTIONS.findIndex(q => q.id === qId);
+    const idx = QUESTIONS.findIndex(q => q.id === qId || q.numero === qId);
     if (idx !== -1) {
       state.activeTab = 'questions';
       state.questionState.currentFilter = 'all';
@@ -1838,7 +1155,7 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
   };
 
   window.medbioOpenAITutorForQuestion = function(questionId) {
-    const q = QUESTIONS.find(quest => quest.id === questionId) || QUESTIONS[0];
+    const q = QUESTIONS.find(quest => quest.id === questionId || quest.numero === questionId) || QUESTIONS[0];
     state.aiTutorState.isOpen = true;
     state.aiTutorState.activeQuestion = q;
     state.aiTutorState.selectedOption = state.questionState.selectedOption;
@@ -1879,7 +1196,64 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
     return false;
   };
 
-  // 10. MONTAGEM INICIAL DA APLICAÇÃO LUmed
+  window.medbioCalcularIMC = function() {
+    const pEl = document.getElementById('imc-peso');
+    const aEl = document.getElementById('imc-altura');
+    const resEl = document.getElementById('imc-resultado');
+    if (!pEl || !aEl || !resEl) return;
+
+    const peso = parseFloat(pEl.value);
+    let altura = parseFloat(aEl.value);
+    if (!peso || !altura || peso <= 0 || altura <= 0) {
+      resEl.classList.remove('hidden');
+      resEl.innerHTML = `<span class="text-red-600 font-bold">Por favor, insira valores válidos de peso e altura.</span>`;
+      return;
+    }
+
+    if (altura > 3) altura = altura / 100;
+
+    const imc = (peso / (altura * altura)).toFixed(1);
+    let classif = '';
+    let badgeColor = '';
+    let risco = '';
+
+    if (imc < 18.5) {
+      classif = 'Baixo Peso (Magreza)';
+      badgeColor = 'bg-amber-100 text-amber-800 border-amber-300';
+      risco = 'Risco aumentado de desnutrição, osteopenia e infecções.';
+    } else if (imc <= 24.9) {
+      classif = 'Eutrofia (Peso Normal)';
+      badgeColor = 'bg-emerald-100 text-emerald-800 border-emerald-300';
+      risco = 'Risco cardiovascular e metabólico médio/baixo.';
+    } else if (imc <= 29.9) {
+      classif = 'Sobrepeso (Pré-Obesidade)';
+      badgeColor = 'bg-yellow-100 text-yellow-800 border-yellow-300';
+      risco = 'Risco aumentado para Hipertensão, Diabetes Tipo 2 e Dislipidemia.';
+    } else if (imc <= 34.9) {
+      classif = 'Obesidade Grau I (Moderada)';
+      badgeColor = 'bg-orange-100 text-orange-800 border-orange-300';
+      risco = 'Risco alto para Doenças Cardiovasculares, Apneia do Sono e Esteatose Hepática.';
+    } else if (imc <= 39.9) {
+      classif = 'Obesidade Grau II (Grave)';
+      badgeColor = 'bg-red-100 text-red-800 border-red-300';
+      risco = 'Risco muito alto para DAC, Insuficiência Cardíaca e Osteoartrite.';
+    } else {
+      classif = 'Obesidade Grau III (Mórbida)';
+      badgeColor = 'bg-rose-900 text-white border-rose-950';
+      risco = 'Risco extremamente elevado com indicação de avaliação multidisciplinar/bariátrica.';
+    }
+
+    resEl.classList.remove('hidden');
+    resEl.innerHTML = `
+      <div class="flex items-center justify-between">
+        <span class="font-black text-slate-900 text-sm">IMC Calculado: <span class="text-blue-600 text-base">${imc} kg/m²</span></span>
+        <span class="px-3 py-1 rounded-full text-xs font-extrabold border ${badgeColor}">${classif}</span>
+      </div>
+      <p class="text-slate-700 font-medium pt-1"><strong>Implicação Propedêutica:</strong> ${risco}</p>
+    `;
+  };
+
+  // 9. MONTAGEM INICIAL DA APLICAÇÃO LUmed
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', renderApp);
   }
