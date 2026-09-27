@@ -1,5 +1,5 @@
 // LUmed — Plataforma Inteligente de Estudos Médicos
-// Autocontido, empacotável pelo Vite, com suporte completo a 4 disciplinas, 145 questões comentadas,
+// Autocontido, empacotável pelo Vite, com suporte completo a 4 disciplinas, 155 questões comentadas,
 // repetição espaçada, calculadora antropométrica e Tutor Inteligente IA.
 
 import { DISCIPLINES, STUDY_MATERIALS } from '../data/studyMaterials.js';
@@ -11,12 +11,51 @@ import { QUESTIONS } from '../data/questionsData.js';
 
   // 2. CHAVES DE ARMAZENAMENTO LOCAL
   const STORAGE_KEYS = {
-    USER_ANSWERS: 'lumed_user_answers_v5',
-    REVISION_ITEMS: 'lumed_revision_items_v5',
-    SIMULATED_EXAMS: 'lumed_simulated_exams_v5'
+    USER_ANSWERS: 'lumed_user_answers_v6',
+    REVISION_ITEMS: 'lumed_revision_items_v6',
+    SIMULATED_EXAMS: 'lumed_simulated_exams_v6'
   };
 
-  // 3. PERSISTÊNCIA LOCAL (STORAGE & PROGRESSO DO ALUNO)
+  // 3. HELPERS DE NORMALIZAÇÃO DE DADOS (GARANTIA CONTRA [object Object])
+  function getOptionId(alt, idx) {
+    const letters = ['A', 'B', 'C', 'D'];
+    if (typeof alt === 'object' && alt !== null && alt.id) return String(alt.id).trim().toUpperCase();
+    if (typeof alt === 'string') {
+      const m = alt.match(/^([A-D])\)\s*/i);
+      if (m) return m[1].toUpperCase();
+    }
+    return letters[idx] || 'A';
+  }
+
+  function getOptionText(alt) {
+    if (typeof alt === 'object' && alt !== null) {
+      if (alt.texto) return String(alt.texto);
+      if (alt.text) return String(alt.text);
+      if (alt.content) return String(alt.content);
+    }
+    if (typeof alt === 'string') {
+      return alt.replace(/^[A-D]\)\s*/i, '');
+    }
+    return String(alt || '');
+  }
+
+  function getCorrectLetter(q) {
+    const letters = ['A', 'B', 'C', 'D'];
+    if (!q) return 'A';
+    const c = q.respostaCorreta;
+    if (typeof c === 'string') {
+      const trimmed = c.trim().toUpperCase();
+      if (letters.includes(trimmed)) return trimmed;
+      const parsed = parseInt(trimmed, 10);
+      if (!isNaN(parsed) && parsed >= 0 && parsed < 4) return letters[parsed];
+    }
+    if (typeof c === 'number' && c >= 0 && c < 4) {
+      return letters[c];
+    }
+    return 'A';
+  }
+
+  // 4. PERSISTÊNCIA LOCAL (STORAGE & PROGRESSO DO ALUNO)
   function getUserAnswers() {
     try {
       const raw = localStorage.getItem(STORAGE_KEYS.USER_ANSWERS);
@@ -25,10 +64,13 @@ import { QUESTIONS } from '../data/questionsData.js';
   }
 
   function recordAnswer({ questionId, chosenOption }) {
-    const question = QUESTIONS.find(q => q.id === questionId || q.numero === questionId);
+    const question = QUESTIONS.find(q => q.id === questionId || q.numero === questionId || String(q.id) === String(questionId));
     if (!question) return null;
 
-    const isCorrect = chosenOption === question.respostaCorreta;
+    const correctLetter = getCorrectLetter(question);
+    const chosenLetter = String(chosenOption).trim().toUpperCase();
+    const isCorrect = chosenLetter === correctLetter;
+
     const existing = getUserAnswers();
     const prev = existing.filter(a => a.questionId === question.id);
     const hits = prev.filter(a => a.isCorrect).length + (isCorrect ? 1 : 0);
@@ -40,8 +82,8 @@ import { QUESTIONS } from '../data/questionsData.js';
       assunto: question.assunto,
       subassunto: question.subassunto,
       dificuldade: question.dificuldade,
-      chosenOption,
-      correctOption: question.respostaCorreta,
+      chosenOption: chosenLetter,
+      correctOption: correctLetter,
       isCorrect,
       attemptNumber: prev.length + 1,
       timestamp: new Date().toISOString()
@@ -120,12 +162,16 @@ import { QUESTIONS } from '../data/questionsData.js';
     return { hasWeakPoints: true, title: `Ponto de atenção: ${worst.assunto}`, message: `Aproveitamento de ${worst.percentual}% (${worst.erros} erro(s) em ${worst.totalRespondidas} questões).`, sugestao: mat ? `Sugestão: Revise ${mat.conceitosFundamentais[0]}` : "Revise este módulo no guia." };
   }
 
-  // 4. BASE DE CONHECIMENTO & ENGINE DO TUTOR INTELIGENTE LUmed
+  // 5. BASE DE CONHECIMENTO & ENGINE DO TUTOR INTELIGENTE LUmed
   async function queryAITutorMock({ question, promptType, customPrompt, selectedOption }) {
     await new Promise(r => setTimeout(r, 350));
     const textQuery = (customPrompt || '').toLowerCase();
-    const opt = selectedOption !== null && selectedOption !== undefined ? selectedOption : 0;
     const currentQ = question || QUESTIONS[0];
+    const correctLetter = getCorrectLetter(currentQ);
+    const chosenLetter = selectedOption !== null && selectedOption !== undefined ? String(selectedOption).toUpperCase() : 'A';
+    
+    // Localiza justificativa da alternativa selecionada
+    const altExplanation = currentQ.explicacaoAlternativas?.[chosenLetter] || 'Esta alternativa contém um distrator conceitual.';
 
     // Se for uma dúvida customizada digitada pelo usuário no chat:
     if (promptType === 'custom' && textQuery) {
@@ -231,37 +277,36 @@ ${currentQ.explicacao}
     }
 
     // Botões de sugestão rápida
-    const letter = ['A', 'B', 'C', 'D'][opt] || 'A';
     switch (promptType) {
       case 'why_wrong':
         return `🧠 **Tutor LUmed**:
-Sobre a **Alternativa (${letter})**:
-${currentQ.explicacaoAlternativas?.[letter] || currentQ.explicacaoAlternativas?.[opt] || 'Esta alternativa é um distrator conceitual.'}
+Sobre a **Alternativa (${chosenLetter})**:
+${altExplanation}
 
-💡 **Gabarito Correto**: Alternativa **(${['A', 'B', 'C', 'D'][currentQ.respostaCorreta]})**.
+💡 **Gabarito Correto**: Alternativa **(${correctLetter})**.
 🔑 **Conceito-Chave**: ${currentQ.conceitoPrincipal}`;
       case 'explain_beginner':
         return `🩺 **Explicação Simplificada LUmed**:
 ${currentQ.explicacao}
 
-Gabarito: **(${['A', 'B', 'C', 'D'][currentQ.respostaCorreta]})**. Conceito: *"${currentQ.conceitoPrincipal}"*.`;
+Gabarito: **(${correctLetter})**. Conceito: *"${currentQ.conceitoPrincipal}"*.`;
       case 'core_concept':
         return `🔑 **Conceito Chave para Dominar**:
 **${currentQ.conceitoPrincipal}**
 
 • Assunto: ${currentQ.assunto}
-• Gabarito: Alternativa (${['A', 'B', 'C', 'D'][currentQ.respostaCorreta]})`;
+• Gabarito: Alternativa (${correctLetter})`;
       case 'clinical_example':
         return `🏥 **Aplicação na Prática Médica**:
-Na rotina clínica de *${currentQ.assunto}*, entender a **Alternativa (${['A', 'B', 'C', 'D'][currentQ.respostaCorreta]})** é fundamental: ${currentQ.explicacao}`;
+Na rotina clínica de *${currentQ.assunto}*, entender a **Alternativa (${correctLetter})** é fundamental: ${currentQ.explicacao}`;
       default:
         return `👨‍⚕️ **Tutor LUmed**:
-Gabarito: **(${['A', 'B', 'C', 'D'][currentQ.respostaCorreta]})**.
+Gabarito: **(${correctLetter})**.
 Raciocínio Clínico: ${currentQ.explicacao}`;
     }
   }
 
-  // 5. ESTADO GLOBAL LUmed
+  // 6. ESTADO GLOBAL LUmed
   const state = {
     activeTab: 'dashboard', // 'dashboard' | 'questions' | 'review' | 'exam' | 'study'
     questionState: { currentFilter: 'all', currentQuestionIndex: 0, selectedOption: null, isConfirmed: false, confirmedResult: null },
@@ -270,7 +315,7 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
     aiTutorState: { isOpen: false, activeQuestion: null, selectedOption: null, chatHistory: [], isLoading: false }
   };
 
-  // 6. COMPONENTES E INTERFACES HTML
+  // 7. COMPONENTES E INTERFACES HTML
   function renderNavbarHTML() {
     const stats = getPerformanceStats();
     const pendingCount = getPendingRevisions().length;
@@ -473,18 +518,44 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
       const ansIds = getUserAnswers().map(a => a.questionId);
       filtered = QUESTIONS.filter(q => !ansIds.includes(q.id));
     } else if (currentFilter === 'bioquimica') {
-      filtered = QUESTIONS.filter(q => q.assunto === 'bioquimica');
+      filtered = QUESTIONS.filter(q => q.assunto === 'bioquimica' || q.assunto.toLowerCase().includes('bioquím'));
     } else if (currentFilter === 'microbiologia') {
-      filtered = QUESTIONS.filter(q => q.assunto === 'microbiologia');
+      filtered = QUESTIONS.filter(q => q.assunto === 'microbiologia' || q.assunto.toLowerCase().includes('microb') || q.assunto.toLowerCase().includes('viró'));
     } else if (currentFilter === 'parasitologia') {
-      filtered = QUESTIONS.filter(q => q.assunto === 'parasitologia');
+      filtered = QUESTIONS.filter(q => q.assunto === 'parasitologia' || q.assunto.toLowerCase().includes('parasit'));
     } else if (currentFilter === 'propedeutica') {
-      filtered = QUESTIONS.filter(q => q.assunto === 'propedeutica');
+      filtered = QUESTIONS.filter(q => q.assunto === 'propedeutica' || q.assunto.toLowerCase().includes('propedêut'));
     } else if (currentFilter !== 'all') {
       filtered = QUESTIONS.filter(q => q.assunto === currentFilter || q.subassunto === currentFilter);
     }
 
     const currentQ = filtered[currentQuestionIndex];
+
+    if (!currentQ) {
+      return `
+        <div class="space-y-6 animate-fade-in pb-16 md:pb-8 max-w-4xl mx-auto">
+          <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-2 overflow-x-auto py-1">
+              <button type="button" onclick="window.medbioSetQuestionFilter('all')" class="px-3 py-1.5 rounded-xl text-xs font-bold ${currentFilter === 'all' ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-700'}">Todas (${QUESTIONS.length})</button>
+              <button type="button" onclick="window.medbioSetQuestionFilter('bioquimica')" class="px-3 py-1.5 rounded-xl text-xs font-bold ${currentFilter === 'bioquimica' ? 'bg-amber-600 text-white' : 'bg-slate-100 text-slate-700'}">🧪 Bioquímica</button>
+              <button type="button" onclick="window.medbioSetQuestionFilter('microbiologia')" class="px-3 py-1.5 rounded-xl text-xs font-bold ${currentFilter === 'microbiologia' ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-700'}">🦠 Microbiologia</button>
+              <button type="button" onclick="window.medbioSetQuestionFilter('parasitologia')" class="px-3 py-1.5 rounded-xl text-xs font-bold ${currentFilter === 'parasitologia' ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-700'}">🪱 Parasitologia</button>
+              <button type="button" onclick="window.medbioSetQuestionFilter('propedeutica')" class="px-3 py-1.5 rounded-xl text-xs font-bold ${currentFilter === 'propedeutica' ? 'bg-purple-600 text-white' : 'bg-slate-100 text-slate-700'}">🩺 Propedêutica</button>
+              <button type="button" onclick="window.medbioSetQuestionFilter('unanswered')" class="px-3 py-1.5 rounded-xl text-xs font-bold ${currentFilter === 'unanswered' ? 'bg-slate-800 text-white' : 'bg-slate-100 text-slate-700'}">Não Respondidas</button>
+              <button type="button" onclick="window.medbioSetQuestionFilter('wrong')" class="px-3 py-1.5 rounded-xl text-xs font-bold ${currentFilter === 'wrong' ? 'bg-red-600 text-white' : 'bg-slate-100 text-slate-700'}">Erradas</button>
+            </div>
+            <span class="text-xs font-extrabold text-slate-500">Questão 0 de 0</span>
+          </div>
+
+          <div class="bg-white rounded-3xl p-8 border border-slate-200 text-center space-y-3">
+            <p class="text-slate-500 text-sm font-semibold">Nenhuma questão encontrada para este filtro.</p>
+            <button type="button" onclick="window.medbioSetQuestionFilter('all')" class="mt-4 px-5 py-2.5 bg-blue-600 text-white rounded-xl text-xs font-bold">Ver todas as questões</button>
+          </div>
+        </div>
+      `;
+    }
+
+    const correctLetter = getCorrectLetter(currentQ);
 
     return `
       <div class="space-y-6 animate-fade-in pb-16 md:pb-8 max-w-4xl mx-auto">
@@ -499,105 +570,100 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
             <button type="button" onclick="window.medbioSetQuestionFilter('unanswered')" class="px-3 py-1.5 rounded-xl text-xs font-bold ${currentFilter === 'unanswered' ? 'bg-slate-800 text-white' : 'bg-slate-100 text-slate-700'}">Não Respondidas</button>
             <button type="button" onclick="window.medbioSetQuestionFilter('wrong')" class="px-3 py-1.5 rounded-xl text-xs font-bold ${currentFilter === 'wrong' ? 'bg-red-600 text-white' : 'bg-slate-100 text-slate-700'}">Erradas</button>
           </div>
-          <span class="text-xs font-extrabold text-slate-500">Questão ${filtered.length > 0 ? currentQuestionIndex + 1 : 0} de ${filtered.length}</span>
+          <span class="text-xs font-extrabold text-slate-500">Questão ${currentQuestionIndex + 1} de ${filtered.length}</span>
         </div>
 
-        ${!currentQ ? `
-          <div class="bg-white rounded-3xl p-8 border border-slate-200 text-center space-y-3">
-            <p class="text-slate-500 text-sm font-semibold">Nenhuma questão encontrada para este filtro.</p>
-            <button type="button" onclick="window.medbioSetQuestionFilter('all')" class="mt-4 px-5 py-2.5 bg-blue-600 text-white rounded-xl text-xs font-bold">Ver todas as questões</button>
+        <div class="bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-sm space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4">
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-blue-50 text-blue-800 border border-blue-100">Questão #${currentQ.numero || currentQ.id}</span>
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700">${currentQ.subassunto || currentQ.assunto}</span>
+            </div>
+            <span class="text-xs font-semibold text-slate-400 uppercase">Dificuldade: ${currentQ.dificuldade || 'Média'}</span>
           </div>
-        ` : `
-          <div class="bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-sm space-y-6">
-            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4">
-              <div class="flex items-center gap-2">
-                <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-blue-50 text-blue-800 border border-blue-100">Questão #${currentQ.numero || currentQ.id}</span>
-                <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700">${currentQ.subassunto || currentQ.assunto}</span>
-              </div>
-              <span class="text-xs font-semibold text-slate-400 uppercase">Dificuldade: ${currentQ.dificuldade || 'Média'}</span>
-            </div>
 
-            <p class="text-base md:text-lg font-semibold text-slate-900 leading-relaxed">${currentQ.enunciado}</p>
+          <p class="text-base md:text-lg font-semibold text-slate-900 leading-relaxed">${currentQ.enunciado}</p>
 
-            <div class="space-y-3 pt-2">
-              ${currentQ.alternativas.map((altText, idx) => {
-                let cardClass = 'border-slate-200 bg-white hover:border-slate-300';
-                let iconClass = 'bg-slate-100 text-slate-700';
-                const letter = ['A', 'B', 'C', 'D'][idx];
+          <div class="space-y-3 pt-2">
+            ${currentQ.alternativas.map((alt, idx) => {
+              const optId = getOptionId(alt, idx);
+              const optTexto = getOptionText(alt);
 
-                if (selectedOption === idx) {
-                  cardClass = 'border-blue-600 bg-blue-50/70 shadow-sm';
-                  iconClass = 'bg-blue-600 text-white';
+              let cardClass = 'border-slate-200 bg-white hover:border-slate-300';
+              let iconClass = 'bg-slate-100 text-slate-700';
+
+              if (selectedOption === optId) {
+                cardClass = 'border-blue-600 bg-blue-50/70 shadow-sm';
+                iconClass = 'bg-blue-600 text-white';
+              }
+
+              if (isConfirmed) {
+                if (optId === correctLetter) {
+                  cardClass = 'border-emerald-500 bg-emerald-50/80 font-semibold';
+                  iconClass = 'bg-emerald-600 text-white';
+                } else if (selectedOption === optId && selectedOption !== correctLetter) {
+                  cardClass = 'border-red-400 bg-red-50/80';
+                  iconClass = 'bg-red-600 text-white';
                 }
+              }
 
-                if (isConfirmed) {
-                  if (idx === currentQ.respostaCorreta) {
-                    cardClass = 'border-emerald-500 bg-emerald-50/80 font-semibold';
-                    iconClass = 'bg-emerald-600 text-white';
-                  } else if (selectedOption === idx && selectedOption !== currentQ.respostaCorreta) {
-                    cardClass = 'border-red-400 bg-red-50/80';
-                    iconClass = 'bg-red-600 text-white';
-                  }
-                }
+              return `
+                <div type="button" onclick="window.medbioSelectOption('${optId}')" class="option-card p-4 rounded-2xl border ${cardClass} transition-all cursor-pointer flex items-start gap-3.5">
+                  <span class="w-8 h-8 rounded-xl ${iconClass} flex items-center justify-center text-sm font-bold shrink-0 mt-0.5">${optId}</span>
+                  <p class="text-sm md:text-base text-slate-800 font-medium pt-0.5">${optTexto}</p>
+                </div>
+              `;
+            }).join('')}
+          </div>
 
-                return `
-                  <div type="button" onclick="window.medbioSelectOption(${idx})" class="option-card p-4 rounded-2xl border ${cardClass} transition-all cursor-pointer flex items-start gap-3.5">
-                    <span class="w-8 h-8 rounded-xl ${iconClass} flex items-center justify-center text-sm font-bold shrink-0 mt-0.5">${letter}</span>
-                    <p class="text-sm md:text-base text-slate-800 font-medium pt-0.5">${altText}</p>
-                  </div>
-                `;
-              }).join('')}
-            </div>
+          <div class="flex items-center justify-between pt-4 border-t border-slate-100 gap-4">
+            <button type="button" onclick="window.medbioPrevQuestion()" ${currentQuestionIndex === 0 ? 'disabled class="px-4 py-2.5 rounded-xl bg-slate-100 text-slate-300 cursor-not-allowed text-xs font-bold"' : 'class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold"'}>
+              ← Anterior
+            </button>
 
-            <div class="flex items-center justify-between pt-4 border-t border-slate-100 gap-4">
-              <button type="button" onclick="window.medbioPrevQuestion()" ${currentQuestionIndex === 0 ? 'disabled class="px-4 py-2.5 rounded-xl bg-slate-100 text-slate-300 cursor-not-allowed text-xs font-bold"' : 'class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold"'}>
-                ← Anterior
+            ${!isConfirmed ? `
+              <button type="button" onclick="window.medbioConfirmAnswer()" ${selectedOption === null || selectedOption === undefined ? 'disabled class="px-6 py-3 rounded-2xl bg-slate-200 text-slate-400 font-extrabold text-sm cursor-not-allowed"' : 'class="px-6 py-3 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-sm shadow-md transition-all"'}>
+                Confirmar Resposta
               </button>
-
-              ${!isConfirmed ? `
-                <button type="button" onclick="window.medbioConfirmAnswer()" ${selectedOption === null || selectedOption === undefined ? 'disabled class="px-6 py-3 rounded-2xl bg-slate-200 text-slate-400 font-extrabold text-sm cursor-not-allowed"' : 'class="px-6 py-3 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-sm shadow-md transition-all"'}>
-                  Confirmar Resposta
-                </button>
-              ` : `
-                <button type="button" onclick="window.medbioNextQuestion()" class="px-6 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm shadow-md transition-all">
-                  Próxima Questão →
-                </button>
-              `}
-            </div>
-
-            ${isConfirmed ? `
-              <div class="p-6 rounded-2xl bg-slate-900 text-white space-y-4 animate-fade-in mt-6">
-                <div class="flex items-center justify-between">
-                  <span class="font-extrabold text-sm text-emerald-400">Gabarito Comentado: Alternativa (${['A', 'B', 'C', 'D'][currentQ.respostaCorreta]})</span>
-                  <button type="button" onclick="window.medbioOpenAITutorForQuestion('${currentQ.id}')" class="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs flex items-center gap-1.5">
-                    <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Tutor LUmed
-                  </button>
-                </div>
-                <p class="text-xs md:text-sm text-slate-200 leading-relaxed">${currentQ.explicacao}</p>
-                
-                ${currentQ.explicacaoAlternativas ? `
-                  <div class="space-y-1.5 pt-2 border-t border-white/10 text-xs">
-                    <span class="font-bold text-slate-300 block">Análise das Alternativas:</span>
-                    ${Object.entries(currentQ.explicacaoAlternativas).map(([letra, explic]) => `
-                      <p class="text-slate-300"><strong>${letra}:</strong> ${explic}</p>
-                    `).join('')}
-                  </div>
-                ` : ''}
-
-                <div class="p-3 rounded-xl bg-white/10 text-xs text-blue-200 font-medium">
-                  <strong>Conceito-Chave:</strong> ${currentQ.conceitoPrincipal}
-                </div>
-
-                ${currentQ.source ? `
-                  <div class="text-[11px] text-slate-400 border-t border-white/10 pt-2 flex items-center justify-between">
-                    <span>Fonte: <strong>${currentQ.source}</strong> (${currentQ.sourceYear || '2023'})</span>
-                    ${currentQ.sourceUrl ? `<a href="${currentQ.sourceUrl}" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Ver referência ↗</a>` : ''}
-                  </div>
-                ` : ''}
-              </div>
-            ` : ''}
+            ` : `
+              <button type="button" onclick="window.medbioNextQuestion()" class="px-6 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm shadow-md transition-all">
+                Próxima Questão →
+              </button>
+            `}
           </div>
-        `}
+
+          ${isConfirmed ? `
+            <div class="p-6 rounded-2xl bg-slate-900 text-white space-y-4 animate-fade-in mt-6">
+              <div class="flex items-center justify-between">
+                <span class="font-extrabold text-sm text-emerald-400">Gabarito Comentado: Alternativa ${correctLetter}</span>
+                <button type="button" onclick="window.medbioOpenAITutorForQuestion('${currentQ.id}')" class="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs flex items-center gap-1.5">
+                  <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Tutor LUmed
+                </button>
+              </div>
+              <p class="text-xs md:text-sm text-slate-200 leading-relaxed">${currentQ.explicacao}</p>
+              
+              ${currentQ.explicacaoAlternativas ? `
+                <div class="space-y-1.5 pt-2 border-t border-white/10 text-xs">
+                  <span class="font-bold text-slate-300 block">Análise das Alternativas:</span>
+                  ${Object.entries(currentQ.explicacaoAlternativas).map(([letra, explic]) => `
+                    <p class="text-slate-300"><strong>${letra}:</strong> ${explic}</p>
+                  `).join('')}
+                </div>
+              ` : ''}
+
+              <div class="p-3 rounded-xl bg-white/10 text-xs text-blue-200 font-medium">
+                <strong>Conceito-Chave:</strong> ${currentQ.conceitoPrincipal}
+              </div>
+
+              ${currentQ.source ? `
+                <div class="text-[11px] text-slate-400 border-t border-white/10 pt-2 flex items-center justify-between">
+                  <span>Fonte: <strong>${currentQ.source}</strong> (${currentQ.sourceYear || '2023'})</span>
+                  ${currentQ.sourceUrl ? `<a href="${currentQ.sourceUrl}" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Ver referência ↗</a>` : ''}
+                </div>
+              ` : ''}
+            </div>
+          ` : ''}
+        </div>
       </div>
     `;
   }
@@ -665,8 +731,8 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
               <p class="text-xs md:text-sm text-slate-800 leading-relaxed font-medium">${activeMat.resumo}</p>
             </div>
 
-            <!-- Calculadora de IMC Propedêutica (Exclusiva do Módulo 9 - Antropometria) -->
-            ${activeMat.id === 9 ? `
+            <!-- Calculadora de IMC Propedêutica (Exclusiva do Módulo de Antropometria) -->
+            ${activeMat.assunto.toLowerCase().includes('antropometria') ? `
               <div class="p-6 rounded-2xl bg-gradient-to-r from-blue-50 to-emerald-50 border border-blue-200 shadow-sm space-y-4 my-6">
                 <div class="flex items-center gap-2">
                   <div class="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-sm">⚖️</div>
@@ -800,7 +866,7 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
         ` : `
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             ${pending.map(item => {
-              const q = QUESTIONS.find(quest => quest.id === item.questionId);
+              const q = QUESTIONS.find(quest => quest.id === item.questionId || String(quest.id) === String(item.questionId));
               if (!q) return '';
               return `
                 <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-3">
@@ -875,12 +941,16 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
           <div class="bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-sm space-y-6">
             <p class="text-base md:text-lg font-semibold text-slate-900">${q.enunciado}</p>
             <div class="space-y-3 pt-2">
-              ${q.alternativas.map((altText, idx) => `
-                <div type="button" onclick="window.medbioAnswerExamQuestion('${q.id}', ${idx})" class="option-card p-4 rounded-2xl border ${answers[q.id] === idx ? 'border-blue-600 bg-blue-50/70' : 'border-slate-200 bg-white'} cursor-pointer flex items-start gap-3.5">
-                  <span class="w-8 h-8 rounded-xl ${answers[q.id] === idx ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-700'} flex items-center justify-center text-sm font-bold shrink-0">${['A', 'B', 'C', 'D'][idx]}</span>
-                  <p class="text-sm md:text-base text-slate-800 font-medium pt-1">${altText}</p>
-                </div>
-              `).join('')}
+              ${q.alternativas.map((alt, idx) => {
+                const optId = getOptionId(alt, idx);
+                const optTexto = getOptionText(alt);
+                return `
+                  <div type="button" onclick="window.medbioAnswerExamQuestion('${q.id}', '${optId}')" class="option-card p-4 rounded-2xl border ${answers[q.id] === optId ? 'border-blue-600 bg-blue-50/70' : 'border-slate-200 bg-white'} cursor-pointer flex items-start gap-3.5">
+                    <span class="w-8 h-8 rounded-xl ${answers[q.id] === optId ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-700'} flex items-center justify-center text-sm font-bold shrink-0">${optId}</span>
+                    <p class="text-sm md:text-base text-slate-800 font-medium pt-1">${optTexto}</p>
+                  </div>
+                `;
+              }).join('')}
             </div>
 
             <div class="flex items-center justify-between pt-4 border-t border-slate-100">
@@ -895,7 +965,8 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
     if (isFinished) {
       let hits = 0;
       questions.forEach(q => {
-        if (answers[q.id] === q.respostaCorreta) hits++;
+        const correctLetter = getCorrectLetter(q);
+        if (answers[q.id] === correctLetter) hits++;
         if (answers[q.id] !== undefined) recordAnswer({ questionId: q.id, chosenOption: answers[q.id] });
       });
       const pct = Math.round((hits / questions.length) * 100);
@@ -973,7 +1044,7 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
     `;
   }
 
-  // 7. RENDERIZADOR PRINCIPAL LUmed
+  // 8. RENDERIZADOR PRINCIPAL LUmed
   function renderApp() {
     const root = document.getElementById('app-root');
     if (!root) return;
@@ -1004,7 +1075,7 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
     }
   }
 
-  // 8. HANDLERS GLOBAIS DE EVENTOS (window.medbio*)
+  // 9. HANDLERS GLOBAIS DE EVENTOS (window.medbio*)
   window.medbioNav = function(tab) { state.activeTab = tab; renderApp(); };
 
   window.medbioSelectDiscipline = function(disc) {
@@ -1062,7 +1133,7 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
 
   window.medbioSelectOption = function(optId) {
     if (state.questionState.isConfirmed) return;
-    state.questionState.selectedOption = optId;
+    state.questionState.selectedOption = String(optId).toUpperCase();
     renderApp();
   };
 
@@ -1078,13 +1149,13 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
       const ansIds = getUserAnswers().map(a => a.questionId);
       filtered = QUESTIONS.filter(q => !ansIds.includes(q.id));
     } else if (currentFilter === 'bioquimica') {
-      filtered = QUESTIONS.filter(q => q.assunto === 'bioquimica');
+      filtered = QUESTIONS.filter(q => q.assunto === 'bioquimica' || q.assunto.toLowerCase().includes('bioquím'));
     } else if (currentFilter === 'microbiologia') {
-      filtered = QUESTIONS.filter(q => q.assunto === 'microbiologia');
+      filtered = QUESTIONS.filter(q => q.assunto === 'microbiologia' || q.assunto.toLowerCase().includes('microb') || q.assunto.toLowerCase().includes('viró'));
     } else if (currentFilter === 'parasitologia') {
-      filtered = QUESTIONS.filter(q => q.assunto === 'parasitologia');
+      filtered = QUESTIONS.filter(q => q.assunto === 'parasitologia' || q.assunto.toLowerCase().includes('parasit'));
     } else if (currentFilter === 'propedeutica') {
-      filtered = QUESTIONS.filter(q => q.assunto === 'propedeutica');
+      filtered = QUESTIONS.filter(q => q.assunto === 'propedeutica' || q.assunto.toLowerCase().includes('propedêut'));
     } else if (currentFilter !== 'all') {
       filtered = QUESTIONS.filter(q => q.assunto === currentFilter || q.subassunto === currentFilter);
     }
@@ -1116,7 +1187,7 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
 
   window.medbioStartReviewSession = function() { window.medbioSetQuestionFilter('wrong'); };
   window.medbioReviewQuestion = function(qId) {
-    const idx = QUESTIONS.findIndex(q => q.id === qId || q.numero === qId);
+    const idx = QUESTIONS.findIndex(q => q.id === qId || String(q.id) === String(qId) || q.numero === qId);
     if (idx !== -1) {
       state.activeTab = 'questions';
       state.questionState.currentFilter = 'all';
@@ -1144,7 +1215,7 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
     renderApp();
   };
 
-  window.medbioAnswerExamQuestion = function(qId, optId) { state.examState.answers[qId] = optId; renderApp(); };
+  window.medbioAnswerExamQuestion = function(qId, optId) { state.examState.answers[qId] = String(optId).toUpperCase(); renderApp(); };
   window.medbioSetExamIndex = function(idx) {
     if (idx >= 0 && idx < state.examState.questions.length) {
       state.examState.currentIndex = idx;
@@ -1163,7 +1234,7 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
   };
 
   window.medbioOpenAITutorForQuestion = function(questionId) {
-    const q = QUESTIONS.find(quest => quest.id === questionId || quest.numero === questionId) || QUESTIONS[0];
+    const q = QUESTIONS.find(quest => quest.id === questionId || String(quest.id) === String(questionId) || quest.numero === questionId) || QUESTIONS[0];
     state.aiTutorState.isOpen = true;
     state.aiTutorState.activeQuestion = q;
     state.aiTutorState.selectedOption = state.questionState.selectedOption;
@@ -1261,7 +1332,7 @@ Raciocínio Clínico: ${currentQ.explicacao}`;
     `;
   };
 
-  // 9. MONTAGEM INICIAL DA APLICAÇÃO LUmed
+  // 10. MONTAGEM INICIAL DA APLICAÇÃO LUmed
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', renderApp);
   }

@@ -1,4 +1,4 @@
-// ==========================================
+﻿// ==========================================
 // LUmed - BANCO DE QUESTÕES (PARTE 2)
 // Questões Q56 a Q145
 // Microbiologia, Virologia, Parasitologia e Propedeutica Médica
@@ -16,12 +16,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "As bactérias Gram-positivas e Gram-negativas possuem diferenças fundamentais na composição de sua parede celular. Assinale a alternativa que descreve CORRETAMENTE a estrutura da parede celular de uma bactéria Gram-positiva.",
     alternativas: [
-      "A) Apresenta uma fina camada de peptidoglicano revestida externamente por uma membrana dupla rica em lipopolissacarídeo (LPS).",
-      "B) Possui uma espessa camada de peptidoglicano associada a ácidos teicoicos e lipoteicoicos, sem membrana externa.",
-      "C) É composta exclusivamente por pseudopeptidoglicano e esteróis complexos semelhantes aos das células eucarióticas.",
-      "D) Carece de peptidoglicano, sendo constituída apenas por uma cápsula polissacarídica rica em ácido hialurônico."
+      { id: "A", texto: "Apresenta uma fina camada de peptidoglicano revestida externamente por uma membrana dupla rica em lipopolissacarídeo (LPS)." },
+      { id: "B", texto: "Possui uma espessa camada de peptidoglicano associada a ácidos teicoicos e lipoteicoicos, sem membrana externa." },
+      { id: "C", texto: "É composta exclusivamente por pseudopeptidoglicano e esteróis complexos semelhantes aos das células eucarióticas." },
+      { id: "D", texto: "Carece de peptidoglicano, sendo constituída apenas por uma cápsula polissacarídica rica em ácido hialurônico." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "As bactérias Gram-positivas caracterizam-se por uma parede celular espessa formada por múltiplas camadas de peptidoglicano (mureína), intercalada por ácidos teicoicos e lipoteicoicos. Elas não possuem membrana externa contendo lipopolissacarídeo (LPS), característica exclusiva das Gram-negativas.",
     explicacaoAlternativas: {
       A: "Incorreto. A camada fina de peptidoglicano e a membrana externa com LPS são características de bactérias Gram-negativas.",
@@ -42,12 +42,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "O lipopolissacarídeo (LPS), também conhecido como endotoxina bacteriana, é um componente estrutural crítico de qual grupo de microrganismos e qual a sua porção responsável pela toxicidade sistêmica (choque endotóxico)?",
     alternativas: [
-      "A) Bactérias Gram-positivas; porção Antígeno O.",
-      "B) Bactérias Gram-negativas; porção Lipídio A.",
-      "C) Fungos leveduriformes; porção Beta-glucana.",
-      "D) Micobactérias; porção Ácido micólico."
+      { id: "A", texto: "Bactérias Gram-positivas; porção Antígeno O." },
+      { id: "B", texto: "Bactérias Gram-negativas; porção Lipídio A." },
+      { id: "C", texto: "Fungos leveduriformes; porção Beta-glucana." },
+      { id: "D", texto: "Micobactérias; porção Ácido micólico." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "O LPS é encontrado exclusivamente na folheta externa da membrana externa de bactérias Gram-negativas. É composto pelo Antígeno O (polissacarídeo externo), Core (núcleo) e Lipídio A. O Lipídio A é a porção bioativa ancorada na membrana responsável por desencadear a cascata inflamatória maciça, febre, vasodilatação e choque séptico/endotóxico via receptores TLR4.",
     explicacaoAlternativas: {
       A: "Incorreto. Gram-positivas não possuem LPS; o antígeno O é a porção imunogênica externa, não a endotoxina lipídica.",
@@ -68,12 +68,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Os endósporos bacterianos são estruturas extraordinariamente resistentes a calor, dessecação, radiação e desinfetantes químicos. Quais gêneros bacterianos de importância médica são classicamente conhecidos por produzir endósporos?",
     alternativas: [
-      "A) Staphylococcus e Streptococcus",
-      "B) Bacillus e Clostridium",
-      "C) Pseudomonas e Escherichia",
-      "D) Neisseria e Haemophilus"
+      { id: "A", texto: "Staphylococcus e Streptococcus" },
+      { id: "B", texto: "Bacillus e Clostridium" },
+      { id: "C", texto: "Pseudomonas e Escherichia" },
+      { id: "D", texto: "Neisseria e Haemophilus" }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "Os gêneros Bacillus (ex: B. anthracis, B. cereus) e Clostridium (ex: C. tetani, C. botulinum, C. difficile), ambos bacilos Gram-positivos, são os principais produtores de endósporos de interesse médico. O endósporo é uma forma de resistência dormente contendo dipicolinato de cálcio.",
     explicacaoAlternativas: {
       A: "Incorreto. Cocos Gram-positivos como Staphylococcus e Streptococcus não formam endósporos.",
@@ -94,12 +94,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "Na coloração de Gram, técnica fundamental de bacteriologia, qual o reagente utilizado como MORDENTE para fixar o corante primário à parede celular bacteriana?",
     alternativas: [
-      "A) Cristal Violeta",
-      "B) Lugol (Iodo)",
-      "C) Álcool-Acetona",
-      "D) Safranina ou Fucsina"
+      { id: "A", texto: "Cristal Violeta" },
+      { id: "B", texto: "Lugol (Iodo)" },
+      { id: "C", texto: "Álcool-Acetona" },
+      { id: "D", texto: "Safranina ou Fucsina" }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A sequência correta da coloração de Gram é: 1. Cristal violeta (corante primário); 2. Lugol/Iodo (mordente que forma o complexo cristal violeta-iodo insolúvel); 3. Álcool-acetona (descorante); 4. Safranina ou Fucsina básica (corante de fundo/contraste).",
     explicacaoAlternativas: {
       A: "Incorreto. O cristal violeta é o corante primário.",
@@ -120,12 +120,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "dificil",
     enunciado: "O mecanismo de ação dos antibióticos beta-lactâmicos (como penicilinas e cefalosporinas) consiste na inibição da síntese da parede celular bacteriana. Qual enzima específica é o alvo desses fármacos?",
     alternativas: [
-      "A) DNA girase (Topoisomerase II)",
-      "B) Transpeptidase (Proteína Ligante de Penicilina - PBP)",
-      "C) RNA polimerase dependente de DNA",
-      "D) Dihidrofolato redutase"
+      { id: "A", texto: "DNA girase (Topoisomerase II)" },
+      { id: "B", texto: "Transpeptidase (Proteína Ligante de Penicilina - PBP)" },
+      { id: "C", texto: "RNA polimerase dependente de DNA" },
+      { id: "D", texto: "Dihidrofolato redutase" }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "Os antibióticos beta-lactâmicos ligam-se covalentemente às Transpeptidases (conhecidas como PBPs - Penicillin-Binding Proteins), inibindo a reação de transpeptidação que forma as pontes cruzadas entre as cadeias de peptidoglicano, fragilizando a parede e levando à lise osmótica bacteriana.",
     explicacaoAlternativas: {
       A: "Incorreto. A DNA girase é inibida pelas quinolonas/fluoroquinolonas.",
@@ -146,12 +146,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Determinadas bactérias possuem a capacidade de produzir cápsulas polissacarídicas externas. A presença de cápsula constitui um fator de virulência de extrema importância porque:",
     alternativas: [
-      "A) Inibe a transcrição do RNA mensageiro na célula hospedeira.",
-      "B) Dificulta a opsonização e impede a fagocitose pelos macrófagos e neutrófilos.",
-      "C) Degrada a membrana citoplasmática dos eritrócitos provocando hemólise total.",
-      "D) Permite a fixação direta aos ribossomos 70S bacterianos para acelerar o crescimento."
+      { id: "A", texto: "Inibe a transcrição do RNA mensageiro na célula hospedeira." },
+      { id: "B", texto: "Dificulta a opsonização e impede a fagocitose pelos macrófagos e neutrófilos." },
+      { id: "C", texto: "Degrada a membrana citoplasmática dos eritrócitos provocando hemólise total." },
+      { id: "D", texto: "Permite a fixação direta aos ribossomos 70S bacterianos para acelerar o crescimento." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A cápsula polissacarídica recobre a bactéria (ex: Streptococcus pneumoniae, Neisseria meningitidis, Haemophilus influenzae tipável), mascarando antígenos de superfície e dificultando o reconhecimento pelos receptores de fagócitos (macrófagos/neutrófilos), conferindo acentuada resistência à fagocitose.",
     explicacaoAlternativas: {
       A: "Incorreto. A cápsula não atua inibindo a transcrição do RNA eucariótico.",
@@ -172,12 +172,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "Microrganismos procariontes e eucariontes possuem organização celular distinta. Assinale a alternativa que apresenta uma estrutura presente EXCLUSIVAMENTE em células eucarióticas.",
     alternativas: [
-      "A) Ribossomos",
-      "B) Membrana plasmática",
-      "C) Carioteca (envoltório nuclear delimitando o núcleo verdadeiro)",
-      "D) Parede celular"
+      { id: "A", texto: "Ribossomos" },
+      { id: "B", texto: "Membrana plasmática" },
+      { id: "C", texto: "Carioteca (envoltório nuclear delimitando o núcleo verdadeiro)" },
+      { id: "D", texto: "Parede celular" }
     ],
-    respostaCorreta: 2,
+    respostaCorreta: "C",
     explicacao: "Procariontes (bactérias e arqueias) possuem material genético disperso no citoplasma (nucleoide) sem envoltório nuclear. A carioteca (membrana nuclear dupla com poros) delimitando um núcleo verdadeiro é exclusiva de células eucarióticas (fungos, protozoários, plantas e animais).",
     explicacaoAlternativas: {
       A: "Incorreto. Ribossomos estão presentes em procariontes (70S) e eucariontes (80S).",
@@ -198,12 +198,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Os fungos são organismos eucarióticos heterotróficos que se apresentam sob a forma de leveduras ou fungos filamentosos (bolores). Qual o principal componente lipídico da membrana citoplasmática dos fungos, o qual é alvo de antifúngicos azólicos e polienicos?",
     alternativas: [
-      "A) Colesterol",
-      "B) Ergosterol",
-      "C) Esfingomielina",
-      "D) Cardiolipina"
+      { id: "A", texto: "Colesterol" },
+      { id: "B", texto: "Ergosterol" },
+      { id: "C", texto: "Esfingomielina" },
+      { id: "D", texto: "Cardiolipina" }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A membrana celular fúngica contém ergosterol como seu esterol dominante, diferentemente das células mamíferas que contêm colesterol. Antifúngicos como os azóis (fluconazol, itraconazol) inibem a síntese de ergosterol (inibição da lanosterol 14-alfa-desmetilase), enquanto polienos (anfotericina B) ligam-se ao ergosterol formando poros na membrana.",
     explicacaoAlternativas: {
       A: "Incorreto. Colesterol é o esterol característico de membranas de mamíferos.",
@@ -224,12 +224,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "dificil",
     enunciado: "O meio de ágar MacConkey é amplamente utilizado em microbiologia clínica por ser simultaneamente SELETIVO e DIFERENCIAL. Qual ingrediente confere a seletividade e qual propriedade permite a diferenciação de bacilos Gram-negativos?",
     alternativas: [
-      "A) Seletivo por Cristal Violeta e Sais Biliares (inibe Gram-positivas); Diferencial pela Fermentação da Lactose.",
-      "B) Seletivo por NaCl 7,5% (inibe Gram-negativas); Diferencial pela Fermentação do Manitol.",
-      "C) Seletivo por Sangue de Carneiro 5%; Diferencial pela Beta-hemólise.",
-      "D) Seletivo por Telurito de Potássio; Diferencial pelo Crescimento em Coagulase."
+      { id: "A", texto: "Seletivo por Cristal Violeta e Sais Biliares (inibe Gram-positivas); Diferencial pela Fermentação da Lactose." },
+      { id: "B", texto: "Seletivo por NaCl 7,5% (inibe Gram-negativas); Diferencial pela Fermentação do Manitol." },
+      { id: "C", texto: "Seletivo por Sangue de Carneiro 5%; Diferencial pela Beta-hemólise." },
+      { id: "D", texto: "Seletivo por Telurito de Potássio; Diferencial pelo Crescimento em Coagulase." }
     ],
-    respostaCorreta: 0,
+    respostaCorreta: "A",
     explicacao: "O Ágar MacConkey contém sais biliares e cristal violeta que inibem o crescimento de bactérias Gram-positivas (seletividade). Contém lactose e indicador de pH vermelho de metila/neutro: bactérias lactose-positivas (ex: E. coli, Klebsiella) produzem ácido e formam colônias cor-de-rosa/vermelhas, enquanto lactose-negativas (ex: Salmonella, Shigella, Pseudomonas) formam colônias incolores.",
     explicacaoAlternativas: {
       A: "Correto. Sais biliares/cristal violeta inibem Gram-positivas; fermentação da lactose diferencia coliformes rosa de não-fermentadores incolores.",
@@ -250,12 +250,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Bactérias anaeróbias estritas (como Clostridium perfringens e Bacteroides fragilis) morrem na presença de oxigênio livre. Qual é a razão bioquímica principal para essa sensibilidade ao O2?",
     alternativas: [
-      "A) Inabilidade de sintetizar peptidoglicano em ambientes oxigenados.",
-      "B) Ausência das enzimas protetoras Superóxido Dismutase (SOD) e Catalase para neutralizar EROs (Espécies Reativas de Oxigênio).",
-      "C) Bloqueio irreversível da síntese proteica ribossômica pelo O2 dissolvido.",
-      "D) Oxidação direta do DNA plasmidial impedindo a replicação celular."
+      { id: "A", texto: "Inabilidade de sintetizar peptidoglicano em ambientes oxigenados." },
+      { id: "B", texto: "Ausência das enzimas protetoras Superóxido Dismutase (SOD) e Catalase para neutralizar EROs (Espécies Reativas de Oxigênio)." },
+      { id: "C", texto: "Bloqueio irreversível da síntese proteica ribossômica pelo O2 dissolvido." },
+      { id: "D", texto: "Oxidação direta do DNA plasmidial impedindo a replicação celular." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "O metabolismo aeróbico gera radicais livres tóxicos de oxigênio (ânion superóxido O2-, peróxido de hidrogênio H2O2). Aeróbios e anaeróbios facultativos possuem as enzimas Superóxido Dismutase (SOD) e Catalase/Peroxidase para inativar essas EROs. Anaeróbios estritos carecem dessas enzimas detoxificantes e sucumbem ao estresse oxidativo.",
     explicacaoAlternativas: {
       A: "Incorreto. A síntese de peptidoglicano não depende da ausência de oxigênio.",
@@ -280,12 +280,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "Os vírus são considerados agentes infecciosos acelulares e parasitas intracelulares obrigatórios. A estrutura viral mínima completa e infectante (vírion) é constituída por:",
     alternativas: [
-      "A) Genoma de ácido nucleico (DNA ou RNA) envolvido por uma capa proteica denominada capsídeo.",
-      "B) Membrana fosfolipídica dupla contendo ribossomos e retículo endoplasmático próprio.",
-      "C) Parede celular de peptidoglicano e DNA de fita dupla circular sem proteínas.",
-      "D) Núcleo verdadeiro delimitado por carioteca com citoplasma rico em mitocôndrias."
+      { id: "A", texto: "Genoma de ácido nucleico (DNA ou RNA) envolvido por uma capa proteica denominada capsídeo." },
+      { id: "B", texto: "Membrana fosfolipídica dupla contendo ribossomos e retículo endoplasmático próprio." },
+      { id: "C", texto: "Parede celular de peptidoglicano e DNA de fita dupla circular sem proteínas." },
+      { id: "D", texto: "Núcleo verdadeiro delimitado por carioteca com citoplasma rico em mitocôndrias." }
     ],
-    respostaCorreta: 0,
+    respostaCorreta: "A",
     explicacao: "Um vírus em sua forma mais simples (vírus não-envelopado ou nulo) é composto por genoma de ácido nucleico (DNA ou RNA, nunca ambos ativamente funcionais ao mesmo tempo na mesma partícula) protegido por uma capa proteica organizada chamada capsídeo. O conjunto genoma + capsídeo é denominado nucleocapsídeo.",
     explicacaoAlternativas: {
       A: "Correto. O vírion básico consiste no ácido nucleico (DNA ou RNA) protegido pelo capsídeo proteico.",
@@ -306,12 +306,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Alguns vírus possuem uma camada lipídica membranosa externa adquirida durante o brotamento através da membrana da célula hospedeira, conhecida como ENVELOPE VIRAL. Em comparação aos vírus não-envelopados (nus), os vírus envelopados são:",
     alternativas: [
-      "A) Extremamente resistentes a sabões, detergentes, álcool, dessecação e pH ácido do estômago.",
-      "B) Mais sensíveis a solventes lipídicos (álcool, sabão, éter), calor e dessecação, sendo geralmente transmitidos por fluidos corporais ou gotículas úmidas.",
-      "C) Capazes de sobreviver por meses no meio ambiente inanimado sem perder a infectividade.",
-      "D) Transmitidos exclusivamente pela via fecal-oral devido à estabilidade no trato gastrointestinal."
+      { id: "A", texto: "Extremamente resistentes a sabões, detergentes, álcool, dessecação e pH ácido do estômago." },
+      { id: "B", texto: "Mais sensíveis a solventes lipídicos (álcool, sabão, éter), calor e dessecação, sendo geralmente transmitidos por fluidos corporais ou gotículas úmidas." },
+      { id: "C", texto: "Capazes de sobreviver por meses no meio ambiente inanimado sem perder a infectividade." },
+      { id: "D", texto: "Transmitidos exclusivamente pela via fecal-oral devido à estabilidade no trato gastrointestinal." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "O envelope viral é derivado da membrana lipídica da célula hospedeira. Por conter lipídios, é facilmente dissolvido por detergentes, sabão e álcool a 70%, além de desidratar rapidamente e ser destruído pelo ácido gástrico. Portanto, vírus envelopados (Influenza, HIV, SARS-CoV-2) são mais lábeis no ambiente e transmitidos por fluidos/gotículas úmidas, enquanto vírus nus (Norovírus, Rotavírus, Poliovírus) resistem ao meio ambiente e via fecal-oral.",
     explicacaoAlternativas: {
       A: "Incorreto. Essa alta resistência é própria de vírus NÃO-envelopados (nus).",
@@ -332,12 +332,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "O ciclo de replicação viral envolve etapas ordenadas. Assinale a alternativa que indica a sequência CORRETA das etapas da infecção viral em uma célula hospedeira.",
     alternativas: [
-      "A) Adsorção (ligação a receptores) -> Penetração/Desnudamento -> Expressão gênica e Replicação do genoma -> Montagem -> Liberação (brotamento ou lise).",
-      "B) Montagem -> Penetração -> Adsorção -> Replicação do genoma -> Desnudamento.",
-      "C) Transcrição reversa -> Tradução ribossômica -> Fusão nuclear -> Lise celular -> Adsorção.",
-      "D) Desnudamento -> Adsorção -> Liberação -> Montagem -> Síntese de capsômeros."
+      { id: "A", texto: "Adsorção (ligação a receptores) -> Penetração/Desnudamento -> Expressão gênica e Replicação do genoma -> Montagem -> Liberação (brotamento ou lise)." },
+      { id: "B", texto: "Montagem -> Penetração -> Adsorção -> Replicação do genoma -> Desnudamento." },
+      { id: "C", texto: "Transcrição reversa -> Tradução ribossômica -> Fusão nuclear -> Lise celular -> Adsorção." },
+      { id: "D", texto: "Desnudamento -> Adsorção -> Liberação -> Montagem -> Síntese de capsômeros." }
     ],
-    respostaCorreta: 0,
+    respostaCorreta: "A",
     explicacao: "As etapas fundamentais da replicação viral são: 1. Adsorção (reconhecimento específico receptor-ligante); 2. Penetração (endocitose ou fusão) e Desnudamento (liberação do ácido nucleico); 3. Biossíntese (transcrição do mRNA, tradução de proteínas virais e replicação do genoma); 4. Montagem ou Maturação (encapsidamento); 5. Liberação (lise celular ou brotamento).",
     explicacaoAlternativas: {
       A: "Correto. Apresenta a ordem lógica e biológica exata das etapas de infecção e replicação viral.",
@@ -358,12 +358,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "dificil",
     enunciado: "Os retrovírus (como o HIV) possuem um genoma de RNA de fita simples de polaridade positiva, mas utilizam uma enzima viral única para sintetizar um intermediário de DNA de fita dupla que se integra ao genoma do hospedeiro. Essa enzima é denominada:",
     alternativas: [
-      "A) RNA polimerase dependente de RNA",
-      "B) Transcriptase Reversa (DNA polimerase dependente de RNA)",
-      "C) DNA ligase humana",
-      "D) Protease de serina"
+      { id: "A", texto: "RNA polimerase dependente de RNA" },
+      { id: "B", texto: "Transcriptase Reversa (DNA polimerase dependente de RNA)" },
+      { id: "C", texto: "DNA ligase humana" },
+      { id: "D", texto: "Protease de serina" }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A Transcriptase Reversa (RT) é uma DNA polimerase dependente de RNA levada no interior do vírion. Ela converte o RNA genômico viral em DNA complementar (cDNA), que é subsequentemente integrado ao cromossomo da célula hospedeira pela enzima Integrase.",
     explicacaoAlternativas: {
       A: "Incorreto. RNA polimerase dependente de RNA é usada por vírus RNA de fita negativa ou positiva não-retrovirais (como Influenza ou Coronavírus).",
@@ -384,12 +384,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "A capacidade de um vírus infectar preferencialmente determinadas espécies de hospedeiros e tipos celulares específicos dentro do organismo é denominada:",
     alternativas: [
-      "A) Latência viral",
-      "B) Tropismo tecidual/viral",
-      "C) Deriva genética",
-      "D) Efeito citopático"
+      { id: "A", texto: "Latência viral" },
+      { id: "B", texto: "Tropismo tecidual/viral" },
+      { id: "C", texto: "Deriva genética" },
+      { id: "D", texto: "Efeito citopático" }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "Tropismo viral é a seletividade que o vírus apresenta por determinado tipo de célula ou tecido (ex: HIV tem tropismo por linfócitos T CD4+ e macrófagos; vírus Influenza por células epiteliais do trato respiratório). Isso é determinado principalmente pela interação específica entre as glicoproteínas virais e os receptores celulares.",
     explicacaoAlternativas: {
       A: "Incorreto. Latência é o estado de infecção dormente em que o vírus permanece na célula sem produzir novas partículas.",
@@ -410,12 +410,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Vírus pertencentes à família Herpesviridae (como HSV-1, HSV-2, VZV e EBV) caracterizam-se por estabelecer infecções latentes no hospedeiro. Onde o Vírus da Varicela-Zóster (VZV) permanece latente após a infecção primária (catapora)?",
     alternativas: [
-      "A) Nos hepatócitos do parênquima hepático.",
-      "B) Nos gânglios sensoriais das raízes dorsais dos nervos espinais e cranianos.",
-      "C) Nos eritrócitos maduros da circulação periférica.",
-      "D) Nas células epiteliais dos túbulos renais."
+      { id: "A", texto: "Nos hepatócitos do parênquima hepático." },
+      { id: "B", texto: "Nos gânglios sensoriais das raízes dorsais dos nervos espinais e cranianos." },
+      { id: "C", texto: "Nos eritrócitos maduros da circulação periférica." },
+      { id: "D", texto: "Nas células epiteliais dos túbulos renais." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "Após a infecção primária (varicela/catapora), o VZV migra de forma retrógrada pelos axônios sensoriais e estabelece latência vitalícia nos gânglios das raízes dorsais espinais e gânglios de nervos cranianos (ex: gânglio trigeminal). A reativação anos mais tarde manifesta-se como Herpes-Zóster (cobreiro) no dermátomo correspondente.",
     explicacaoAlternativas: {
       A: "Incorreto. Hepatócitos são sítios de replicação de vírus das hepatites (HBV, HCV).",
@@ -436,12 +436,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "As alterações morfológicas visíveis ao microscópio óptico observadas em células cultivadas ou tecidos infectados por vírus (como formação de sincícios, corpúsculos de inclusão ou lise celular) são chamadas de:",
     alternativas: [
-      "A) Recombinação genética",
-      "B) Efeito Citopático (ECP)",
-      "C) Transdução bacteriana",
-      "D) Opsonização tecidual"
+      { id: "A", texto: "Recombinação genética" },
+      { id: "B", texto: "Efeito Citopático (ECP)" },
+      { id: "C", texto: "Transdução bacteriana" },
+      { id: "D", texto: "Opsonização tecidual" }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "O Efeito Citopático (ECP) engloba as modificações estruturais e funcionais induzidas pela infecção viral na célula hospedeira, como arredondamento celular, formação de céluas gigantes multinucleadas (sincícios - ex: RSV, sarampo), corpúsculos de inclusão intranucleares/citoplasmáticos (ex: Negri na raiva) e descolamento/lise.",
     explicacaoAlternativas: {
       A: "Incorreto. Recombinação é a troca de segmentos de ácido nucleico entre vírus.",
@@ -462,12 +462,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "dificil",
     enunciado: "De acordo com a Classificação de Baltimore, os vírus são divididos em 7 grupos com base na estrutura de seu genoma e na estratégia utilizada para sintetizar o mRNA. Em qual grupo estão inseridos os vírus de RNA de fita simples de polaridade negativa (ssRNA-), como o vírus Influenza e o vírus da Raiva?",
     alternativas: [
-      "A) Grupo I (DNA fita dupla)",
-      "B) Grupo IV (ssRNA+)",
-      "C) Grupo V (ssRNA-)",
-      "D) Grupo VI (ssRNA-RT)"
+      { id: "A", texto: "Grupo I (DNA fita dupla)" },
+      { id: "B", texto: "Grupo IV (ssRNA+)" },
+      { id: "C", texto: "Grupo V (ssRNA-)" },
+      { id: "D", texto: "Grupo VI (ssRNA-RT)" }
     ],
-    respostaCorreta: 2,
+    respostaCorreta: "C",
     explicacao: "No sistema de Baltimore, vírus do Grupo V possuem genoma de RNA de fita simples de polaridade negativa (ssRNA-). Como o genoma negativo não pode ser lido diretamente pelos ribossomos celalares, esses vírus obrigatoriamente transportam em seu vírion a enzima RNA polimerase dependente de RNA para transcrever a fita negativa no mRNA complementar de polaridade positiva (mRNA+).",
     explicacaoAlternativas: {
       A: "Incorreto. Grupo I contém vírus de DNA de fita dupla (ex: Herpesvírus, Adenovírus).",
@@ -488,12 +488,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "Qual a denominação dada à estrutura proteica tridimensional formada por unidades repetitivas chamadas capsômeros que envolve e protege o material genético viral?",
     alternativas: [
-      "A) Capsídeo",
-      "B) Peplômero",
-      "C) Plasmídeo",
-      "D) Mesossomo"
+      { id: "A", texto: "Capsídeo" },
+      { id: "B", texto: "Peplômero" },
+      { id: "C", texto: "Plasmídeo" },
+      { id: "D", texto: "Mesossomo" }
     ],
-    respostaCorreta: 0,
+    respostaCorreta: "A",
     explicacao: "O capsídeo é o revestimento proteico do vírus formado pelo automontagem de subunidades proteicas denominadas capsômeros. Apresenta simetria clássica icosaédrica, helicoidal ou complexa.",
     explicacaoAlternativas: {
       A: "Correto. Capsídeo é a capa proteica virional composta por capsômeros.",
@@ -514,12 +514,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "O vírus da Hepatite B (HBV) é um vírus hepatotrópico de DNA com características replicativas únicas. Embora possua genoma de DNA parcialmente fita dupla (dsDNA-RT), o HBV utiliza uma etapa intermediária de RNA e a enzima transcriptase reversa durante seu ciclo. Por esse motivo, é classificado na família:",
     alternativas: [
-      "A) Flaviviridae",
-      "B) Hepadnaviridae",
-      "C) Picornaviridae",
-      "D) Orthomyxoviridae"
+      { id: "A", texto: "Flaviviridae" },
+      { id: "B", texto: "Hepadnaviridae" },
+      { id: "C", texto: "Picornaviridae" },
+      { id: "D", texto: "Orthomyxoviridae" }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "O HBV pertence à família Hepadnaviridae (Grupo VII de Baltimore). Seu genoma é um DNA circular fita dupla relaxado e incompleto (rcDNA). No núcleo, ele é convertido em DNA circular fechado covalentemente (cccDNA), que gera o RNA pré-genômico (pgRNA). A transcriptase reversa viral retrotranscreve o pgRNA de volta em DNA dentro do capsídeo.",
     explicacaoAlternativas: {
       A: "Incorreto. Flaviviridae inclui o Vírus da Hepatite C (HCV), vírus da Dengue e Febre Amarela (ssRNA+).",
@@ -544,12 +544,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "O vírus Influenza, causador da gripe, pertence à família Orthomyxoviridae. Qual é a estrutura e organização de seu material genético?",
     alternativas: [
-      "A) Molécula única e contínua de DNA de fita dupla linear.",
-      "B) Genoma SEGMENTADO de RNA de fita simples de polaridade negativa (ssRNA-), composto por 8 segmentos no Influenza A e B.",
-      "C) RNA de fita dupla não-segmentado em formato circular.",
-      "D) Molécula contínua de RNA de fita simples de polaridade positiva associada a um plasmídeo."
+      { id: "A", texto: "Molécula única e contínua de DNA de fita dupla linear." },
+      { id: "B", texto: "Genoma SEGMENTADO de RNA de fita simples de polaridade negativa (ssRNA-), composto por 8 segmentos no Influenza A e B." },
+      { id: "C", texto: "RNA de fita dupla não-segmentado em formato circular." },
+      { id: "D", texto: "Molécula contínua de RNA de fita simples de polaridade positiva associada a um plasmídeo." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "Os vírus Influenza A e B possuem genoma segmentado constituído por 8 segmentos distintos de RNA de fita simples de sentido negativo (ssRNA-), envolvidos por ribonucleoproteínas. Essa natureza segmentada é crucial para o fenômeno de reassortimento genético (Shift antigênico).",
     explicacaoAlternativas: {
       A: "Incorreto. Influenza não é um vírus DNA.",
@@ -570,12 +570,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "No envelope lipídico do vírus Influenza A sobressaem-se duas glicoproteínas de superfície fundamentais: a Hemaglutinina (HA) e a Neuraminidase (NA). Qual é a função específica da HEMAGLUTININA (HA)?",
     alternativas: [
-      "A) Clivar o ácido siálico das mucinas para liberar os vírions recém-formados da superfície celular.",
-      "B) Promover a ligação (adsorção) do vírus ao receptor de ácido siálico nas células epiteliais respiratórias e mediar a fusão de membranas.",
-      "C) Bombear prótons H+ para dentro do vírion para descompactar o capsídeo.",
-      "D) Inibir a produção de interferon-alfa pelas células dendríticas."
+      { id: "A", texto: "Clivar o ácido siálico das mucinas para liberar os vírions recém-formados da superfície celular." },
+      { id: "B", texto: "Promover a ligação (adsorção) do vírus ao receptor de ácido siálico nas células epiteliais respiratórias e mediar a fusão de membranas." },
+      { id: "C", texto: "Bombear prótons H+ para dentro do vírion para descompactar o capsídeo." },
+      { id: "D", texto: "Inibir a produção de interferon-alfa pelas células dendríticas." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A Hemaglutinina (HA) reconhece e liga-se aos resíduos de ácido siálico na superfície das células epiteliais do trato respiratório hospedeiro. Após a endocitose, a acidificação do endossomo altera a conformação da HA, desencadeando a fusão do envelope viral com a membrana endossomal e liberando os nucleocapsídeos no citoplasma.",
     explicacaoAlternativas: {
       A: "Incorreto. A clivagem do ácido siálico para liberação virional é a função da Neuraminidase (NA).",
@@ -596,12 +596,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Antivirais como o OSELTAMIVIR (Tamiflu) e o ZANAMIVIR são utilizados no tratamento precoce da infecção por Influenza. Qual o mecanismo de ação molecular desses fármacos?",
     alternativas: [
-      "A) Inibição seletiva da proteína de canal iônico M2, impedindo o desnudamento do vírus.",
-      "B) Inibição competitiva da enzima NEURAMINIDASE (NA), impedindo a clivagem do ácido siálico e o desligamento dos novos vírions, promovendo seu aglutinamento na superfície celular.",
-      "C) Inativação direta da transcriptase reversa viral.",
-      "D) Bloqueio da síntese da parede peptidoglicânica."
+      { id: "A", texto: "Inibição seletiva da proteína de canal iônico M2, impedindo o desnudamento do vírus." },
+      { id: "B", texto: "Inibição competitiva da enzima NEURAMINIDASE (NA), impedindo a clivagem do ácido siálico e o desligamento dos novos vírions, promovendo seu aglutinamento na superfície celular." },
+      { id: "C", texto: "Inativação direta da transcriptase reversa viral." },
+      { id: "D", texto: "Bloqueio da síntese da parede peptidoglicânica." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "Os inibidores da neuraminidase (Oseltamivir e Zanamivir) ligam-se ao sítio ativo da enzima NA. Sem a atividade enzimática da NA, o vírus recém-brotado permanece ancorado ao ácido siálico da célula hospedeira moribunda e aglutina-se em grumos na superfície celular, interrompendo a disseminação para células vizinhas.",
     explicacaoAlternativas: {
       A: "Incorreto. Inibidores do canal M2 são a Amantadina e Rimantadina (ineficazes contra Influenza B).",
@@ -622,12 +622,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "dificil",
     enunciado: "O vírus Influenza A pode sofrer duas formas de variação antigênica: Deriva Antigênica (Antigenic Drift) e Shift Antigênico (Antigenic Shift). Qual a diferença fundamental entre esses dois processos e qual deles é o responsável pelas PANDEMIAS globais de gripe?",
     alternativas: [
-      "A) Drift é a recombinação entre espécies; Shift são mutações pontuais. O Drift gera pandemias.",
-      "B) Drift consiste em mutações pontuais graduais na HA/NA por erros da RNA polimerase (causa epidemias anuais); Shift é o reassortimento genético drástico entre diferentes cepas em um hospedeiro intermediário (ex: suíno), gerando novos subtipos e PANDEMIAS.",
-      "C) Drift ocorre apenas no Influenza C; Shift ocorre exclusivamente no Influenza B.",
-      "D) Shift é a perda espontânea do envelope lipídico; Drift é a troca de ribossomos virais."
+      { id: "A", texto: "Drift é a recombinação entre espécies; Shift são mutações pontuais. O Drift gera pandemias." },
+      { id: "B", texto: "Drift consiste em mutações pontuais graduais na HA/NA por erros da RNA polimerase (causa epidemias anuais); Shift é o reassortimento genético drástico entre diferentes cepas em um hospedeiro intermediário (ex: suíno), gerando novos subtipos e PANDEMIAS." },
+      { id: "C", texto: "Drift ocorre apenas no Influenza C; Shift ocorre exclusivamente no Influenza B." },
+      { id: "D", texto: "Shift é a perda espontânea do envelope lipídico; Drift é a troca de ribossomos virais." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "Antigenic Drift (deriva antigênica) resulta de pequenas mutações pontuais aculumadas durante a replicação (ausência de atividade de revisão da RNA polimerase viral), causando variações menores que exigem atualização ANUAL da vacina. Antigenic Shift (desvio antigênico) é a reorganização/reassortimento completo de segmentos de genoma de cepas aviárias, suínas e humanas co-infectando a mesma célula (ex: em porcos 'recipientes de mistura'), criando um subtipo novo (ex: H1N1 em 2009, H5N1) imune na população humana, causando PANDEMIAS.",
     explicacaoAlternativas: {
       A: "Incorreto. Os conceitos e o causador de pandemias estão invertidos.",
@@ -648,12 +648,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Qual o principal reservatório natural zoonótico e fonte primária de diversidade genética dos vírus da Influenza A na natureza?",
     alternativas: [
-      "A) Morcegos frugívoros tropicais",
-      "B) Aves aquáticas selvagens (como patos, gansos e marrecos da ordem Anseriformes)",
-      "C) Roedores sinantrópicos (ratos e camundongos)",
-      "D) Primatas não-humanos das florestas tropicais"
+      { id: "A", texto: "Morcegos frugívoros tropicais" },
+      { id: "B", texto: "Aves aquáticas selvagens (como patos, gansos e marrecos da ordem Anseriformes)" },
+      { id: "C", texto: "Roedores sinantrópicos (ratos e camundongos)" },
+      { id: "D", texto: "Primatas não-humanos das florestas tropicais" }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "As aves aquáticas selvagens (especialmente ordens Anseriformes e Charadriiformes) são o reservatório natural primário de todos os subtipos conhecidos de Hemaglutinina (H1 a H16) e Neuraminidase (N1 a N9) da Influenza A. Nessas aves, a infecção costuma ser assintomática e entérica.",
     explicacaoAlternativas: {
       A: "Incorreto. Morcegos são reservatórios de Raiva, Ebola, Coronavírus e Henipavírus.",
@@ -674,12 +674,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "Qual é a principal via de transmissão interhumana do vírus da Influenza no dia a dia?",
     alternativas: [
-      "A) Transmissão vetorial por picada do mosquitos Aedes aegypti.",
-      "B) Gotículas respiratórias expelidas ao falar, tossir ou espirrar e contato com superfícies contaminadas (fômites).",
-      "C) Ingestão de água e alimentos contaminados por cistos fecais.",
-      "D) Contato sexual desprotegido."
+      { id: "A", texto: "Transmissão vetorial por picada do mosquitos Aedes aegypti." },
+      { id: "B", texto: "Gotículas respiratórias expelidas ao falar, tossir ou espirrar e contato com superfícies contaminadas (fômites)." },
+      { id: "C", texto: "Ingestão de água e alimentos contaminados por cistos fecais." },
+      { id: "D", texto: "Contato sexual desprotegido." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A Influenza é transmitida primariamente pela via respiratória através de gotículas aéreas (> 5 micras) projetadas a curta distância por tosse, espirros ou fala, além de aerossóis finos e autocontaminação ao tocar olhos/nariz/boca com as mãos contaminadas por fômites.",
     explicacaoAlternativas: {
       A: "Incorreto. Aedes aegypti transmite arbovírus (Dengue, Zika, Chikungunya, Febre Amarela).",
@@ -700,12 +700,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Qual a função da proteína transmembrana M2 presente exclusivamente no envelope do vírus Influenza A?",
     alternativas: [
-      "A) Atuar como canal de prótons (H+) que acidifica o interior do vírion no endossomo, promovendo a dissociação da proteína de matriz M1 dos nucleocapsídeos (desnudamento).",
-      "B) Sintetizar a fita complementar de RNA viral no núcleo celular.",
-      "C) Clivar anticorpos IgA secretores presentes no moco respiratório.",
-      "D) Ancorar o vírus à membrana nuclear da célula hospedeira."
+      { id: "A", texto: "Atuar como canal de prótons (H+) que acidifica o interior do vírion no endossomo, promovendo a dissociação da proteína de matriz M1 dos nucleocapsídeos (desnudamento)." },
+      { id: "B", texto: "Sintetizar a fita complementar de RNA viral no núcleo celular." },
+      { id: "C", texto: "Clivar anticorpos IgA secretores presentes no moco respiratório." },
+      { id: "D", texto: "Ancorar o vírus à membrana nuclear da célula hospedeira." }
     ],
-    respostaCorreta: 0,
+    respostaCorreta: "A",
     explicacao: "A proteína M2 forma um canal iônico seletivo de prótons H+. Após o vírus ser endocitado, a acidez do endossomo faz com que prótons entrem no vírion via canal M2. A acidificação interna quebra as interações hidrofóbicas entre a matriz M1 e as RNP (ribonucleoproteínas), permitindo a liberação do genoma no citoplasma.",
     explicacaoAlternativas: {
       A: "Correto. O canal M2 acidifica o interior do vírion para permitir a liberação das RNPs (desnudamento). Alvo da amantadina.",
@@ -730,12 +730,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "Clinicamente, a Síndrome Gripal (SG) diferencia-se do Resfriado Comum pela gravidade e instalação dos sintomas. De acordo com o Ministério da Saúde, a definição clínica operacional de Síndrome Gripal é caracterizada por:",
     alternativas: [
-      "A) Coriza leve e espirros sem febre, com duração de 2 dias.",
-      "B) Indivíduo com quadro respiratório agudo, caracterizado por pelo menos dois dos seguintes sinais/sintomas: febre (mesmo que referida), calafrios, dor de garganta, dor de cabeça, tosse, coriza, distúrbios olfativos ou gustativos.",
-      "C) Diarreia aquosa profusa associada a desidratação grave sem sintomas respiratórios.",
-      "D) Lesões maculopapulares pruriginosas disseminadas por todo o corpo acompanhadas de conjuntivite purulenta."
+      { id: "A", texto: "Coriza leve e espirros sem febre, com duração de 2 dias." },
+      { id: "B", texto: "Indivíduo com quadro respiratório agudo, caracterizado por pelo menos dois dos seguintes sinais/sintomas: febre (mesmo que referida), calafrios, dor de garganta, dor de cabeça, tosse, coriza, distúrbios olfativos ou gustativos." },
+      { id: "C", texto: "Diarreia aquosa profusa associada a desidratação grave sem sintomas respiratórios." },
+      { id: "D", texto: "Lesões maculopapulares pruriginosas disseminadas por todo o corpo acompanhadas de conjuntivite purulenta." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A Síndrome Gripal (SG) é um quadro respiratório agudo de início súbito, com febre (ou sensação febril), tosse ou dor de garganta, acompanhado de mialgia, cefaleia e prostração. O resfriado comum é mais brando, predominando coriza e obstrução nasal com pouca ou nenhuma febre.",
     explicacaoAlternativas: {
       A: "Incorreto. Coriza e espirros afebris definem o resfriado comum (Rinovírus).",
@@ -756,12 +756,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Quando um paciente com Síndrome Gripal evolui com dispneia, desconforto respiratório, saturação de SpO2 < 95% em ar ambiente ou hipotensão, o quadro é reclassificado como Síndrome Respiratória Aguda Grave (SRAG). Qual a complicação bacteriana secundária mais frequente e temida na Influenza?",
     alternativas: [
-      "A) Meningite por Neisseria meningitidis",
-      "B) Pneumonia bacteriana secundária (especialmente por Streptococcus pneumoniae e Staphylococcus aureus)",
-      "C) Pielonefrite por Escherichia coli",
-      "D) Colite pseudomembranosa por Clostridium difficile"
+      { id: "A", texto: "Meningite por Neisseria meningitidis" },
+      { id: "B", texto: "Pneumonia bacteriana secundária (especialmente por Streptococcus pneumoniae e Staphylococcus aureus)" },
+      { id: "C", texto: "Pielonefrite por Escherichia coli" },
+      { id: "D", texto: "Colite pseudomembranosa por Clostridium difficile" }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A infecção pelo vírus Influenza lesa o epitélio ciliar da árvore traqueobronquial e deprime temporariamente a função dos macrófagos alveolares, predispondo à superinfecção bacteriana secundária. As causas mais comuns de pneumonia pós-gripe graves são Streptococcus pneumoniae e Staphylococcus aureus (incluindo MRSA expressando a toxina Panton-Valentine).",
     explicacaoAlternativas: {
       A: "Incorreto. Meningite meningocócica não é a complicação clássica mais comum da gripe.",
@@ -782,12 +782,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "dificil",
     enunciado: "No diagnóstico laboratorial da infecção pelo vírus Influenza, qual método de diagnóstico molecular é considerado o PADRÃO-OURO devido à sua altíssima sensibilidade e especificidade?",
     alternativas: [
-      "A) Teste rápido imunocromatográfico de detecção de antígeno (TR-AG).",
-      "B) RT-PCR em tempo real (Reação em Cadeia da Polimerase com Transcrição Reversa).",
-      "C) Exame direto a fresco ao microscópio de campo escuro.",
-      "D) Hemocultura em caldo hiperatônico."
+      { id: "A", texto: "Teste rápido imunocromatográfico de detecção de antígeno (TR-AG)." },
+      { id: "B", texto: "RT-PCR em tempo real (Reação em Cadeia da Polimerase com Transcrição Reversa)." },
+      { id: "C", texto: "Exame direto a fresco ao microscópio de campo escuro." },
+      { id: "D", texto: "Hemocultura em caldo hiperatônico." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A RT-PCR em tempo real (rRT-PCR) a partir de aspirado ou swab combinado de nasofaringe/orfaringe é o padrão-ouro de diagnóstico da Influenza. Ela amplifica a partir do RNA viral, permitindo não apenas a detecção com máxima sensibilidade, mas também a diferenciação de subtipos (ex: H1N1pdm09, H3N2, Influenza B).",
     explicacaoAlternativas: {
       A: "Incorreto. Testes rápidos de antígeno são úteis pela rapidez (15 min), mas apresentam sensibilidade moderada (50-70%), podendo dar falsos negativos.",
@@ -808,12 +808,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "As vacinas anuais contra a Influenza distribuídas pelo Programa Nacional de Imunizações (PNI) do Brasil são formuladas com base nas recomendações da OMS. Qual é a composição clássica da vacina da gripe administrada na campanha de vacinação?",
     alternativas: [
-      "A) Bactérias vivas atenuadas da espécie Mycobacterium bovis.",
-      "B) Vírus inativados (fragmentados/subunitários) contendo cepas de Influenza A (H1N1 e H3N2) e cepas de Influenza B.",
-      "C) Toxoides tetânico e diftérico recombinantes.",
-      "D) Plasmídeos de DNA autorreplicativos sem proteínas virais."
+      { id: "A", texto: "Bactérias vivas atenuadas da espécie Mycobacterium bovis." },
+      { id: "B", texto: "Vírus inativados (fragmentados/subunitários) contendo cepas de Influenza A (H1N1 e H3N2) e cepas de Influenza B." },
+      { id: "C", texto: "Toxoides tetânico e diftérico recombinantes." },
+      { id: "D", texto: "Plasmídeos de DNA autorreplicativos sem proteínas virais." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A vacina Influenza trivalente/quadrivalente utilizada na rede pública é uma vacina inativada (vírus mortos purificados/fragmentados), cultivada em ovos embrionados de galinha. Ela inclui imunógenos para duas cepas de Influenza A (H1N1pdm09 e H3N2) e uma ou duas cepas de Influenza B (linhagens Victoria e Yamagata).",
     explicacaoAlternativas: {
       A: "Incorreto. Corresponde à vacina BCG contra tuberculose.",
@@ -834,12 +834,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Por que a vacina contra a gripe precisa ser formulada e administrada ANUALMENTE na população?",
     alternativas: [
-      "A) Porque os anticorpos gerados pela vacina desaparecem completamente após 30 dias.",
-      "B) Devido ao fenômeno de Deriva Antigênica (Antigenic Drift), em que ocorrem mutações contínuas nas proteínas de superfície (HA e NA) dos vírus Influenza circulantes.",
-      "C) Porque a vacina destrói a memória imunológica pré-existente no indivíduo.",
-      "D) Devido à degradação do adjuvante de alumínio na corrente sanguínea."
+      { id: "A", texto: "Porque os anticorpos gerados pela vacina desaparecem completamente após 30 dias." },
+      { id: "B", texto: "Devido ao fenômeno de Deriva Antigênica (Antigenic Drift), em que ocorrem mutações contínuas nas proteínas de superfície (HA e NA) dos vírus Influenza circulantes." },
+      { id: "C", texto: "Porque a vacina destrói a memória imunológica pré-existente no indivíduo." },
+      { id: "D", texto: "Devido à degradação do adjuvante de alumínio na corrente sanguínea." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A taxa de mutação por erros da RNA polimerase viral (antigenic drift) altera gradualmente os epítopos da Hemaglutinina e Neuraminidase. Com isso, as cepas virais em circulação a cada ano evadem parcialmente os anticorpos gerados pela vacina anterior, exigindo o monitoramento global pela OMS para atualizar a composição vacinal anualmente.",
     explicacaoAlternativas: {
       A: "Incorreto. Os anticorpos vacinais persistem por meses a cerca de 1 ano.",
@@ -860,12 +860,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Segundo as diretrizes de tratamento da Influenza do Ministério da Saúde e do CDC, em qual janela terapêutica o início do tratamento com Oseltamivir (Tamiflu) apresenta MAIOR eficácia na redução de complicações e tempo de doença?",
     alternativas: [
-      "A) Nas primeiras 48 horas após o início dos sintomas.",
-      "B) Entre o 7º e o 10º dia de evolução dos sintomas.",
-      "C) Apenas se o paciente estiver há mais de 14 dias com febre alta.",
-      "D) Exclusivamente antes do aparecimento de qualquer sintoma (fase de incubação)."
+      { id: "A", texto: "Nas primeiras 48 horas após o início dos sintomas." },
+      { id: "B", texto: "Entre o 7º e o 10º dia de evolução dos sintomas." },
+      { id: "C", texto: "Apenas se o paciente estiver há mais de 14 dias com febre alta." },
+      { id: "D", texto: "Exclusivamente antes do aparecimento de qualquer sintoma (fase de incubação)." }
     ],
-    respostaCorreta: 0,
+    respostaCorreta: "A",
     explicacao: "O benefício clínico máximo dos inibidores de neuraminidase (Oseltamivir) ocorre quando iniciados precocemente, idealmente nas primeiras 48 horas do início dos sintomas. No entanto, em pacientes com SRAG ou internados em grupo de alto risco, o Oseltamivir deve ser iniciado mesmo após 48 horas.",
     explicacaoAlternativas: {
       A: "Correto. Início dentro das primeiras 48h maximiza a inibição da replicação viral e reduz desfechos graves.",
@@ -886,12 +886,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "Qual dos seguintes grupos populacionais é considerado prioritário para vacinação contra a Influenza devido ao maior risco de complicações graves e hospitalização?",
     alternativas: [
-      "A) Adultos jovens saudáveis dos 20 aos 30 anos sem comorbidades.",
-      "B) Idosos (>= 60 anos), gestantes, puérperas, crianças de 6 meses a 6 anos e indivíduos com comorbidades crônicas (como cardiopatias, diabetes e pneumopatias).",
-      "C) Atletas de alto rendimento estritamente assintomáticos.",
-      "D) Indivíduos com história prévia de fratura óssea tratada e consolidada."
+      { id: "A", texto: "Adultos jovens saudáveis dos 20 aos 30 anos sem comorbidades." },
+      { id: "B", texto: "Idosos (>= 60 anos), gestantes, puérperas, crianças de 6 meses a 6 anos e indivíduos com comorbidades crônicas (como cardiopatias, diabetes e pneumopatias)." },
+      { id: "C", texto: "Atletas de alto rendimento estritamente assintomáticos." },
+      { id: "D", texto: "Indivíduos com história prévia de fratura óssea tratada e consolidada." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "Grupos com risco elevado de complicações da gripe incluem idosos, gestantes, puérperas, crianças pequenas, imunocomprometidos e portadores de doenças crônicas (diabetes, insuficiência cardíaca, asma/DPOC). Esses grupos são priorizados na vacinação gratuita do PNI.",
     explicacaoAlternativas: {
       A: "Incorreto. Adultos jovens saudáveis têm baixo risco de complicações severas.",
@@ -912,12 +912,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "dificil",
     enunciado: "O Vírus Sincicial Respiratório (VSR) é outro agente viral de grande impacto em pediatria. Diferentemente da Influenza, o VSR é a causa mais frequente de qual entidade clínica grave em lactentes e recém-nascidos?",
     alternativas: [
-      "A) Bronquiolite Obliterante Congênita",
-      "B) Bronquiolite Aguda (caracterizada por sibilância, taquipneia e tiragem subcostal)",
-      "C) Epiglotite aguda bacteriana fulminante",
-      "D) Coqueluche paroxística"
+      { id: "A", texto: "Bronquiolite Obliterante Congênita" },
+      { id: "B", texto: "Bronquiolite Aguda (caracterizada por sibilância, taquipneia e tiragem subcostal)" },
+      { id: "C", texto: "Epiglotite aguda bacteriana fulminante" },
+      { id: "D", texto: "Coqueluche paroxística" }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "O Vírus Sincicial Respiratório (VSR - família Pneumoviridae) é o principal agente etiológico da Bronquiolite Aguda em lactentes (especialmente menores de 2 anos). A infecção leva à necrose do epitélio bronquiolar, edema da mucosa e formação de rolhas de muco com aprisionamento aéreo e sibilos.",
     explicacaoAlternativas: {
       A: "Incorreto. Bronquiolite obliterante é sequela crônica fibrosante pós-infecciosa (geralmente Adenovírus).",
@@ -943,12 +943,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "O helminto Trichuris trichiura é o agente etiológico da tricuríase. Devido à sua morfologia característica, com uma porção anterior fina e afilada e uma porção posterior mais espessa, ele é vulgarmente conhecido como:",
     alternativas: [
-      "A) Verme em formato de fita ou tênia",
-      "B) Verme em formato de chicote ('whipworm')",
-      "C) Verme em alfinete ('pinworm')",
-      "D) Verme do coração"
+      { id: "A", texto: "Verme em formato de fita ou tênia" },
+      { id: "B", texto: "Verme em formato de chicote ('whipworm')" },
+      { id: "C", texto: "Verme em alfinete ('pinworm')" },
+      { id: "D", texto: "Verme do coração" }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "Trichuris trichiura é conhecido popularmente como 'verme chicote' (whipworm). Ele possui a região anterior delgada (semelhante ao cabo ou ponta fina do chicote) que penetra na mucosa do ceco/cólon e a porção posterior mais calibrosa que fica livre no lúmen intestinal.",
     explicacaoAlternativas: {
       A: "Incorreto. Vermes em fita são os cestódeos (Taenia solium, Taenia saginata).",
@@ -969,12 +969,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "No diagnóstico parasitológico de fezes (EPF) da tricuríase, os ovos de Trichuris trichiura são facilmente identificados ao microscópio óptico por apresentarem um formato patognomônico de:",
     alternativas: [
-      "A) Esfera perfeita com ganchos internos (oncocerca).",
-      "B) Barril ou limão (elíptico com dois tampões/rolhas polares salientes e hialinas).",
-      "C) D em plano-convexo assimétrico com larvas visíveis no interior.",
-      "D) Halo transparente espesso e cápsula mamilonada castanha."
+      { id: "A", texto: "Esfera perfeita com ganchos internos (oncocerca)." },
+      { id: "B", texto: "Barril ou limão (elíptico com dois tampões/rolhas polares salientes e hialinas)." },
+      { id: "C", texto: "D em plano-convexo assimétrico com larvas visíveis no interior." },
+      { id: "D", texto: "Halo transparente espesso e cápsula mamilonada castanha." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "Os ovos de Trichuris trichiura possuem morfologia inconfundível: formato de barril, limão ou fuso, com casca espessa castanho-amarelada e dois opérculos ou rolhas polares transparentes (hialinas) nas suas extremidades.",
     explicacaoAlternativas: {
       A: "Incorreto. Corresponde a ovos de Taenia spp.",
@@ -995,12 +995,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Qual é a principal complicação clínica grave observada em crianças com infecção maciça (altas cargas parasitárias) por Trichuris trichiura?",
     alternativas: [
-      "A) Síndrome de Löffler com infiltrado pulmonar migratório.",
-      "B) Prolapso retal acompanhado de tenesmo, diarreia mucossanguinolenta e anemia grave.",
-      "C) Elefantíase dos membros inferiores por obstrução linfática.",
-      "D) Abscesso hepático amebiano."
+      { id: "A", texto: "Síndrome de Löffler com infiltrado pulmonar migratório." },
+      { id: "B", texto: "Prolapso retal acompanhado de tenesmo, diarreia mucossanguinolenta e anemia grave." },
+      { id: "C", texto: "Elefantíase dos membros inferiores por obstrução linfática." },
+      { id: "D", texto: "Abscesso hepático amebiano." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "Em crianças com infecção intensa por T. trichiura, centenas a milhares de vermes adultos colonizam e inflamam a mucosa do ceco, cólon e reto. A irritação local provoca tenesmo (esforço doloroso constante para evacuar), hiperemia da mucosa e hipotonia da musculatura retal, levando ao PROLAPSO RETAL com visibilidade dos vermes presos à mucosa e diarreia sangrenta.",
     explicacaoAlternativas: {
       A: "Incorreto. T. trichiura NÃO faz ciclo de Loos pulmonar.",
@@ -1021,12 +1021,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "A transmissão da tricuríase ocorre através de qual mecanismo ecológico e epidemiológico?",
     alternativas: [
-      "A) Penetração ativa de larvas filarioides L3 através da pele íntegra dos pés descalços.",
-      "B) Ingestão de água ou alimentos contaminados com ovos embrionados contendo a larva L3 (geo-helmintíase).",
-      "C) Picada de mosquitos do gênero Anopheles.",
-      "D) Consumo de carne bovina crua contendo corticercos."
+      { id: "A", texto: "Penetração ativa de larvas filarioides L3 através da pele íntegra dos pés descalços." },
+      { id: "B", texto: "Ingestão de água ou alimentos contaminados com ovos embrionados contendo a larva L3 (geo-helmintíase)." },
+      { id: "C", texto: "Picada de mosquitos do gênero Anopheles." },
+      { id: "D", texto: "Consumo de carne bovina crua contendo corticercos." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A tricuríase é uma geo-helmintíase clássica. Os ovos não embrionados eliminados nas fezes humanas precisam de semanas no solo quente e úmido para amadurecer e formar a larva infectante no seu interior. A infecção ocorre quando o ser humano ingere esses ovos embrionados via água, hortaliças ou mãos contaminadas.",
     explicacaoAlternativas: {
       A: "Incorreto. Penetração cutânea ativa é o mecanismo de ancilostomídeos e Strongyloides stercoralis.",
@@ -1047,12 +1047,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "dificil",
     enunciado: "Ao contrário do Ascaris lumbricoides e dos ancilostomídeos, o ciclo biológico do Trichuris trichiura apresenta a seguinte particularidade migratória no hospedeiro humano:",
     alternativas: [
-      "A) Realiza migração hepato-pulmonar obrigatória (Ciclo de Loos) antes de atingir o intestino.",
-      "B) NÃO realiza o Ciclo de Loos; as larvas eclodem no intestino delgado, migram diretamente para o ceco/cólon e lá se fixam até a fase adulta.",
-      "C) Migra para o sistema nervoso central através do plexo venoso de Batson.",
-      "D) Encista-se no tecido muscular estriado esquelético sob a forma de cisto hidático."
+      { id: "A", texto: "Realiza migração hepato-pulmonar obrigatória (Ciclo de Loos) antes de atingir o intestino." },
+      { id: "B", texto: "NÃO realiza o Ciclo de Loos; as larvas eclodem no intestino delgado, migram diretamente para o ceco/cólon e lá se fixam até a fase adulta." },
+      { id: "C", texto: "Migra para o sistema nervoso central através do plexo venoso de Batson." },
+      { id: "D", texto: "Encista-se no tecido muscular estriado esquelético sob a forma de cisto hidático." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "O Trichuris trichiura possui ciclo monoxênico direto e NÃO realiza migração parenquimatosa pulmonar (não faz ciclo de Loos). Após a ingestão do ovo embrionado, a larva eclode no intestino delgado, penetra temporariamente nas criptas das vilosidades e depois migra para o ceco/cólon ascendente, onde sua extremidade anterior se fixa na mucosa.",
     explicacaoAlternativas: {
       A: "Incorreto. T. trichiura NÃO faz ciclo de Loos (diferente de Ascaris, Ancylostoma e Strongyloides).",
@@ -1073,12 +1073,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "Qual a medicação anti-helmíntica de escolha para o tratamento da tricuríase em esquemas de dose única ou curtos de 3 dias?",
     alternativas: [
-      "A) Penicilina G Benzatina",
-      "B) Mebendazol ou Albendazol",
-      "C) Metronidazol",
-      "D) Fluconazol"
+      { id: "A", texto: "Penicilina G Benzatina" },
+      { id: "B", texto: "Mebendazol ou Albendazol" },
+      { id: "C", texto: "Metronidazol" },
+      { id: "D", texto: "Fluconazol" }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "Os benzimidazóis (Mebendazol 100mg 2x/dia por 3 dias ou Albendazol 400mg 1x/dia por 3 dias) são os medicamentos de primeira linha para a tricuríase. A Ivermectina também pode ser associada em infecções graves.",
     explicacaoAlternativas: {
       A: "Incorreto. Penicilina é um antibacteriano beta-lactâmico.",
@@ -1099,12 +1099,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Por que a tricuríase crônica e grave em crianças pode provocar anemia microcítica e hipocrômica secundária?",
     alternativas: [
-      "A) Devido ao consumo direto de vitamina B12 pelo parásito no íleo terminal.",
-      "B) Devido à perda sanguínea oculta crônica causada pelo trauma mecânico da fixação da região anterior do verme na mucosa colônica e microlesões sangrantes.",
-      "C) Pela secreção de toxinas hemolíticas virais que destroem hemácias no baço.",
-      "D) Por inibição da absorção intestinal de cálcio e vitamina D."
+      { id: "A", texto: "Devido ao consumo direto de vitamina B12 pelo parásito no íleo terminal." },
+      { id: "B", texto: "Devido à perda sanguínea oculta crônica causada pelo trauma mecânico da fixação da região anterior do verme na mucosa colônica e microlesões sangrantes." },
+      { id: "C", texto: "Pela secreção de toxinas hemolíticas virais que destroem hemácias no baço." },
+      { id: "D", texto: "Por inibição da absorção intestinal de cálcio e vitamina D." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "Cada verme adulto de T. trichiura fura e fixa sua porção afilada na mucosa do cólon. Embora ingira pouca quantidade de sangue diretamente em comparação aos ancilostomídeos, a presença de centenas de vermes causa ulcerações, exsudação focal de sangue e perda sangrenta contínua nas fezes, drenando as reservas de ferro corporais e levando à anemia ferropriva (microcítica/hipocrômica).",
     explicacaoAlternativas: {
       A: "Incorreto. O consumo de vitamina B12 no íleo terminal é característico da tênia do peixe (Diphyllobothrium latum).",
@@ -1125,12 +1125,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Qual o método de sedimentação espontânea em água amplamente empregado nos laboratórios de análises clínicas para pesquisa de ovos pesados como os de Trichuris trichiura e Schistosoma mansoni?",
     alternativas: [
-      "A) Método de Faust (centrifugo-flutuação em sulfato de zinco)",
-      "B) Método de Hoffman, Pons e Janer (ou Lutz)",
-      "C) Métodos de Graham (fita gomada perianal)",
-      "D) Método de Baermann-Moraes"
+      { id: "A", texto: "Método de Faust (centrifugo-flutuação em sulfato de zinco)" },
+      { id: "B", texto: "Método de Hoffman, Pons e Janer (ou Lutz)" },
+      { id: "C", texto: "Métodos de Graham (fita gomada perianal)" },
+      { id: "D", texto: "Método de Baermann-Moraes" }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "O método de Hoffman, Pons e Janer (HPJ / Lutz) baseia-se na sedimentação espontânea em água. É um método simples, de baixo custo e excelente para concentrar ovos pesados de helmintos (como Trichuris trichiura, Ascaris lumbricoides e Schistosoma mansoni).",
     explicacaoAlternativas: {
       A: "Incorreto. Faust é um método de flutuação para cistos de protozoários e ovos leves.",
@@ -1155,12 +1155,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "O Ascaris lumbricoides é o maior nematódeo intestinal humano. Qual é o dimorfismo sexual evidente observado nos espécimes adultos desse parásito?",
     alternativas: [
-      "A) O macho é significativamente maior que a fêmea e possui cauda reta.",
-      "B) A fêmea é maior (20-35 cm) com extremidade posterior cônica reta; o macho é menor (15-30 cm) e possui a extremidade posterior fortemente encurvada ventralmente com espículos copuladores.",
-      "C) Ambos têm exatamente o mesmo tamanho e são hermafroditas obrigatórios.",
-      "D) O macho possui ventosa oral em formato de gancho e a fêmea é microscópica."
+      { id: "A", texto: "O macho é significativamente maior que a fêmea e possui cauda reta." },
+      { id: "B", texto: "A fêmea é maior (20-35 cm) com extremidade posterior cônica reta; o macho é menor (15-30 cm) e possui a extremidade posterior fortemente encurvada ventralmente com espículos copuladores." },
+      { id: "C", texto: "Ambos têm exatamente o mesmo tamanho e são hermafroditas obrigatórios." },
+      { id: "D", texto: "O macho possui ventosa oral em formato de gancho e a fêmea é microscópica." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "Em Ascaris lumbricoides, as fêmeas adultas medem de 20 a 35 cm e têm a extremidade posterior reta e cônica. Os machos são visivelmente menores (15 a 30 cm) e exibem a cauda curvada em espiral ventralmente com espículos espiculados para cópula.",
     explicacaoAlternativas: {
       A: "Incorreto. A fêmea é maior e o macho possui a cauda curvada, não reta.",
@@ -1181,12 +1181,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "O ciclo biológico do Ascaris lumbricoides envolve obrigatoriamente uma passagem parenquimatosa pelo sistema respiratório do hospedeiro. Essa migração larval pelos pulmões é denominada CICLO DE LOOS. Qual a sequência anátomo-fisiológica dessa migração a partir da eclosão intestinal?",
     alternativas: [
-      "A) Intestino -> Ceco -> Rim -> Bexiga -> Uretra -> Intestino.",
-      "B) Intestino (eclosão L3) -> Veia Mesentérica / Sistema Porta -> Fígado -> Veia Cava Inferior -> Átrio/Ventrículo Direito -> Artéria Pulmonar -> Capilares Alveolares (ruptura e maturação) -> Árvore Brônquica -> Traqueia -> Laringe (deglutição) -> Intestino Delgado.",
-      "C) Pele -> Vasos Linfáticos -> Baço -> Medula Óssea -> Esôfago.",
-      "D) Esôfago -> Estômago -> Glândula Salivar -> Corrente arterial sistêmica -> Cérebro."
+      { id: "A", texto: "Intestino -> Ceco -> Rim -> Bexiga -> Uretra -> Intestino." },
+      { id: "B", texto: "Intestino (eclosão L3) -> Veia Mesentérica / Sistema Porta -> Fígado -> Veia Cava Inferior -> Átrio/Ventrículo Direito -> Artéria Pulmonar -> Capilares Alveolares (ruptura e maturação) -> Árvore Brônquica -> Traqueia -> Laringe (deglutição) -> Intestino Delgado." },
+      { id: "C", texto: "Pele -> Vasos Linfáticos -> Baço -> Medula Óssea -> Esôfago." },
+      { id: "D", texto: "Esôfago -> Estômago -> Glândula Salivar -> Corrente arterial sistêmica -> Cérebro." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "O Ciclo de Loos do Ascaris inicia-se com a eclosão da larva no intestino delgado. A larva atravessa a mucosa intestinal, ganha a circulação portal, passa pelo FÍGADO, atinge o CORAÇÃO DIREITO via veia cava e chega aos PULMÕES. Nos capilares alveolares, as larvas rompem os alvéolos, sofrem mudas, sobem pela árvore respiratória até a glote, são deglutidas e chegam maduras ao intestino delgado.",
     explicacaoAlternativas: {
       A: "Incorreto. Não envolve rins ou sistema urinário.",
@@ -1207,12 +1207,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Durante a fase pulmonar da migração larval de Ascaris lumbricoides (Ciclo de Loos), o paciente pode apresentar uma síndrome alérgica respiratória caracterizada por tosse seca, dispneia, infiltrado pulmonar migratório ao raio-X de tórax e eosinofilia sanguínea elevada. Essa entidade é conhecida como:",
     alternativas: [
-      "A) Síndrome de Cushing",
-      "B) Síndrome de Löffler",
-      "C) Síndrome de Guillain-Barré",
-      "D) Síndrome de Zollinger-Ellison"
+      { id: "A", texto: "Síndrome de Cushing" },
+      { id: "B", texto: "Síndrome de Löffler" },
+      { id: "C", texto: "Síndrome de Guillain-Barré" },
+      { id: "D", texto: "Síndrome de Zollinger-Ellison" }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A Síndrome de Löffler é a pneumonia eosinofílica alérgica transitória causada pela ruptura dos capilares alveolares e reação de hipersensibilidade às larvas de helmintos que realizam o ciclo de Loos (Ascaris lumbricoides, Ancylostoma duodenale, Necator americanus, Strongyloides stercoralis). Caracteriza-se por tosse, sibilos, infiltrados pulmonares fugazes ao raio-X e marcante eosinofilia periférica.",
     explicacaoAlternativas: {
       A: "Incorreto. Síndrome de Cushing é hipercortisolismo.",
@@ -1233,12 +1233,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "dificil",
     enunciado: "Em crianças com carga parasitária volumosa de Ascaris lumbricoides, o enovelamento de dezenas a centenas de vermes adultos na válvula ileocecal pode causar uma emergência médica obstrutiva. Qual a conduta medicamentosa inicial recomendada na SUBOCLUSÃO INTESTINAL por Ascaris antes de considerar cirurgia?",
     alternativas: [
-      "A) Prescrição imediata de Albendazol em dose dobrada isolado.",
-      "B) Uso de PIPERAZINA (que causa paralisia flácida dos vermes) associada a ÓLEO MINERAL por sonda nasogástrica, jejum e hidratação venosa.",
-      "C) Administração de antibióticos carbapenêmicos e laxantes irritantes osmóticos vigorosos.",
-      "D) Realização de enema com formaldeído 10%."
+      { id: "A", texto: "Prescrição imediata de Albendazol em dose dobrada isolado." },
+      { id: "B", texto: "Uso de PIPERAZINA (que causa paralisia flácida dos vermes) associada a ÓLEO MINERAL por sonda nasogástrica, jejum e hidratação venosa." },
+      { id: "C", texto: "Administração de antibióticos carbapenêmicos e laxantes irritantes osmóticos vigorosos." },
+      { id: "D", texto: "Realização de enema com formaldeído 10%." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "Na suboclusão intestinal por Ascaris, anti-helmínticos convencionais (como Albendazol/Mebendazol) que causam paralisia espástica ou morte do verme podem piorar o bolo de vermes e precipitar perfuração intestinal. A PIPERAZINA é o fármaco de escolha porque atua como agonista GABAergo hiperpolarizando a junção neuromuscular do verme, provocando PARALISIA FLÁCIDA. Os vermes relaxados desatam o nó e são expelidos suavemente impulsionados pelo óleo mineral.",
     explicacaoAlternativas: {
       A: "Incorreto. Albendazol/Mebendazol podem provocar tetania e piorar o nó obstrutivo.",
@@ -1259,12 +1259,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "Como são caracterizados os ovos FÉRTEIS de Ascaris lumbricoides observados no exame parasitológico de fezes?",
     alternativas: [
-      "A) Ovais/arredondados, envolvidos por uma espessa casca mamilonada (revestida por camada albuminosa castanha) contendo uma célula-ovo no centro.",
-      "B) Formato de barril com rolhas polares hialinas transparente nas pontas.",
-      "C) Triangulares com espículo lateral proeminente em forma de espinho.",
-      "D) Cistos esféricos com 4 núcleos idênticos e corpos cromatoides."
+      { id: "A", texto: "Ovais/arredondados, envolvidos por uma espessa casca mamilonada (revestida por camada albuminosa castanha) contendo uma célula-ovo no centro." },
+      { id: "B", texto: "Formato de barril com rolhas polares hialinas transparente nas pontas." },
+      { id: "C", texto: "Triangulares com espículo lateral proeminente em forma de espinho." },
+      { id: "D", texto: "Cistos esféricos com 4 núcleos idênticos e corpos cromatoides." }
     ],
-    respostaCorreta: 0,
+    respostaCorreta: "A",
     explicacao: "Os ovos férteis de Ascaris lumbricoides são ovais ou subesféricos (45-75 µm), com casca espessa constituída por três camadas, sendo a mais externa uma camada albuminosa rugosa castanho-escura denominada 'mamilonada'. Ovos inférteis são mais alongados e estreitos.",
     explicacaoAlternativas: {
       A: "Correto. Casca espessa com camada externa rugosa mamilonada marrom é patognomônica de ovos férteis de Ascaris.",
@@ -1285,12 +1285,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "O Ascaris lumbricoides é conhecido por apresentar comportamento de MIGRAÇÃO ERRÁTICA em situações de estresse (como febre alta, uso de anestésicos ou doses inadequadas de vermífugos). Qual complicação hepatobiliar ou digestiva pode resultar dessa migração errática?",
     alternativas: [
-      "A) Colangite, colecistite aguda ou pancreatite aguda por migração e colmatação da ampolla de Vater/colédoco.",
-      "B) Glomerulonefrite difusa aguda por deposição de imunocomplexos no néfron.",
-      "C) Endocardite bacteriana subaguda da valva mitral.",
-      "D) Trombose venosa profunda iliofemoral."
+      { id: "A", texto: "Colangite, colecistite aguda ou pancreatite aguda por migração e colmatação da ampolla de Vater/colédoco." },
+      { id: "B", texto: "Glomerulonefrite difusa aguda por deposição de imunocomplexos no néfron." },
+      { id: "C", texto: "Endocardite bacteriana subaguda da valva mitral." },
+      { id: "D", texto: "Trombose venosa profunda iliofemoral." }
     ],
-    respostaCorreta: 0,
+    respostaCorreta: "A",
     explicacao: "Devido ao hábito tátil de penetrar em orifícios, o Ascaris adulto estimulado pode migrar em sentido retrógrado a partir do duodeno, adentrando a Ampola de Vater e o colédoco. Isso pode causar colangite, icterícia obstrutiva, abscesso hepático ou obstrução do ducto pancreático de Wirsung desencadeando pancreatite aguda.",
     explicacaoAlternativas: {
       A: "Correto. Migração ao colédoco/ducto pancreático gera icterícia obstrutiva, colangite e pancreatite.",
@@ -1311,12 +1311,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "Qual a profilaxia prioritária mais eficaz no controle comunitário da ascaridíase e outras geo-helmintíases?",
     alternativas: [
-      "A) Eliminação de focos de mosquitos vetores com inseticidas de ação residual.",
-      "B) Saneamento básico (esgotamento sanitário), tratamento da água para consumo, higienização cuidadosa de hortaliças e lavagem frequente das mãos.",
-      "C) Vacinação compulsória na infância com vírus vivo atenuado.",
-      "D) Erradicação de caracóis de água doce do gênero Biomphalaria."
+      { id: "A", texto: "Eliminação de focos de mosquitos vetores com inseticidas de ação residual." },
+      { id: "B", texto: "Saneamento básico (esgotamento sanitário), tratamento da água para consumo, higienização cuidadosa de hortaliças e lavagem frequente das mãos." },
+      { id: "C", texto: "Vacinação compulsória na infância com vírus vivo atenuado." },
+      { id: "D", texto: "Erradicação de caracóis de água doce do gênero Biomphalaria." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A transmissão do Ascaris depende diretamente da contaminação do solo e alimentos por fezes humanas contendo ovos. As medidas preventivas essenciais envolvem saneamento básico universal, acesso a água potável, destinação adequada dos dejetos humanos, lavagem de vegetais e higiene pessoal.",
     explicacaoAlternativas: {
       A: "Incorreto. Ascaris não possui vetor inseto alado.",
@@ -1337,12 +1337,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Qual a posologia padrão recomendada do ALBENDAZOL para o tratamento de infecção intestinal não-obstrutiva por Ascaris lumbricoides em adultos e crianças maiores de 2 anos?",
     alternativas: [
-      "A) 400 mg por via oral em dose única.",
-      "B) 100 mg por via oral de 12 em 12 horas durante 21 dias consecutivos.",
-      "C) 10 mg/kg injetável por via intramuscular a cada 8 horas.",
-      "D) 2000 mg por via oral divididos em 4 tomadas diárias por 10 dias."
+      { id: "A", texto: "400 mg por via oral em dose única." },
+      { id: "B", texto: "100 mg por via oral de 12 em 12 horas durante 21 dias consecutivos." },
+      { id: "C", texto: "10 mg/kg injetável por via intramuscular a cada 8 horas." },
+      { id: "D", texto: "2000 mg por via oral divididos em 4 tomadas diárias por 10 dias." }
     ],
-    respostaCorreta: 0,
+    respostaCorreta: "A",
     explicacao: "O tratamento padrão não-obstrutivo da ascaridíase é extremamente simples e altamente eficaz: Albendazol 400 mg VO em DOSE ÚNICA (ou Mebendazol 100 mg 2x/dia por 3 dias).",
     explicacaoAlternativas: {
       A: "Correto. Albendazol 400 mg VO em dose única é o esquema de primeira escolha recomendado pela OMS.",
@@ -1367,12 +1367,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "A Doença de Chagas (Tripanossomíase Americana) é uma zoonose causada pelo protozoário flagelado Trypanosoma cruzi. Qual o inseto vetor responsável pela transmissão vetorial clássica ao ser humano?",
     alternativas: [
-      "A) Mosquito do gênero Aedes (Aedes aegypti)",
-      "B) Hemípteros hematófagos da subfamília Triatominae (conhecidos como barbeiro, bicudo ou chupança, ex: Triatoma infestans)",
-      "C) Mosquitos flebotomíneos do gênero Lutzomyia (mosquito-palha)",
-      "D) Mosca tsé-tsé (Glossina morsitans)"
+      { id: "A", texto: "Mosquito do gênero Aedes (Aedes aegypti)" },
+      { id: "B", texto: "Hemípteros hematófagos da subfamília Triatominae (conhecidos como barbeiro, bicudo ou chupança, ex: Triatoma infestans)" },
+      { id: "C", texto: "Mosquitos flebotomíneos do gênero Lutzomyia (mosquito-palha)" },
+      { id: "D", texto: "Mosca tsé-tsé (Glossina morsitans)" }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "O vetor clássico da Doença de Chagas é o percevejo triatomíneo hematófago (conhecido popularmente como barbeiro, bicudo, procto ou chupança), destacando-se gêneros como Triatoma, Panstrongylus e Rhodnius.",
     explicacaoAlternativas: {
       A: "Incorreto. Aedes transmite arbovírus.",
@@ -1393,12 +1393,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Como ocorre o mecanismo EXATO de infecção vetorial humana pelo Trypanosoma cruzi durante a picada do barbeiro?",
     alternativas: [
-      "A) O triatomíneo inocula diretamente formas tripomastigotas metacíclicas através de sua saliva durante o ato da picada.",
-      "B) O triatomíneo defeca/urina na pele durante ou logo após repasto sanguíneo; as formas TRIPOMASTIGOTAS METACÍCLICAS presentes nas fezes penetram ativamente pela ferida da picada ou pelas mucosas ao serem coçadas pelo hospedeiro.",
-      "C) O protozoário encista-se nos folículos pilosos e penetra após fricção mecânica sem fezes.",
-      "D) As larvas do parasita são expelidas pelo espirro do inseto."
+      { id: "A", texto: "O triatomíneo inocula diretamente formas tripomastigotas metacíclicas através de sua saliva durante o ato da picada." },
+      { id: "B", texto: "O triatomíneo defeca/urina na pele durante ou logo após repasto sanguíneo; as formas TRIPOMASTIGOTAS METACÍCLICAS presentes nas fezes penetram ativamente pela ferida da picada ou pelas mucosas ao serem coçadas pelo hospedeiro." },
+      { id: "C", texto: "O protozoário encista-se nos folículos pilosos e penetra após fricção mecânica sem fezes." },
+      { id: "D", texto: "As larvas do parasita são expelidas pelo espirro do inseto." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A transmissão vetorial do T. cruzi NÃO é inoculativa (salivar), mas sim por CONTAMINAÇÃO FECAL (estercorária). Ao sugar o sangue, o triatomíneo ingurgitado defeca/urina perto da picada. As formas infectantes (tripomastigotas metacíclicas) eliminadas nas fezes são atritadas pelo próprio paciente ao coçar o local, penetrando na ferida aberta ou em mucosas intactas (como a conjuntiva ocular).",
     explicacaoAlternativas: {
       A: "Incorreto. A infecção não é por inoculação salivar (diferente da Malária ou Leishmaniose).",
@@ -1419,12 +1419,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "O Trypanosoma cruzi apresenta diferentes formas evolutivas durante seu ciclo de vida. Qual é a forma INTRACELLULAR aflagelada, arredondada e multiplicativa (por divisão binária) encontrada nos tecidos (como miocárdio e plexos mioentéricos) do hospedeiro vertebrado?",
     alternativas: [
-      "A) Epimastigota",
-      "B) Amastigota",
-      "C) Tripomastigota sanguíneo",
-      "D) Promastigota"
+      { id: "A", texto: "Epimastigota" },
+      { id: "B", texto: "Amastigota" },
+      { id: "C", texto: "Tripomastigota sanguíneo" },
+      { id: "D", texto: "Promastigota" }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A forma AMASTIGOTA é a fase intracelular obrigatoriamente sem flagelo livre (possuindo apenas cinetoplasto e núcleo). Ela reside e multiplica-se ativamente por divisão binária no citoplasma das células do hospedeiro humano (especialmente miócitos cardíacos, células musculares lisas e glia), formando os característicos 'ninhos de amastigotas'.",
     explicacaoAlternativas: {
       A: "Incorreto. Epimastigota é a forma de multiplicação no tubo digestivo do inseto vetor.",
@@ -1445,12 +1445,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "Na atualidade epidemiológica do Brasil, surtos surtos agudos de Doença de Chagas na Região Amazônica estão frequentemente associados a qual via de transmissão?",
     alternativas: [
-      "A) Transmissão por aerossóis hospitalares.",
-      "B) Via Oral (ingestão de alimentos contaminados com triatomíneos triturados ou suas fezes, como açaí ou caldo de cana artesanais não pasteurizados).",
-      "C) Picada de carrapatos do gênero Amblyomma.",
-      "D) Mordedura de animais silvestres como gambás e tatus."
+      { id: "A", texto: "Transmissão por aerossóis hospitalares." },
+      { id: "B", texto: "Via Oral (ingestão de alimentos contaminados com triatomíneos triturados ou suas fezes, como açaí ou caldo de cana artesanais não pasteurizados)." },
+      { id: "C", texto: "Picada de carrapatos do gênero Amblyomma." },
+      { id: "D", texto: "Mordedura de animais silvestres como gambás e tatus." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "No Brasil contemporâneo, a VIA ORAL tornou-se a principal forma de transmissão de casos agudos de Chagas (mais de 70% dos casos). Ela ocorre pelo consumo de açaí, caldo de cana ou bacaba processados sem higiene, nos quais triatomíneos ou suas fezes infectadas foram triturados acidentalmente.",
     explicacaoAlternativas: {
       A: "Incorreto. Não há transmissão respiratória por aerossóis.",
@@ -1471,12 +1471,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Um sinal patognomônico clássico observável na FASE AGUDA da Doença de Chagas vetorial, quando a porta de entrada do parásito é a conjuntiva ocular, é o SINAL DE ROMAÑA. Como ele se caracteriza clinicamente?",
     alternativas: [
-      "A) Icterícia intensa com colúria e acolia fecal.",
-      "B) Edema bipalpebral unilateral, indolor, de coloração violácea, acompanhado de dacrioadenite e enfartamento do linfonodo pré-auricular.",
-      "C) Úlceras cutâneas dolorosas de bordas moldadas em 'emolduramento de cratera'.",
-      "D) Exantema maculopapular descamativo palmo-plantar."
+      { id: "A", texto: "Icterícia intensa com colúria e acolia fecal." },
+      { id: "B", texto: "Edema bipalpebral unilateral, indolor, de coloração violácea, acompanhado de dacrioadenite e enfartamento do linfonodo pré-auricular." },
+      { id: "C", texto: "Úlceras cutâneas dolorosas de bordas moldadas em 'emolduramento de cratera'." },
+      { id: "D", texto: "Exantema maculopapular descamativo palmo-plantar." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "O Sinal de Romaña é o complexo oftalmoganglionar agudo de inoculação ocular: edema palpebral unilateral violáceo (olho roxo), indolor, associado a dacrioadenite (inflamação da glândula lacrimal) e enfartamento ganglionar pré-auricular ou submandibular homolateral.",
     explicacaoAlternativas: {
       A: "Incorreto. Caracteriza hepatite grave ou icterícia obstrutiva.",
@@ -1497,12 +1497,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "dificil",
     enunciado: "O diagnóstico laboratorial da Doença de Chagas difere radicalmente entre a Fase Aguda e a Fase Crônica. Qual a estratégia diagnóstica recomendada para a FASE CRÔNICA da doença?",
     alternativas: [
-      "A) Pesquisa direta do parásito a fresco ou gota espessa no sangue periférico.",
-      "B) Exclusivamente a realização de coprocultura para isolamento em meio de NNN.",
-      "C) Realização de pelo menos DOIS testes sorológicos de princípios metodológicos diferentes (ex: ELISA e Imunofluorescência Indireta - IFI) para detecção de anticorpos IgG anti-T. cruzi.",
-      "D) Tomografia computadorizada de tórax sem contraste."
+      { id: "A", texto: "Pesquisa direta do parásito a fresco ou gota espessa no sangue periférico." },
+      { id: "B", texto: "Exclusivamente a realização de coprocultura para isolamento em meio de NNN." },
+      { id: "C", texto: "Realização de pelo menos DOIS testes sorológicos de princípios metodológicos diferentes (ex: ELISA e Imunofluorescência Indireta - IFI) para detecção de anticorpos IgG anti-T. cruzi." },
+      { id: "D", texto: "Tomografia computadorizada de tórax sem contraste." }
     ],
-    respostaCorreta: 2,
+    respostaCorreta: "C",
     explicacao: "Na FASE CRÔNICA, a parassitemia sanguínea é extremamente baixa ou intermitente, tornando os exames diretos parasitológicos ineficazes. O diagnóstico fundamenta-se na sorologia (pesquisa de IgG específica): exige-se a positividade em pelo menos DOIS testes de métodos distintos (ex: ELISA + IFI ou Hemaglutinação) para confirmar o diagnóstico.",
     explicacaoAlternativas: {
       A: "Incorreto. Exame direto a fresco / gota espessa é o método de escolha na FASE AGUDA (alta parassitemia).",
@@ -1523,12 +1523,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "dificil",
     enunciado: "A Cardiopatia Chagásica Crônica (CCC) é a complicação mais grave e incapacitante da doença. Quais são os achados ELETROCARDIOGRÁFICOS (ECG) clássicos mais característicos da agressão ao sistema de condução cardíaco pelo T. cruzi?",
     alternativas: [
-      "A) Supradesnivelamento do segmento ST em todas as derivações com ondas Q patológicas em V1-V3.",
-      "B) Bloqueio de Ramo Direito (BRD) associado a Bloqueio Divisor Anterior Esquerdo (BDAE / BDAG).",
-      "C) Síndrome de Wolff-Parkinson-White com onda Delta proeminente.",
-      "D) Taquicardia atrial multifocal com intervalo PR curto."
+      { id: "A", texto: "Supradesnivelamento do segmento ST em todas as derivações com ondas Q patológicas em V1-V3." },
+      { id: "B", texto: "Bloqueio de Ramo Direito (BRD) associado a Bloqueio Divisor Anterior Esquerdo (BDAE / BDAG)." },
+      { id: "C", texto: "Síndrome de Wolff-Parkinson-White com onda Delta proeminente." },
+      { id: "D", texto: "Taquicardia atrial multifocal com intervalo PR curto." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A agressão inflamatória e a fibrose progressiva promovidas pelo T. cruzi destroem o sistema de condução cardíaco. A combinação eletrocardiográfica clássica patognomônica da Cardiopatia Chagásica Crônica é a associação de Bloqueio de Ramo Direito (BRD) com Bloqueio Divisor Anterior Esquerdo (BDAE). Extrassístoles ventriculares polimórficas e aneurisma de ápice do ventrículo esquerdo também são frequentes.",
     explicacaoAlternativas: {
       A: "Incorreto. Corresponde ao Infarto Agudo do Miocárdio de parede anterior.",
@@ -1549,12 +1549,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "A Forma Digestiva da Doença de Chagas (Megaesôfago e Megacólon) decorre da destruição de qual estrutura histológica do trato gastrointestinal pelo processo inflamatório crônico?",
     alternativas: [
-      "A) Glândulas secretoras de gastrina do antro gástrico.",
-      "B) Plexos nervosos entéricos (Plexo Mioentérico de Auerbach e Submucoso de Meissner), levando à denervação autonômica e acalásia/aperistaltismo.",
-      "C) Microvilosidades em escova do epitélio absortivo duodenal.",
-      "D) Células ilhotas pancreáticas secretoras de insulina."
+      { id: "A", texto: "Glândulas secretoras de gastrina do antro gástrico." },
+      { id: "B", texto: "Plexos nervosos entéricos (Plexo Mioentérico de Auerbach e Submucoso de Meissner), levando à denervação autonômica e acalásia/aperistaltismo." },
+      { id: "C", texto: "Microvilosidades em escova do epitélio absortivo duodenal." },
+      { id: "D", texto: "Células ilhotas pancreáticas secretoras de insulina." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "O T. cruzi promove a destruição seletiva (denervação) dos neurônios dos plexos intramurais entéricos de Auerbach (mioentérico) e Meissner (submucoso). A perda do controle motor autônomo impede o relaxamento receptivo dos esfíncteres e extingue o peristaltismo, resultando na dilatação maciça progressiva das vísceras (Megaesôfago com disfagia/regurgitação e Megacólon com constipação obstinada e fecalomas).",
     explicacaoAlternativas: {
       A: "Incorreto. Não há destruição seletiva de gastrinomas antrais.",
@@ -1575,12 +1575,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "Qual o fármaco etiológico de primeira escolha disponibilizado pelo SUS para o tratamento da FASE AGUDA da Doença de Chagas?",
     alternativas: [
-      "A) BENZNIDAZOL",
-      "B) Cloroquina",
-      "C) Ivermectina",
-      "D) Vancomicina"
+      { id: "A", texto: "BENZNIDAZOL" },
+      { id: "B", texto: "Cloroquina" },
+      { id: "C", texto: "Ivermectina" },
+      { id: "D", texto: "Vancomicina" }
     ],
-    respostaCorreta: 0,
+    respostaCorreta: "A",
     explicacao: "O BENZNIDAZOL é o antiparasitário de primeira linha para o tratamento etiológico da Doença de Chagas (o Nifurtimox é a alternativa de segunda linha). O tratamento é altamente eficaz na fase aguda, em infecções congênitas e em acidentes laboratoriais, reduzindo a parassitemia e prevenindo a progressão crônica.",
     explicacaoAlternativas: {
       A: "Correto. Benznidazol é o medicamento antiparasitário específico padronizado contra T. cruzi.",
@@ -1606,12 +1606,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "As quatro técnicas clássicas de exame físico propedêutico devem ser executadas em uma sequência padronizada. Na maioria dos segmentos corporais (como o tórax), qual é a ordem cronológica CORRETA de execução dessas técnicas?",
     alternativas: [
-      "A) Ausculta -> Palpação -> Percussão -> Inspeção.",
-      "B) Inspeção -> Palpação -> Percussão -> Ausculta.",
-      "C) Percussão -> Inspeção -> Ausculta -> Palpação.",
-      "D) Palpação -> Ausculta -> Inspeção -> Percussão."
+      { id: "A", texto: "Ausculta -> Palpação -> Percussão -> Inspeção." },
+      { id: "B", texto: "Inspeção -> Palpação -> Percussão -> Ausculta." },
+      { id: "C", texto: "Percussão -> Inspeção -> Ausculta -> Palpação." },
+      { id: "D", texto: "Palpação -> Ausculta -> Inspeção -> Percussão." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A sequência clássica e lógica do exame físico geral e torácico é: 1. Inspeção (observação visual); 2. Palpação (tátil); 3. Percussão (acústica por golpamento); 4. Ausculta (estetoscópica). A única exceção marcante é o EXAME ABDOMINAL, onde a ausculta precede a palpação e a percussão para não alterar os ruídos hidroaéreos.",
     explicacaoAlternativas: {
       A: "Incorreto. Ordem invertida; ausculta em primeiro lugar altera os achados táteis.",
@@ -1632,12 +1632,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "Por convenção internacional e ergonômica da prática médica, em qual lado do paciente deitado em decúbito dorsal o examinador deve preferencialmente posicionar-se para realizar o exame físico?",
     alternativas: [
-      "A) À esquerda do paciente.",
-      "B) À direita do paciente.",
-      "C) Aos pés da cama obrigatoriamente.",
-      "D) Indiferentemente em qualquer lado, sem padronização recomendada."
+      { id: "A", texto: "À esquerda do paciente." },
+      { id: "B", texto: "À direita do paciente." },
+      { id: "C", texto: "Aos pés da cama obrigatoriamente." },
+      { id: "D", texto: "Indiferentemente em qualquer lado, sem padronização recomendada." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "Por convenção propedêutica histórica e prática (facilitando a palpação do fígado, ictus cordis e manobras vasculares), o examinador deve posicionar-se à DIREITA do paciente leito.",
     explicacaoAlternativas: {
       A: "Incorreto. O lado esquerdo é reservado para manobras específicas ou examinadores canhotos quando estritamente necessário.",
@@ -1658,12 +1658,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Durante a palpação propedêutica, a polpa dos dedos e a face palmar das articulações metacarpofalângicas são mais adequadas para avaliar a tátil de impulsões e vibrações (ex: frêmito tóraco-vocal). Qual região da mão do examinador é a MAIS SENSÍVEL para a percepção da TEMPERATURA cutânea do paciente?",
     alternativas: [
-      "A) A ponta dos polegares.",
-      "B) A face dorsal da mão ou dos dedos (dorsum manus).",
-      "C) A eminência tenar da palma da mão.",
-      "D) O bordo ulnar rígido do punho."
+      { id: "A", texto: "A ponta dos polegares." },
+      { id: "B", texto: "A face dorsal da mão ou dos dedos (dorsum manus)." },
+      { id: "C", texto: "A eminência tenar da palma da mão." },
+      { id: "D", texto: "O bordo ulnar rígido do punho." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A pele da face DORSAL das mãos e dos dedos é significativamente mais fina e possui maior densidade de termorreceptores, tornando-a a região anatomicamente ideal para comparar a temperatura cutânea entre segmentos simétricos do corpo.",
     explicacaoAlternativas: {
       A: "Incorreto. Polegares são usados para palpação profunda ou compressão de edemas (sinal do cacifo).",
@@ -1684,12 +1684,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Na percussão propedêutica indireta digito-digital, como são denominados o dedo da mão esquerda apoiado firmemente sobre a pele do paciente e o dedo da mão direita que desfere os golpes rápidos e secos?",
     alternativas: [
-      "A) Dedo Fixador e Dedo Batedor.",
-      "B) Dedo Plessímetro e Dedo Plessor.",
-      "C) Dedo Receptor e Dedo Transmissor.",
-      "D) Dedo Estático e Dedo Dinâmico."
+      { id: "A", texto: "Dedo Fixador e Dedo Batedor." },
+      { id: "B", texto: "Dedo Plessímetro e Dedo Plessor." },
+      { id: "C", texto: "Dedo Receptor e Dedo Transmissor." },
+      { id: "D", texto: "Dedo Estático e Dedo Dinâmico." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "Na percussão digito-digital clássica: o dedo médio da mão não-dominante apoiado sobre a superfície a ser examinada é o PLESSÍMETRO. O dedo médio flexionado da mão dominante que golpeia a falange média do plessímetro com movimento solto de punho é o PLESSOR.",
     explicacaoAlternativas: {
       A: "Incorreto. Não são os termos propedêuticos formais.",
@@ -1710,12 +1710,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Qual som percutório é fisiologicamente esperado ao se percutir o parênquima pulmonar normal aireado e qual é o som obtido sobre uma víscera oca contendo ar (como a bolha de ar do estômago / Espaço de Traube)?",
     alternativas: [
-      "A) Som Maciço no pulmão; Som Claro Pulmonar no estômago.",
-      "B) Som Som Claro Pulmonar (Atímpano) no pulmão; Som Tímpânico no estômago.",
-      "C) Som Submaciço no pulmão; Som Hiperressonante no estômago.",
-      "D) Som Maciço em ambas as estruturas."
+      { id: "A", texto: "Som Maciço no pulmão; Som Claro Pulmonar no estômago." },
+      { id: "B", texto: "Som Som Claro Pulmonar (Atímpano) no pulmão; Som Tímpânico no estômago." },
+      { id: "C", texto: "Som Submaciço no pulmão; Som Hiperressonante no estômago." },
+      { id: "D", texto: "Som Maciço em ambas as estruturas." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "O parênquima pulmonar sadio aireado produz o som CLARO PULMONAR (ou ressonante). Uma cavidade oca contendo gás sob tensão (como a bolha gástrica no Espaço de Traube ou alças intestinais) produz o som TIMPÂNICO (musical e de alta tonalidade). Órgãos sólidos (fígado, baço) produzem som MACIÇO.",
     explicacaoAlternativas: {
       A: "Incorreto. Som maciço no pulmão indica consolidação/derrame pleural.",
@@ -1736,12 +1736,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "Ao utilizar a campânula (cupula) e o diafragma (membrana) do estetoscópio durante a ausculta, qual a recomendação propedêutica para a captação de sons de BAIXA frequência (graves, como a 3ª e 4ª bulhas cardíacas e o sopro de estenose mitral)?",
     alternativas: [
-      "A) Pressionar o diafragma com muita força contra a pele do paciente.",
-      "B) Encostar suavemente a CAMPÂNULA sobre a pele sem exercer pressão excessiva.",
-      "C) Utilizar apenas o diafragma com o paciente em pé.",
-      "D) Desconectar as olivas auriculares do estetoscópio."
+      { id: "A", texto: "Pressionar o diafragma com muita força contra a pele do paciente." },
+      { id: "B", texto: "Encostar suavemente a CAMPÂNULA sobre a pele sem exercer pressão excessiva." },
+      { id: "C", texto: "Utilizar apenas o diafragma com o paciente em pé." },
+      { id: "D", texto: "Desconectar as olivas auriculares do estetoscópio." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A CAMPÂNULA é projetada para auscultar sons de BAIXA FREQUÊNCIA (graves). Deve ser aplicada suavemente sobre a pele; se for pressionada com força, a própria pele estica-se e atua como um diafragma, filtrando os sons graves. O DIAFRAGMA detecta sons de ALTA FREQUÊNCIA (agudos, como B1, B2 e sopro de insuficiência aórtica).",
     explicacaoAlternativas: {
       A: "Incorreto. Pressionar o diafragma atenua os sons graves.",
@@ -1762,12 +1762,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Qual a única região anatômica do corpo humano onde a sequência propedêutica clássica DEVE ser modificada, realizando-se a AUSCULTA logo após a INSPEÇÃO e ANTES da palpação e percussão?",
     alternativas: [
-      "A) Região precordial (coração).",
-      "B) Abdome.",
-      "C) Segmento Cefálico e Pescoço.",
-      "D) Membros inferiores."
+      { id: "A", texto: "Região precordial (coração)." },
+      { id: "B", texto: "Abdome." },
+      { id: "C", texto: "Segmento Cefálico e Pescoço." },
+      { id: "D", texto: "Membros inferiores." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "No EXAME ABDOMINAL, a ausculta deve preceder a palpação e a percussão. A palpação e a percussão estimulam mecanicamente as alças intestinais, podendo alterar a frequência e o padrão natural dos ruídos hidroaéreos (peristaltismo).",
     explicacaoAlternativas: {
       A: "Incorreto. No precórdio a palpação do ictus precede a ausculta das bulhas.",
@@ -1792,12 +1792,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "O Índice de Massa Corporal (IMC) é o indicador antropométrico mais utilizado para avaliação do estado nutricional em adultos. Como ele é calculado e qual a faixa de EUTROFIA (peso normal) segundo a OMS?",
     alternativas: [
-      "A) IMC = Peso (kg) / Altura (m); Eutrofia de 10 a 15 kg/m².",
-      "B) IMC = Peso (kg) / [Altura (m)]²; Eutrofia de 18,5 a 24,9 kg/m².",
-      "C) IMC = [Altura (cm)]² / Peso (kg); Eutrofia de 30 a 35 kg/m².",
-      "D) IMC = Peso (g) / Altura (cm); Eutrofia de 50 a 60 g/cm."
+      { id: "A", texto: "IMC = Peso (kg) / Altura (m); Eutrofia de 10 a 15 kg/m²." },
+      { id: "B", texto: "IMC = Peso (kg) / [Altura (m)]²; Eutrofia de 18,5 a 24,9 kg/m²." },
+      { id: "C", texto: "IMC = [Altura (cm)]² / Peso (kg); Eutrofia de 30 a 35 kg/m²." },
+      { id: "D", texto: "IMC = Peso (g) / Altura (cm); Eutrofia de 50 a 60 g/cm." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "O IMC é calculado dividindo o peso em quilogramas pelo quadrado da altura em metros: IMC = peso / (altura)². Segundo a Classificação da OMS para adultos: < 18.5 (Baixo peso), 18.5-24.9 (Eutrofia/Peso normal), 25.0-29.9 (Sobrepeso), 30.0-34.9 (Obesidade Grau I), 35.0-39.9 (Obesidade Grau II), >= 40.0 (Obesidade Grau III/Mórbida).",
     explicacaoAlternativas: {
       A: "Incorreto. A altura deve ser elevada ao quadrado.",
@@ -1818,12 +1818,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Um paciente adulto de 45 anos apresenta peso de 98 kg e altura de 1,75 m. Ao calcular o IMC desse paciente, em qual categoria de classificação nutricional ele se enquadra?",
     alternativas: [
-      "A) Eutrofia",
-      "B) Sobrepeso",
-      "C) Obesidade Grau I",
-      "D) Obesidade Grau II"
+      { id: "A", texto: "Eutrofia" },
+      { id: "B", texto: "Sobrepeso" },
+      { id: "C", texto: "Obesidade Grau I" },
+      { id: "D", texto: "Obesidade Grau II" }
     ],
-    respostaCorreta: 3,
+    respostaCorreta: "D",
     explicacao: "Cálculo do IMC: Altura² = 1,75 x 1,75 = 3,0625. IMC = 98 / 3,0625 = 32,0 kg/m². A faixa de 30,0 a 34,9 kg/m² corresponde à Obesidade Grau I (ou moderada).",
     explicacaoAlternativas: {
       A: "Incorreto. Eutrofia vai até 24,9 kg/m².",
@@ -1844,12 +1844,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "A aferição da Circunferência Abdominal (CA) é um importante marcador de adiposidade visceral e risco metabólico/cardiovascular. Segundo os critérios da OMS e NCEP-ATPIII, quais são os valores de corte que indicam RISCO AUMENTADO/ELEVADO em homens e mulheres adultos, respectivamente?",
     alternativas: [
-      "A) > 70 cm para mulheres e > 80 cm para homens.",
-      "B) > 88 cm para mulheres e > 102 cm para homens (ou > 80 cm mulheres / > 94 cm homens para risco aumentado pela IDF).",
-      "C) > 110 cm para ambos os sexos.",
-      "D) > 50 cm para mulheres e > 60 cm para homens."
+      { id: "A", texto: "> 70 cm para mulheres e > 80 cm para homens." },
+      { id: "B", texto: "> 88 cm para mulheres e > 102 cm para homens (ou > 80 cm mulheres / > 94 cm homens para risco aumentado pela IDF)." },
+      { id: "C", texto: "> 110 cm para ambos os sexos." },
+      { id: "D", texto: "> 50 cm para mulheres e > 60 cm para homens." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A gordura visceral abdominal está diretamente associada ao risco cardiovascular e síndrome metabólica. Pelos critérios clássicos da NCEP-ATP III / OMS: Circunferência Abdominal > 88 cm em mulheres e > 102 cm em homens indicam risco cardiovascular MUITO ELEVADO. (Pela IDF, > 80 cm em mulheres e > 94 cm em homens).",
     explicacaoAlternativas: {
       A: "Incorreto. Valores muito baixos.",
@@ -1870,12 +1870,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Na aferição da temperatura corporal axilar, qual é o intervalo considerado de NORMOTERMIA e a partir de qual valor de temperatura axilar define-se FEBRE no adulto?",
     alternativas: [
-      "A) Normotermia: 32,0 - 34,0 ºC; Febre > 35,0 ºC.",
-      "B) Normotermia: 35,5 - 37,0 ºC; Febre > 37,8 ºC (sendo 37,3 a 37,7 ºC considerado estado subfebril/febrícula).",
-      "C) Normotermia: 37,5 - 39,0 ºC; Febre > 41,0 ºC.",
-      "D) Normotermia: 38,0 - 38,5 ºC; Febre > 40,0 ºC."
+      { id: "A", texto: "Normotermia: 32,0 - 34,0 ºC; Febre > 35,0 ºC." },
+      { id: "B", texto: "Normotermia: 35,5 - 37,0 ºC; Febre > 37,8 ºC (sendo 37,3 a 37,7 ºC considerado estado subfebril/febrícula)." },
+      { id: "C", texto: "Normotermia: 37,5 - 39,0 ºC; Febre > 41,0 ºC." },
+      { id: "D", texto: "Normotermia: 38,0 - 38,5 ºC; Febre > 40,0 ºC." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A temperatura axilar fisiológica normal oscila entre 35,5 ºC e 37,0 ºC. Valores entre 37,3 ºC e 37,7 ºC são classificados como estado subfebril ou febrícula. Temperatura axilar >= 37,8 ºC (ou 38,0 ºC) define FEBRE. Hiperpirexia é > 41,0 ºC.",
     explicacaoAlternativas: {
       A: "Incorreto. 32-34 ºC indica hipotermia moderada.",
@@ -1896,12 +1896,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "dificil",
     enunciado: "Na aferição da Pressão Arterial (PA) pelo método auscultatório com esfigmomanômetro aneroide e estetoscópio, o que representam os Ruídos de Korotkoff de FASE I e FASE V, respectivamente?",
     alternativas: [
-      "A) Fase I = Pressão Diastólica; Fase V = Pressão Sistólica.",
-      "B) Fase I = Aparecimento dos primeiros sons batentes claros (Pressão Arterial Sistólica - PAS); Fase V = Desaparecimento completo dos sons (Pressão Arterial Diastólica - PAD).",
-      "C) Fase I = Sopros contínuos; Fase V = Abafamento dos sons.",
-      "D) Fase I = Pressão Média; Fase V = Hiato Auscultatório."
+      { id: "A", texto: "Fase I = Pressão Diastólica; Fase V = Pressão Sistólica." },
+      { id: "B", texto: "Fase I = Aparecimento dos primeiros sons batentes claros (Pressão Arterial Sistólica - PAS); Fase V = Desaparecimento completo dos sons (Pressão Arterial Diastólica - PAD)." },
+      { id: "C", texto: "Fase I = Sopros contínuos; Fase V = Abafamento dos sons." },
+      { id: "D", texto: "Fase I = Pressão Média; Fase V = Hiato Auscultatório." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "Os Sons de Korotkoff possuem 5 fases: Fase I: primeiro som rítmico e nítido que surge ao desinflar o manguito, determinando a PRESSÃO ARTERIAL SISTÓLICA (PAS); Fases II e III: sons mais suaves e depois mais intensos; Fase IV: abafamento dos sons; Fase V: desaparecimento total dos sons, determinando a PRESSÃO ARTERIAL DIASTÓLICA (PAD) em adultos.",
     explicacaoAlternativas: {
       A: "Incorreto. A ordem das pressões está invertida.",
@@ -1922,12 +1922,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "Como é classificada a frequência respiratória (FR) em um adulto em repouso quando apresenta 26 incursões respiratórias por minuto (irpm)? (Valores de referência: 12 a 20 irpm).",
     alternativas: [
-      "A) Bradipneia",
-      "B) Eupneia",
-      "C) Taquipneia",
-      "D) Apneia"
+      { id: "A", texto: "Bradipneia" },
+      { id: "B", texto: "Eupneia" },
+      { id: "C", texto: "Taquipneia" },
+      { id: "D", texto: "Apneia" }
     ],
-    respostaCorreta: 2,
+    respostaCorreta: "C",
     explicacao: "A frequência respiratória normal (Eupneia) no adulto em repouso varia de 12 a 20 irpm. Frequência abaixo de 12 irpm é Bradipneia; acima de 20 irpm é TAQUIPNEIA. A ausência de respiração é Apneia.",
     explicacaoAlternativas: {
       A: "Incorreto. Bradipneia é FR < 12 irpm.",
@@ -1948,12 +1948,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Ao palpar o pulso arterial radial para avaliar o ritmo e a frequência cardíaca (FC), qual o intervalo normal de pulsações por minuto em um adulto em repouso (Eucardia)?",
     alternativas: [
-      "A) 30 a 50 bpm",
-      "B) 60 a 100 bpm",
-      "C) 110 a 150 bpm",
-      "D) 160 a 200 bpm"
+      { id: "A", texto: "30 a 50 bpm" },
+      { id: "B", texto: "60 a 100 bpm" },
+      { id: "C", texto: "110 a 150 bpm" },
+      { id: "D", texto: "160 a 200 bpm" }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "Em adultos de repouso, a frequência cardíaca fisiológica (Eucardia) varia de 60 a 100 batimentos por minuto (bpm). FC < 60 bpm é Bradicardia; FC > 100 bpm é Taquicardia.",
     explicacaoAlternativas: {
       A: "Incorreto. Bradicardia intensa.",
@@ -1978,12 +1978,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "O Estado Geral do paciente (EGG) é uma avaliação subjetiva global realizada pelo examinador na ectoscopia. Como ele é classicamente sumariado no prontuário médico?",
     alternativas: [
-      "A) Apenas pela nota do IMC em kg/m².",
-      "B) Bom Estado Geral (BEG), Regular Estado Geral (REG) ou Mau Estado Geral (MEG).",
-      "C) Positivo, Neutro ou Negativo.",
-      "D) Estágio 1, Estágio 2 ou Estágio 3."
+      { id: "A", texto: "Apenas pela nota do IMC em kg/m²." },
+      { id: "B", texto: "Bom Estado Geral (BEG), Regular Estado Geral (REG) ou Mau Estado Geral (MEG)." },
+      { id: "C", texto: "Positivo, Neutro ou Negativo." },
+      { id: "D", texto: "Estágio 1, Estágio 2 ou Estágio 3." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "O Estado Geral traduz a impressão de conjunto sobre a gravidade ou aparente higidez do paciente. É classificado na anamnese e ectoscopia em: BEG (Bom Estado Geral), REG (Regular Estado Geral) ou MEG (Mau Estado Geral).",
     explicacaoAlternativas: {
       A: "Incorreto. O IMC é um dado antropométrico numérico isolado.",
@@ -2004,12 +2004,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "A Escala de Coma de Glasgow Atualizada (GCS-P) avalia o nível de consciência através de 3 respostas comportamentais, acrescida da reação pupilar. Quais são os 3 parâmetros comportamentais avaliados e qual a pontuação MÍNIMA e MÁXIMA da parte comportamental?",
     alternativas: [
-      "A) Reflexo córneo, Frequência respiratória e Pressão arterial; Pontuação de 0 a 10.",
-      "B) Abertura Ocular (1-4), Resposta Verbal (1-5) e Resposta Motora (1-6); Pontuação de 3 a 15.",
-      "C) Força muscular, Sensibilidade tátil e Marcha; Pontuação de 1 a 100.",
-      "D) Diâmetro pupilar, Frequência cardíaca e Tônus muscular; Pontuação de 0 a 15."
+      { id: "A", texto: "Reflexo córneo, Frequência respiratória e Pressão arterial; Pontuação de 0 a 10." },
+      { id: "B", texto: "Abertura Ocular (1-4), Resposta Verbal (1-5) e Resposta Motora (1-6); Pontuação de 3 a 15." },
+      { id: "C", texto: "Força muscular, Sensibilidade tátil e Marcha; Pontuação de 1 a 100." },
+      { id: "D", texto: "Diâmetro pupilar, Frequência cardíaca e Tônus muscular; Pontuação de 0 a 15." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A Escala de Coma de Glasgow avalia: 1. Abertura Ocular (1 a 4 pontos); 2. Resposta Verbal (1 a 5 pontos); 3. Resposta Motora (1 a 6 pontos). A soma comportamental varia de um MÍNIMO de 3 pontos (coma profundo sem resposta) até o MÁXIMO de 15 pontos (lucidez completa). Na versão atualizada, subtrai-se a Reatividade Pupilar (0 a 2 pontos).",
     explicacaoAlternativas: {
       A: "Incorreto. Não inclui reflexos de tronco ou sinais vitais.",
@@ -2030,12 +2030,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "dificil",
     enunciado: "Ao avaliar a Resposta Motora de um paciente com rebaixamento do nível de consciência, o examinador aplica um estímulo doloroso central. O paciente responde com extensão anormal dos membros superiores com adução e pronação dos punhos ('postura de decerebração'). Quantos pontos ele recebe na Resposta Motora da Escala de Glasgow?",
     alternativas: [
-      "A) 6 pontos (obedece a comandos)",
-      "B) 4 pontos (flexão normal/localiza a dor)",
-      "C) 2 pontos (extensão anormal / decerebração)",
-      "D) 1 ponto (nenhuma resposta motora)"
+      { id: "A", texto: "6 pontos (obedece a comandos)" },
+      { id: "B", texto: "4 pontos (flexão normal/localiza a dor)" },
+      { id: "C", texto: "2 pontos (extensão anormal / decerebração)" },
+      { id: "D", texto: "1 ponto (nenhuma resposta motora)" }
     ],
-    respostaCorreta: 2,
+    respostaCorreta: "C",
     explicacao: "Na pontuação da Resposta Motora da Escala de Glasgow: 6 = Obedece a comandos; 5 = Localiza a dor; 4 = Flexão normal de retirada; 3 = Flexão anormal à dor (postura de decorticação); 2 = Extensão anormal à dor (postura de decerebração); 1 = Nenhuma resposta motora.",
     explicacaoAlternativas: {
       A: "Incorreto. 6 é quando obedece a ordens verbais.",
@@ -2056,12 +2056,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Em relação aos Biotipos ou Tipos Constitucionais do corpo humano, como se caracteriza o indivíduo BREVILÍNEO (ou pícnico) em relação ao Ângulo de Charpy (ângulo inframamário/costal formado pelo apêndice xifoide e cartilagens costais)?",
     alternativas: [
-      "A) Ângulo de Charpy menor que 90º (agudo), com tórax longo e pescoço afilado.",
-      "B) Ângulo de Charpy maior que 90º (obtuso), com pescoço curto e largo, tórax largo e abdome proeminente.",
-      "C) Ângulo de Charpy exatamente reto a 90º em todos os momentos.",
-      "D) Ausência completa de ângulo costal."
+      { id: "A", texto: "Ângulo de Charpy menor que 90º (agudo), com tórax longo e pescoço afilado." },
+      { id: "B", texto: "Ângulo de Charpy maior que 90º (obtuso), com pescoço curto e largo, tórax largo e abdome proeminente." },
+      { id: "C", texto: "Ângulo de Charpy exatamente reto a 90º em todos os momentos." },
+      { id: "D", texto: "Ausência completa de ângulo costal." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "Os biotipos estruturais dividem-se em: 1. Brevilíneo (pícnico): pescoço curto/grosso, tórax largo/abobadado, manguito muscular denso e ÂNGULO DE CHARPY > 90º (obtuso); 2. Longilíneo (astênico): estipulado por tórax delgado, membros longos e ÂNGULO DE CHARPY < 90º (agudo); 3. Normolíneo (atlético): proporções intermediárias com Ângulo de Charpy de cerca de 90º.",
     explicacaoAlternativas: {
       A: "Incorreto. Ângulo de Charpy agudo (< 90º) define o indivíduo LONGILÍNEO.",
@@ -2082,12 +2082,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "Qual a denominação dada à atitude ou posição antálgica assumida espontaneamente no leito por pacientes com pericardite aguda ou grandes derrames pericárdicos, na qual o paciente debruça o tórax sobre os joelhos dobrados para aliviar a dor?",
     alternativas: [
-      "A) Posição Ortopneica",
-      "B) Posição Genupeitoral (ou da 'Prece Maometana')",
-      "C) Opistótono",
-      "D) Decúbito lateral em gatilho de espingarda"
+      { id: "A", texto: "Posição Ortopneica" },
+      { id: "B", texto: "Posição Genupeitoral (ou da 'Prece Maometana')" },
+      { id: "C", texto: "Opistótono" },
+      { id: "D", texto: "Decúbito lateral em gatilho de espingarda" }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A atitude Genupeitoral (ou posição da 'prece maometana') consiste em ajoelhar-se no leito encostando o peito no colchão ou debruçar-se para a frente sobre travesseiros. É típica da pericardite aguda e derrame pericárdico, pois reduz o atrito e a tensão sobre o pericárdio inflamado.",
     explicacaoAlternativas: {
       A: "Incorreto. Ortopneica é sentar-se à beira do leito apoiando as mãos para usar musculatura acessória na insuficiência cardíaca/asma.",
@@ -2108,12 +2108,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "A observação das feições faciais (fácies) pode fornecer pistas diagnósticas imediatas na ectoscopia. Qual fácies é caracterizada por mímica facial congelada/ausente ('fácies em máscara' ou inexpressiva), pouca frequência de piscar de olhos e olhar fixo?",
     alternativas: [
-      "A) Fácies Cushingóide ou em 'Lua Cheia'",
-      "B) Fácies Basedowiana (ou Hipertiroideia)",
-      "C) Fácies Parkinsoniana",
-      "D) Fácies Hipocrática"
+      { id: "A", texto: "Fácies Cushingóide ou em 'Lua Cheia'" },
+      { id: "B", texto: "Fácies Basedowiana (ou Hipertiroideia)" },
+      { id: "C", texto: "Fácies Parkinsoniana" },
+      { id: "D", texto: "Fácies Hipocrática" }
     ],
-    respostaCorreta: 2,
+    respostaCorreta: "C",
     explicacao: "A Fácies Parkinsoniana (típica da Doença de Parkinson) é consequência da acinesia e hipocinesia dos músculos da mímica facial. O rosto perde a expressividade emocional (fácies em máscara/imóvel), os olhos piscam raramente e a boca pode permanecer ligeiramente entreaberta com sialorreia.",
     explicacaoAlternativas: {
       A: "Incorreto. Fácies Cushingóide apresenta arredondamento facial ('lua cheia'), giba dorsal e acne por excesso de corticoides.",
@@ -2134,12 +2134,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Qual fácies endócrina é caracterizada por bochechas rubicundas, acúmulo de gordura facial dando aspecto arredondado em 'lua cheia', associada a estrias violáceas no abdome e giba dorsal?",
     alternativas: [
-      "A) Fácies Acromegálica",
-      "B) Fácies Cushingóide",
-      "C) Fácies Myxedematosa",
-      "D) Fácies Renal"
+      { id: "A", texto: "Fácies Acromegálica" },
+      { id: "B", texto: "Fácies Cushingóide" },
+      { id: "C", texto: "Fácies Myxedematosa" },
+      { id: "D", texto: "Fácies Renal" }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A Fácies Cushingóide decorre do excesso prolongado de glicocorticoides (Síndrome ou Doença de Cushing). Há redistribuição centrípeta da gordura com fácies arredondada em 'lua cheia', eritema malar, hirsutismo e giba gordurosa dorsocervical.",
     explicacaoAlternativas: {
       A: "Incorreto. Acromegálica tem acentuado crescimento dos arcos supraorbitários, proeminência da mandíbula (prognatismo) e macroglossia.",
@@ -2160,12 +2160,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "dificil",
     enunciado: "O achado de icterícia (coloração amarelada da pele e mucosas) torna-se clinicamente visível ao exame físico da esclera e freio da língua quando os níveis sanguíneos de Bilirrubina Total ultrapassam aproximadamente:",
     alternativas: [
-      "A) 0,2 mg/dL",
-      "B) 2,0 a 2,5 mg/dL",
-      "C) 15,0 mg/dL",
-      "D) 50,0 mg/dL"
+      { id: "A", texto: "0,2 mg/dL" },
+      { id: "B", texto: "2,0 a 2,5 mg/dL" },
+      { id: "C", texto: "15,0 mg/dL" },
+      { id: "D", texto: "50,0 mg/dL" }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "O valor normal da bilirrubina total plasmática é até 1,0-1,2 mg/dL. A icterícia subclínica não é visível a olho nu. A icterícia torna-se manifesta ao exame físico (detectada primeiramente na esclera e mucosa sublingual devido à alta afinidade da elastina por bilirrubina) quando os níveis séricos ultrapassam 2,0 a 2,5 mg/dL.",
     explicacaoAlternativas: {
       A: "Incorreto. Nível fisiológico normal.",
@@ -2191,12 +2191,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "Na avaliação das pupilas durante o exame neurológico dos pares cranianos (Nervo Óptico NC II e Nervo Oculomotor NC III), como são denominadas as pupilas que se apresentam com diâmetros ASSIMÉTRICOS (uma dilatada e outra contraída)?",
     alternativas: [
-      "A) Isocóricas",
-      "B) Mióticas simétricas",
-      "C) Midriáticas simétricas",
-      "D) Anisocóricas"
+      { id: "A", texto: "Isocóricas" },
+      { id: "B", texto: "Mióticas simétricas" },
+      { id: "C", texto: "Midriáticas simétricas" },
+      { id: "D", texto: "Anisocóricas" }
     ],
-    respostaCorreta: 3,
+    respostaCorreta: "D",
     explicacao: "A nomenclatura do diâmetro pupilar é: 1. Isocóricas (pupilas de tamanhos iguais em ambos os olhos); 2. Miótica (pupilas contraídas < 2mm); 3. Midriática (pupilas dilatadas > 5mm); 4. ANISOCÓRICAS (pupilas com diâmetros desiguais/assimétricos, sugerindo lesão do NC III ou síndrome de Horner).",
     explicacaoAlternativas: {
       A: "Incorreto. Isocóricas indica tamanhos iguais.",
@@ -2217,12 +2217,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Ao incidir o feixe de luz de uma lanterna diretamente sobre a pupila do olho direito de um paciente hígido, observa-se a contração imediata da pupila direita (Reflexo Fotomotor Direto) e TAMBÉM a contração simultânea da pupila do olho esquerdo não-iluminado. Como se chama a contração da pupila contralateral?",
     alternativas: [
-      "A) Reflexo de Acomodação",
-      "B) Reflexo Fotomotor Consensual",
-      "C) Reflexo Córneo-palpebral",
-      "D) Reflexo Cilioespinal"
+      { id: "A", texto: "Reflexo de Acomodação" },
+      { id: "B", texto: "Reflexo Fotomotor Consensual" },
+      { id: "C", texto: "Reflexo Córneo-palpebral" },
+      { id: "D", texto: "Reflexo Cilioespinal" }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "O Reflexo Fotomotor Consensual é a constrição da pupila do olho oposto ao que recebeu o estímulo luminoso. Isso ocorre porque as fibras aferentes do nervo óptico (NC II) cruzam parcialmente no quiasma óptico e fazem sinapse nos núcleos de Edinger-Westphal em ambos os lados do mesencéfalo, enviando eferência parassimpática bilatetal via nervo oculomotor (NC III).",
     explicacaoAlternativas: {
       A: "Incorreto. Reflexo de acomodação ocorre ao focar objeto próximo (miose + convergência).",
@@ -2243,12 +2243,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Na otoscopia propedêutica, a membrana timpânica normal e sadia apresenta ao exame visual com otoscópio a seguinte característica morfológica e reflexo luminoso:",
     alternativas: [
-      "A) Membrana opaca, abaulada, hiperemiada e com vesículas purulentas.",
-      "B) Membrana translúcida, cinza-perlácea, com visualização do cabo do martelo e o 'Triângulo Luminoso' (Cone de Luz) projetado no quadrante anteroinferior.",
-      "C) Membrana completamente enegrecida e perfurada com restos vegetais.",
-      "D) Membrana amarelada retroflexa sem qualquer reflexo luminoso."
+      { id: "A", texto: "Membrana opaca, abaulada, hiperemiada e com vesículas purulentas." },
+      { id: "B", texto: "Membrana translúcida, cinza-perlácea, com visualização do cabo do martelo e o 'Triângulo Luminoso' (Cone de Luz) projetado no quadrante anteroinferior." },
+      { id: "C", texto: "Membrana completamente enegrecida e perfurada com restos vegetais." },
+      { id: "D", texto: "Membrana amarelada retroflexa sem qualquer reflexo luminoso." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A membrana timpânica íntegra normal é semi-transparente, de cor cinza-perlácea (ou brilhante), côncava. Ao foco do otoscópio, é possível identificar a proeminência e o cabo do martelo, além do TRIÂNGULO LUMINOSO (cone de luz de Politzer) refletido no quadrante anteroinferior.",
     explicacaoAlternativas: {
       A: "Incorreto. Caracteriza a Otite Média Aguda (OMA) supurativa.",
@@ -2269,12 +2269,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "Na palpação bimanual da glândula tireoide pela abordagem posterior (Manobra de Quervain), o examinador posiciona-se atrás do paciente sentado. Qual orientação deve ser dada ao paciente durante a palpação para facilitar a identificação dos lobos e do istmo tireoidiano?",
     alternativas: [
-      "A) Realizar uma inspiração profunda e segurar o ar.",
-      "B) Deglutir (engolir um gole de água ou saliva).",
-      "C) Tossir com força enquanto gira a cabeça para a esquerda.",
-      "D) Manter a boca aberta emitindo o som 'Á'."
+      { id: "A", texto: "Realizar uma inspiração profunda e segurar o ar." },
+      { id: "B", texto: "Deglutir (engolir um gole de água ou saliva)." },
+      { id: "C", texto: "Tossir com força enquanto gira a cabeça para a esquerda." },
+      { id: "D", texto: "Manter a boca aberta emitindo o som 'Á'." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A glândula tireoide e a cartilagem cricoide estão fixadas à traqueia e à fáscia pré-traqueal. Durante o ato de DEGLUTIR, a traqueia e a tireoide sobem temporariamente. Essa mobilidade à deglutição permite ao examinador sentir a estrutura deslizar sob os dedos, diferenciando a tireoide de massas fixas do pescoço.",
     explicacaoAlternativas: {
       A: "Incorreto. A inspiração não mobiliza verticalmente as estruturas laríngeas.",
@@ -2295,12 +2295,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "dificil",
     enunciado: "O achado de um linfonodo supraclavicular esquerdo endurecido, indolor e aumentado de volume durante o exame do pescoço é clinicamente conhecido como LINFONODO DE VIRCHOW (ou Sinal de Troisier). Qual a sua suspeita diagnóstica clássica?",
     alternativas: [
-      "A) Otite externa bacteriana por Pseudomonas aeruginosa.",
-      "B) Neoplasia maligna intra-abdominal ou gástrica metastática (via ducto torácico).",
-      "C) Amigdalite estreptocócica aguda exsudativa.",
-      "D) Cisto tireoglosso congênito infectado."
+      { id: "A", texto: "Otite externa bacteriana por Pseudomonas aeruginosa." },
+      { id: "B", texto: "Neoplasia maligna intra-abdominal ou gástrica metastática (via ducto torácico)." },
+      { id: "C", texto: "Amigdalite estreptocócica aguda exsudativa." },
+      { id: "D", texto: "Cisto tireoglosso congênito infectado." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "O Linfonodo de Virchow (Sinal de Troisier) é o enfartamento ganglionar na fossa supraclavicular esquerda. Como o ducto torácico drena a linfa de quase todo o abdome (incluindo estômago, pâncreas e cólon) e deságua no ângulo venoso jugulossubclávio esquerdo, este linfonodo é um sítio sentinela clássico de metástase de adenocarcinoma gástrico ou abdominal.",
     explicacaoAlternativas: {
       A: "Incorreto. Otite externa drena para linfonodos pré e retroauriculares.",
@@ -2321,12 +2321,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Durante a inspecao do pescoço a 45º, a observação de Turgência Jugular (distensão das veias jugulares externas acima de 3 a 4 cm do ângulo esternal de Louis) indica o aumento de qual parâmetro hemodinâmico?",
     alternativas: [
-      "A) Pressão Venosa Central (PVC) e pressão de enchimento do Átrio Direito (ex: Insuficiência Cardíaca Direita, Pericardite Constritiva ou Tamponamento Cardiaco).",
-      "B) Pressão parcial de oxigênio arterial (PaO2).",
-      "C) Filtração glomerular renal.",
-      "D) Resistência vascular periférica exclusiva dos membros inferiores."
+      { id: "A", texto: "Pressão Venosa Central (PVC) e pressão de enchimento do Átrio Direito (ex: Insuficiência Cardíaca Direita, Pericardite Constritiva ou Tamponamento Cardiaco)." },
+      { id: "B", texto: "Pressão parcial de oxigênio arterial (PaO2)." },
+      { id: "C", texto: "Filtração glomerular renal." },
+      { id: "D", texto: "Resistência vascular periférica exclusiva dos membros inferiores." }
     ],
-    respostaCorreta: 0,
+    respostaCorreta: "A",
     explicacao: "A turgência jugular patológica reflete a transmissão direta da hipertensão venosa atrial direita para as veias jugulares (sem valvas funcionais diretas na cava). É um sinal clássico de sobrecarga de volume ventricular direito, insuficiência cardíaca congestiva, hipertensão pulmonar ou restrição pericárdica.",
     explicacaoAlternativas: {
       A: "Correto. Turgência jugular jugular reflete aumento da Pressão Venosa Central (PVC) e estase em átrio direito.",
@@ -2347,12 +2347,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "Ao inspecionar a cavidade oral (oroscopia) utilizando um abaixador de língua, o examinador observa palato, úvula e pilares amigdalianos. A hiperemia intensa das amígdalas acompanhada de exsudato purulento esbranquiçado em placas e adenopatia submandibular dolorosa é sugestiva de:",
     alternativas: [
-      "A) Amigdalite/Faringite Bacteriana Aguda (ex: por Streptococcus pyogenes / Ecto-B-hemolítico do Grupo A).",
-      "B) Carcinoma basocelular do lábio inferior.",
-      "C) Leucoplasia pilosa orofaríngea assintomática.",
-      "D) Torus palatino fisiológico."
+      { id: "A", texto: "Amigdalite/Faringite Bacteriana Aguda (ex: por Streptococcus pyogenes / Ecto-B-hemolítico do Grupo A)." },
+      { id: "B", texto: "Carcinoma basocelular do lábio inferior." },
+      { id: "C", texto: "Leucoplasia pilosa orofaríngea assintomática." },
+      { id: "D", texto: "Torus palatino fisiológico." }
     ],
-    respostaCorreta: 0,
+    respostaCorreta: "A",
     explicacao: "A faringoamigdalite bacteriana exsudativa (causada classicamente pelo Streptococcus pyogenes) manifesta-se por eritema amigdaliano, exsudato pultáceo/purulento nas criptas, petéquias em palato, febre alta e enfartamento de linfonodos submandibulares/cervicais anteriores.",
     explicacaoAlternativas: {
       A: "Correto. Amigdalite bacteriana purulenta por S. pyogenes.",
@@ -2373,12 +2373,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Na palpação das cadeias linfáticas da cabeça e do pescoço, qual é a localização anatômica exata do grupo de LINFONODOS SUBMANDIBULARES?",
     alternativas: [
-      "A) Na fossa supraclavicular, atrás do músculo esternocleidomastóideo.",
-      "B) A meio caminho entre o ângulo da mandíbula e o ápice do mento (queixo), sob a borda inferior do corpo da mandíbula.",
-      "C) Logo abaixo do lobo da orelha sobre o processo mastoide.",
-      "D) Na linha média anterior sobre o osso hioide."
+      { id: "A", texto: "Na fossa supraclavicular, atrás do músculo esternocleidomastóideo." },
+      { id: "B", texto: "A meio caminho entre o ângulo da mandíbula e o ápice do mento (queixo), sob a borda inferior do corpo da mandíbula." },
+      { id: "C", texto: "Logo abaixo do lobo da orelha sobre o processo mastoide." },
+      { id: "D", texto: "Na linha média anterior sobre o osso hioide." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "Os linfonodos submandibulares situam-se medialmente à borda inferior do corpo da mandíbula, entre o ângulo mandibular e a sínfise mentoniana. Eles drenam a mucosa oral, dentes, língua anterior, lábios e bochechas.",
     explicacaoAlternativas: {
       A: "Incorreto. Descrição da cadeia supraclavicular ou cervical posterior.",
@@ -2404,12 +2404,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "Diferentemente de outras helmintíases intestinais (como ascaridíase e ancilostomíase), a enterobíase (oxiuríase) apresenta uma particularidade epidemiológica marcante no tocante às condições socioeconômicas e sanitárias do hospedeiro. Assinale a alternativa CORRETA sobre essa particularidade.",
     alternativas: [
-      "A) Ocorre exclusivamente em zonas rurais sem acesso a saneamento básico e com irrigação por esgoto bruto.",
-      "B) É uma parasitose cosmopolita muito frequente em países desenvolvidos e industrializados, não dependendo exclusivamente de saneamento precário, afetando qualquer nível socioeconômico.",
-      "C) Exige obrigatoriamente a presença de hospedeiros intermediários moluscos de água doce para transmissão.",
-      "D) Restringe-se estritamente a regiões tropicais úmidas de baixa altitude."
+      { id: "A", texto: "Ocorre exclusivamente em zonas rurais sem acesso a saneamento básico e com irrigação por esgoto bruto." },
+      { id: "B", texto: "É uma parasitose cosmopolita muito frequente em países desenvolvidos e industrializados, não dependendo exclusivamente de saneamento precário, afetando qualquer nível socioeconômico." },
+      { id: "C", texto: "Exige obrigatoriamente a presença de hospedeiros intermediários moluscos de água doce para transmissão." },
+      { id: "D", texto: "Restringe-se estritamente a regiões tropicais úmidas de baixa altitude." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A enterobíase é a parasitose intestinal mais prevalente em crianças em idade escolar em países desenvolvidos e industrializados. Como os ovos amadurecem muito rapidamente (4 a 6 horas na pele ou ambiente) e a transmissão é direta interpessoal/fômites, ela independe do nível socioeconômico ou de saneamento básico precário.",
     explicacaoAlternativas: {
       A: "Incorreto. Geo-helmintíases clássicas (Ascaris, Ancylostoma) dependem fortemente de solo e saneamento; a enterobíase não.",
@@ -2430,12 +2430,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Em relação à morfologia do Enterobius vermicularis e de seus ovos, assinale a alternativa que descreve CORRETAMENTE as características morfológicas típicas desse nematódeo.",
     alternativas: [
-      "A) A fêmea possui extremidade posterior reta e curta; seus ovos são esféricos com cápsula mamelonada marrom.",
-      "B) A fêmea possui extremidade posterior longa e afilada em ponta (oxiúro); os ovos são ovalados e assimétricos (achatados em um dos lados, formato em 'D') com casca transparente.",
-      "C) Ambos os sexos medem mais de 30 cm de comprimento e possuem ventosas orais chitinóides.",
-      "D) Os ovos são operculados e possuem dois tampões hialinos nas extremidades."
+      { id: "A", texto: "A fêmea possui extremidade posterior reta e curta; seus ovos são esféricos com cápsula mamelonada marrom." },
+      { id: "B", texto: "A fêmea possui extremidade posterior longa e afilada em ponta (oxiúro); os ovos são ovalados e assimétricos (achatados em um dos lados, formato em 'D') com casca transparente." },
+      { id: "C", texto: "Ambos os sexos medem mais de 30 cm de comprimento e possuem ventosas orais chitinóides." },
+      { id: "D", texto: "Os ovos são operculados e possuem dois tampões hialinos nas extremidades." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "O nome popular 'oxiúro' vem do grego oxys (pontiagudo) + oura (cauda), referindo-se à extremidade posterior afilada da fêmea (8-13 mm). Os ovos caracterizam-se pelo formato assimétrico, apresentando um lado plano e outro convexo (formato de 'D'), com casca fina e transparente contendo uma larva no seu interior.",
     explicacaoAlternativas: {
       A: "Incorreto. Descreve Ascaris lumbricoides.",
@@ -2456,12 +2456,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "O sinal cardinal e manifestação clínica mais clássica da enterobíase em crianças é o PRURIDO ANAL NOTURNO. Qual o evento fisiopatológico e comportamental do parasita responsável pela exacerbação noturna desse sintoma?",
     alternativas: [
-      "A) Perfuração mecânica da parede do cólon pelas larvas em migração sanguínea.",
-      "B) Migração noturna das fêmeas grávidas através do canal anal para realizar a oviposição (deposição de milhar de ovos) na região perianal.",
-      "C) Liberação de toxinas hemolíticas na circulação sistêmica durante a madrugada.",
-      "D) Oclusão permanente do ducto pancreático pela fêmea."
+      { id: "A", texto: "Perfuração mecânica da parede do cólon pelas larvas em migração sanguínea." },
+      { id: "B", texto: "Migração noturna das fêmeas grávidas através do canal anal para realizar a oviposição (deposição de milhar de ovos) na região perianal." },
+      { id: "C", texto: "Liberação de toxinas hemolíticas na circulação sistêmica durante a madrugada." },
+      { id: "D", texto: "Oclusão permanente do ducto pancreático pela fêmea." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "Durante a noite, impulsionada pelo relaxamento do esfíncter anal e queda da temperatura corporal do hospedeiro, a fêmea grávida abandona o ceco e migra para a região perianal. A movimentação física do verme e a deposição de secreções irritantes aderindo os ovos à pele provocam o prurido anal noturno intenso.",
     explicacaoAlternativas: {
       A: "Incorreto. E. vermicularis não perfura a parede intestinal nem circula no sangue.",
@@ -2482,12 +2482,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "A enterobíase pode ser mantida por múltiplos mecanismos de transmissão. Qual é o mecanismo denominado RETROINFECÇÃO e como ele se diferencia da autoinfecção externa?",
     alternativas: [
-      "A) Retroinfecção é a transmissão pela picada de mosquitos; autoinfecção é pela água.",
-      "B) Retroinfecção ocorre quando as larvas eclodem na própria região perianal e migram de volta em sentido retrógrado pelo ânus até o ceco.",
-      "C) Retroinfecção é a passagem do parasita da mãe para o feto via placenta.",
-      "D) Retroinfecção é a penetração de larvas pela pele dos pés."
+      { id: "A", texto: "Retroinfecção é a transmissão pela picada de mosquitos; autoinfecção é pela água." },
+      { id: "B", texto: "Retroinfecção ocorre quando as larvas eclodem na própria região perianal e migram de volta em sentido retrógrado pelo ânus até o ceco." },
+      { id: "C", texto: "Retroinfecção é a passagem do parasita da mãe para o feto via placenta." },
+      { id: "D", texto: "Retroinfecção é a penetração de larvas pela pele dos pés." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A retroinfecção é um mecanismo biológico no qual os ovos depositados na região perianal eclodem no próprio local; as larvas liberadas penetram ativamente pelo ânus e migram em sentido retrógrado até o ceco, onde se tornam adultas. A autoinfecção externa envolve a introdução oral de ovos levados nas unhas/mãos após o ato de coçar.",
     explicacaoAlternativas: {
       A: "Incorreto. Não há vetores insetos na enterobíase.",
@@ -2508,12 +2508,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "facil",
     enunciado: "Na prática clínica, por que o Exame Parasitológico de Fezes (EPF) convencional (como sedimentação ou flutuação) NÃO é o método de escolha para o diagnóstico da enterobíase?",
     alternativas: [
-      "A) Porque os ovos de oxiúro são destruídos pelo formol utilizado nos potes de coleta.",
-      "B) Porque as fêmeas de Enterobius vermicularis depositam seus ovos na região perianal e não no lúmen intestinal, fazendo com que os ovos fiquem ausentes ou escassos nas fezes.",
-      "C) Porque o exame exige biópsia hepática para visualização das larvas.",
-      "D) Porque a pesquisa só pode ser feita por sorologia PCR quantitativa."
+      { id: "A", texto: "Porque os ovos de oxiúro são destruídos pelo formol utilizado nos potes de coleta." },
+      { id: "B", texto: "Porque as fêmeas de Enterobius vermicularis depositam seus ovos na região perianal e não no lúmen intestinal, fazendo com que os ovos fiquem ausentes ou escassos nas fezes." },
+      { id: "C", texto: "Porque o exame exige biópsia hepática para visualização das larvas." },
+      { id: "D", texto: "Porque a pesquisa só pode ser feita por sorologia PCR quantitativa." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "O EPF convencional tem baixíssima sensibilidade (falso-negativo em mais de 85-90% dos casos) porque as fêmeas adultas migram para a pele perianal para ovipor, em vez de liberarem os ovos na massa fecal no lúmen intestinal. Portanto, um EPF negativo JAMAIS descarta enterobíase.",
     explicacaoAlternativas: {
       A: "Incorreto. A causa não é a destruição pelo conservante, mas a ausência de oviposição fecal luminal.",
@@ -2534,12 +2534,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Qual é o MÉTODO DE ESCOLHA para a confirmação laboratorial da enterobíase e quais são as orientações críticas de coleta repassadas ao paciente/família?",
     alternativas: [
-      "A) Coprocultura em meio de ágar sangue colhida após laxante salino.",
-      "B) Método de Graham (teste da fita adesiva transparente), colhido pela manhã ao acordar, ANTES do banho e ANTES de evacuar.",
-      "C) Aspirado duodenal por sondagem nasoentérica em jejum de 12 horas.",
-      "D) Reação de Imunofluorescência Indireta no soro."
+      { id: "A", texto: "Coprocultura em meio de ágar sangue colhida após laxante salino." },
+      { id: "B", texto: "Método de Graham (teste da fita adesiva transparente), colhido pela manhã ao acordar, ANTES do banho e ANTES de evacuar." },
+      { id: "C", texto: "Aspirado duodenal por sondagem nasoentérica em jejum de 12 horas." },
+      { id: "D", texto: "Reação de Imunofluorescência Indireta no soro." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "O método padrão-ouro/escolha é o Método de Graham (fita gomada/adesiva transparente). A fita é pressionada sobre as dobras perianais e colada na lâmina de vidro. A coleta deve ser feita PELA MANHÃ, AO ACORDAR, antes de tomar banho ou evacuar, pois o banho/evacuação removem os ovos aderidos.",
     explicacaoAlternativas: {
       A: "Incorreto. Coprocultura não se aplica a helmintos.",
@@ -2560,12 +2560,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Em meninas em idade pré-escolar e escolar, a migração errática de fêmeas adultas de Enterobius vermicularis a partir da região perianal para o trato genital adjacente pode provocar qual complicação clínica comum?",
     alternativas: [
-      "A) Glomerulonefrite membranosa pós-estreptocócica.",
-      "B) Vulvovaginite e prurido vulvar/vaginal com leucorria.",
-      "C) Síndrome do ovário policístico.",
-      "D) Insuficiência ovariana prematura."
+      { id: "A", texto: "Glomerulonefrite membranosa pós-estreptocócica." },
+      { id: "B", texto: "Vulvovaginite e prurido vulvar/vaginal com leucorria." },
+      { id: "C", texto: "Síndrome do ovário policístico." },
+      { id: "D", texto: "Insuficiência ovariana prematura." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "Devido à proximidade anatômica entre o ânus e a vulva em meninas, as fêmeas de E. vermicularis podem migrar erroneamente para a vagina e introitus vulvar. Isso causa vulvovaginite irritativa, com prurido genital intenso, corrimento esbranquiçado e escoriações locais.",
     explicacaoAlternativas: {
       A: "Incorreto. Decorre de imunocomplexos pós-S. pyogenes.",
@@ -2586,12 +2586,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "dificil",
     enunciado: "Ao prescrever anti-helmínticos (como Albendazol ou Mebendazol em dose única) para o tratamento da enterobíase, qual é a REGRA DE OURO FARMACOLÓGICA indispensável que deve ser orientada na receita médica para evitar falha terapêutica?",
     alternativas: [
-      "A) Associar antibiótico macrolídeo por 30 dias consecutivos.",
-      "B) REPETIR A MESMA DOSE DO ANTI-HELMÍNTICO APÓS 2 SEMANAS (14 DIAS).",
-      "C) Administrar a medicação exclusivamente por via endovenosa contínua.",
-      "D) Manter o paciente em jejum absoluto de sólidos por 7 dias."
+      { id: "A", texto: "Associar antibiótico macrolídeo por 30 dias consecutivos." },
+      { id: "B", texto: "REPETIR A MESMA DOSE DO ANTI-HELMÍNTICO APÓS 2 SEMANAS (14 DIAS)." },
+      { id: "C", texto: "Administrar a medicação exclusivamente por via endovenosa contínua." },
+      { id: "D", texto: "Manter o paciente em jejum absoluto de sólidos por 7 dias." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "Os fármacos antiparasitários (Albendazol, Mebendazol, Pamoato de Pirantel) eliminam eficazmente os vermes adultos no intestino, mas NÃO destroem os ovos resistentes viáveis no ambiente doméstico. Como o ciclo evolutivo dura cerca de 2 semanas, a REPETIÇÃO DA DOSE APÓS 14 DIAS é obrigatória para matar as novas larvas eclodidas antes que maturarem.",
     explicacaoAlternativas: {
       A: "Incorreto. Antibióticos não atuam em helmintos.",
@@ -2612,12 +2612,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Além de repetir a dose do medicamento após 14 dias, qual conduta epidemiológica é FUNDAMENTAL no manejo da enterobíase para interromper a cadeia de transmissão na casa do paciente?",
     alternativas: [
-      "A) Tratar apenas a criança que apresenta o prurido anal noturno.",
-      "B) TRATAR SIMULTANEAMENTE TODOS OS MEMBROS DA FAMÍLIA / CONTATOS DOMICILIARES, mesmo que estejam completamente assintomáticos.",
-      "C) Isolar a criança em quarto hermeticamente fechado por 30 dias.",
-      "D) Fazer fumigação química com pesticidas organoclorados na residência."
+      { id: "A", texto: "Tratar apenas a criança que apresenta o prurido anal noturno." },
+      { id: "B", texto: "TRATAR SIMULTANEAMENTE TODOS OS MEMBROS DA FAMÍLIA / CONTATOS DOMICILIARES, mesmo que estejam completamente assintomáticos." },
+      { id: "C", texto: "Isolar a criança em quarto hermeticamente fechado por 30 dias." },
+      { id: "D", texto: "Fazer fumigação química com pesticidas organoclorados na residência." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "A enterobíase é uma infecção familiar. Devido à alta transmissibilidade dos ovos por fômites e contato direto, membros assintomáticos da família frequentemente albergam o parasita e atuam como reservatórios de reinfecção. Tratar todos os coabitantes simultaneamente é essencial.",
     explicacaoAlternativas: {
       A: "Incorreto. Tratar apenas o sintomático leva a reinfecção precoce pelos familiares assintomáticos.",
@@ -2638,12 +2638,12 @@ export const QUESTIONS_PART2 = [
     dificuldade: "media",
     enunciado: "Dentre as medidas profiláticas de higiene ambiental e pessoal no controle da enterobíase, qual recomendação sobre o manuseio das roupas de cama contaminadas é especificamente destacada para evitar a infecção por INALAÇÃO dos ovos?",
     alternativas: [
-      "A) Sacudir vigorosamente os lençóis e cobertor no meio do quarto antes de lavar.",
-      "B) NÃO sacudir as roupas de cama e vestuário contaminados, retirando-as suavemente para evitar a suspensão e dispersão aérea dos ovos no ambiente.",
-      "C) Queimar todas as roupas de cama após uma única noite de uso.",
-      "D) Lavar as roupas exclusivamente em água gelada sem sabão."
+      { id: "A", texto: "Sacudir vigorosamente os lençóis e cobertor no meio do quarto antes de lavar." },
+      { id: "B", texto: "NÃO sacudir as roupas de cama e vestuário contaminados, retirando-as suavemente para evitar a suspensão e dispersão aérea dos ovos no ambiente." },
+      { id: "C", texto: "Queimar todas as roupas de cama após uma única noite de uso." },
+      { id: "D", texto: "Lavar as roupas exclusivamente em água gelada sem sabão." }
     ],
-    respostaCorreta: 1,
+    respostaCorreta: "B",
     explicacao: "Os ovos de E. vermicularis são levemente achatados e muito leves. Ao sacudir lençóis e pijama de um paciente infectado, milhares de ovos são lançados em suspensão no ar do quarto, podendo ser inalados e deglutidos pelas pessoas no ambiente. Por isso, orienta-se recolher as roupas com cuidado sem sacudi-las e lavá-las em água quente.",
     explicacaoAlternativas: {
       A: "Incorreto. Sacudir roupas de cama lança ovos em suspensão no ar, favorecendo a inalação.",
@@ -2657,3 +2657,4 @@ export const QUESTIONS_PART2 = [
     sourceYear: 2022
   }
 ];
+
