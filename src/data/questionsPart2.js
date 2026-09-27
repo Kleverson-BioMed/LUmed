@@ -2390,5 +2390,270 @@ export const QUESTIONS_PART2 = [
     source: "Porto & Porto - Propedêutica Médica",
     sourceUrl: "https://www.guanabarabook.com.br/",
     sourceYear: 2022
+  },
+
+  // --------------------------------------------------------------------------
+  // ENTEROBÍASE / OXIURÍASE (Q146 - Q155)
+  // Baseado na aula Enterobíase 2026 (UNEX MED / Neves et al., 2022)
+  // --------------------------------------------------------------------------
+  {
+    id: "q146",
+    numero: 146,
+    assunto: "parasitologia",
+    subassunto: "Enterobíase (Enterobius vermicularis)",
+    dificuldade: "facil",
+    enunciado: "Diferentemente de outras helmintíases intestinais (como ascaridíase e ancilostomíase), a enterobíase (oxiuríase) apresenta uma particularidade epidemiológica marcante no tocante às condições socioeconômicas e sanitárias do hospedeiro. Assinale a alternativa CORRETA sobre essa particularidade.",
+    alternativas: [
+      "A) Ocorre exclusivamente em zonas rurais sem acesso a saneamento básico e com irrigação por esgoto bruto.",
+      "B) É uma parasitose cosmopolita muito frequente em países desenvolvidos e industrializados, não dependendo exclusivamente de saneamento precário, afetando qualquer nível socioeconômico.",
+      "C) Exige obrigatoriamente a presença de hospedeiros intermediários moluscos de água doce para transmissão.",
+      "D) Restringe-se estritamente a regiões tropicais úmidas de baixa altitude."
+    ],
+    respostaCorreta: 1,
+    explicacao: "A enterobíase é a parasitose intestinal mais prevalente em crianças em idade escolar em países desenvolvidos e industrializados. Como os ovos amadurecem muito rapidamente (4 a 6 horas na pele ou ambiente) e a transmissão é direta interpessoal/fômites, ela independe do nível socioeconômico ou de saneamento básico precário.",
+    explicacaoAlternativas: {
+      A: "Incorreto. Geo-helmintíases clássicas (Ascaris, Ancylostoma) dependem fortemente de solo e saneamento; a enterobíase não.",
+      B: "Correto. A enterobíase é cosmopolita e prevalente mesmo em ambientes de alto padrão socioeconômico e escolas urbanas.",
+      C: "Incorreto. E. vermicularis possui ciclo direto monoxênico sem hospedeiro intermediário.",
+      D: "Incorreto. Ocorre em qualquer clima, inclusive temperado e frio."
+    },
+    conceitoPrincipal: "Epidemiologia da enterobíase: parasitose cosmopolita em escolares que independe de saneamento precário.",
+    source: "Neves - Parasitologia Humana (14ª ed., 2022)",
+    sourceUrl: "https://www.ncbi.nlm.nih.gov/books/NBK539824/",
+    sourceYear: 2022
+  },
+  {
+    id: "q147",
+    numero: 147,
+    assunto: "parasitologia",
+    subassunto: "Enterobíase (Enterobius vermicularis)",
+    dificuldade: "media",
+    enunciado: "Em relação à morfologia do Enterobius vermicularis e de seus ovos, assinale a alternativa que descreve CORRETAMENTE as características morfológicas típicas desse nematódeo.",
+    alternativas: [
+      "A) A fêmea possui extremidade posterior reta e curta; seus ovos são esféricos com cápsula mamelonada marrom.",
+      "B) A fêmea possui extremidade posterior longa e afilada em ponta (oxiúro); os ovos são ovalados e assimétricos (achatados em um dos lados, formato em 'D') com casca transparente.",
+      "C) Ambos os sexos medem mais de 30 cm de comprimento e possuem ventosas orais chitinóides.",
+      "D) Os ovos são operculados e possuem dois tampões hialinos nas extremidades."
+    ],
+    respostaCorreta: 1,
+    explicacao: "O nome popular 'oxiúro' vem do grego oxys (pontiagudo) + oura (cauda), referindo-se à extremidade posterior afilada da fêmea (8-13 mm). Os ovos caracterizam-se pelo formato assimétrico, apresentando um lado plano e outro convexo (formato de 'D'), com casca fina e transparente contendo uma larva no seu interior.",
+    explicacaoAlternativas: {
+      A: "Incorreto. Descreve Ascaris lumbricoides.",
+      B: "Correto. Fêmea com cauda afilada e ovos assimétricos em 'D' com casca transparente.",
+      C: "Incorreto. Oxiúros são pequenos nematódeos (fêmea 8-13 mm, macho 2-5 mm) sem ventosas.",
+      D: "Incorreto. Descreve ovos de Trichuris trichiura."
+    },
+    conceitoPrincipal: "Morfologia de Enterobius vermicularis: fêmea de cauda afilada e ovos assimétricos em 'D'.",
+    source: "Ferreira - Parasitologia Contemporânea (2ª ed., 2020)",
+    sourceUrl: "https://www.ncbi.nlm.nih.gov/books/NBK539824/",
+    sourceYear: 2020
+  },
+  {
+    id: "q148",
+    numero: 148,
+    assunto: "parasitologia",
+    subassunto: "Enterobíase (Enterobius vermicularis)",
+    dificuldade: "facil",
+    enunciado: "O sinal cardinal e manifestação clínica mais clássica da enterobíase em crianças é o PRURIDO ANAL NOTURNO. Qual o evento fisiopatológico e comportamental do parasita responsável pela exacerbação noturna desse sintoma?",
+    alternativas: [
+      "A) Perfuração mecânica da parede do cólon pelas larvas em migração sanguínea.",
+      "B) Migração noturna das fêmeas grávidas através do canal anal para realizar a oviposição (deposição de milhar de ovos) na região perianal.",
+      "C) Liberação de toxinas hemolíticas na circulação sistêmica durante a madrugada.",
+      "D) Oclusão permanente do ducto pancreático pela fêmea."
+    ],
+    respostaCorreta: 1,
+    explicacao: "Durante a noite, impulsionada pelo relaxamento do esfíncter anal e queda da temperatura corporal do hospedeiro, a fêmea grávida abandona o ceco e migra para a região perianal. A movimentação física do verme e a deposição de secreções irritantes aderindo os ovos à pele provocam o prurido anal noturno intenso.",
+    explicacaoAlternativas: {
+      A: "Incorreto. E. vermicularis não perfura a parede intestinal nem circula no sangue.",
+      B: "Correto. A migração noturna da fêmea grávida para a região perianal para oviposição causa o prurido noturno.",
+      C: "Incorreto. Não há liberação de toxinas hemolíticas sanguíneas.",
+      D: "Incorreto. Oxiúros residem no intestino grosso e não migram para o pâncreas."
+    },
+    conceitoPrincipal: "Fisiopatologia do prurido anal noturno: migração noturna da fêmea grávida para oviposição perianal.",
+    source: "Neves - Parasitologia Humana (14ª ed., 2022)",
+    sourceUrl: "https://www.ncbi.nlm.nih.gov/books/NBK539824/",
+    sourceYear: 2022
+  },
+  {
+    id: "q149",
+    numero: 149,
+    assunto: "parasitologia",
+    subassunto: "Enterobíase (Enterobius vermicularis)",
+    dificuldade: "media",
+    enunciado: "A enterobíase pode ser mantida por múltiplos mecanismos de transmissão. Qual é o mecanismo denominado RETROINFECÇÃO e como ele se diferencia da autoinfecção externa?",
+    alternativas: [
+      "A) Retroinfecção é a transmissão pela picada de mosquitos; autoinfecção é pela água.",
+      "B) Retroinfecção ocorre quando as larvas eclodem na própria região perianal e migram de volta em sentido retrógrado pelo ânus até o ceco.",
+      "C) Retroinfecção é a passagem do parasita da mãe para o feto via placenta.",
+      "D) Retroinfecção é a penetração de larvas pela pele dos pés."
+    ],
+    respostaCorreta: 1,
+    explicacao: "A retroinfecção é um mecanismo biológico no qual os ovos depositados na região perianal eclodem no próprio local; as larvas liberadas penetram ativamente pelo ânus e migram em sentido retrógrado até o ceco, onde se tornam adultas. A autoinfecção externa envolve a introdução oral de ovos levados nas unhas/mãos após o ato de coçar.",
+    explicacaoAlternativas: {
+      A: "Incorreto. Não há vetores insetos na enterobíase.",
+      B: "Correto. Retroinfecção = eclosão perianal e migração retrógrada da larva pelo ânus até o ceco.",
+      C: "Incorreto. Não há transmissão transplacentária.",
+      D: "Incorreto. Descreve ancilostomídeos."
+    },
+    conceitoPrincipal: "Mecanismo de Retroinfecção em E. vermicularis: eclosão perianal e reentrada ativa da larva pelo ânus.",
+    source: "Rey - Bases da Parasitologia Médica (2009)",
+    sourceUrl: "https://www.ncbi.nlm.nih.gov/books/NBK539824/",
+    sourceYear: 2021
+  },
+  {
+    id: "q150",
+    numero: 150,
+    assunto: "parasitologia",
+    subassunto: "Enterobíase (Enterobius vermicularis)",
+    dificuldade: "facil",
+    enunciado: "Na prática clínica, por que o Exame Parasitológico de Fezes (EPF) convencional (como sedimentação ou flutuação) NÃO é o método de escolha para o diagnóstico da enterobíase?",
+    alternativas: [
+      "A) Porque os ovos de oxiúro são destruídos pelo formol utilizado nos potes de coleta.",
+      "B) Porque as fêmeas de Enterobius vermicularis depositam seus ovos na região perianal e não no lúmen intestinal, fazendo com que os ovos fiquem ausentes ou escassos nas fezes.",
+      "C) Porque o exame exige biópsia hepática para visualização das larvas.",
+      "D) Porque a pesquisa só pode ser feita por sorologia PCR quantitativa."
+    ],
+    respostaCorreta: 1,
+    explicacao: "O EPF convencional tem baixíssima sensibilidade (falso-negativo em mais de 85-90% dos casos) porque as fêmeas adultas migram para a pele perianal para ovipor, em vez de liberarem os ovos na massa fecal no lúmen intestinal. Portanto, um EPF negativo JAMAIS descarta enterobíase.",
+    explicacaoAlternativas: {
+      A: "Incorreto. A causa não é a destruição pelo conservante, mas a ausência de oviposição fecal luminal.",
+      B: "Correto. A oviposição ocorre na pele perianal e não no lúmen intestinal, inviabilizando o EPF rotineiro.",
+      C: "Incorreto. Não há acometimento hepático.",
+      D: "Incorreto. Diagnóstico é parasitológico direto da região perianal."
+    },
+    conceitoPrincipal: "Limitação do EPF convencional na enterobíase: oviposição perianal inviabiliza a detecção em amostras fecais.",
+    source: "Engroff et al. - Parasitologia Clínica (2021)",
+    sourceUrl: "https://www.ncbi.nlm.nih.gov/books/NBK539824/",
+    sourceYear: 2021
+  },
+  {
+    id: "q151",
+    numero: 151,
+    assunto: "parasitologia",
+    subassunto: "Enterobíase (Enterobius vermicularis)",
+    dificuldade: "media",
+    enunciado: "Qual é o MÉTODO DE ESCOLHA para a confirmação laboratorial da enterobíase e quais são as orientações críticas de coleta repassadas ao paciente/família?",
+    alternativas: [
+      "A) Coprocultura em meio de ágar sangue colhida após laxante salino.",
+      "B) Método de Graham (teste da fita adesiva transparente), colhido pela manhã ao acordar, ANTES do banho e ANTES de evacuar.",
+      "C) Aspirado duodenal por sondagem nasoentérica em jejum de 12 horas.",
+      "D) Reação de Imunofluorescência Indireta no soro."
+    ],
+    respostaCorreta: 1,
+    explicacao: "O método padrão-ouro/escolha é o Método de Graham (fita gomada/adesiva transparente). A fita é pressionada sobre as dobras perianais e colada na lâmina de vidro. A coleta deve ser feita PELA MANHÃ, AO ACORDAR, antes de tomar banho ou evacuar, pois o banho/evacuação removem os ovos aderidos.",
+    explicacaoAlternativas: {
+      A: "Incorreto. Coprocultura não se aplica a helmintos.",
+      B: "Correto. Método de Graham (fita adesiva) colhido pela manhã antes do banho e evacuação.",
+      C: "Incorreto. Procedimento invasivo e desnecessário.",
+      D: "Incorreto. Sorologia não é utilizada no diagnóstico de rotina."
+    },
+    conceitoPrincipal: "Método de Graham (fita adesiva): coleta matinal perianal antes do banho e da evacuação.",
+    source: "Neves - Parasitologia Humana (14ª ed., 2022)",
+    sourceUrl: "https://www.ncbi.nlm.nih.gov/books/NBK539824/",
+    sourceYear: 2022
+  },
+  {
+    id: "q152",
+    numero: 152,
+    assunto: "parasitologia",
+    subassunto: "Enterobíase (Enterobius vermicularis)",
+    dificuldade: "media",
+    enunciado: "Em meninas em idade pré-escolar e escolar, a migração errática de fêmeas adultas de Enterobius vermicularis a partir da região perianal para o trato genital adjacente pode provocar qual complicação clínica comum?",
+    alternativas: [
+      "A) Glomerulonefrite membranosa pós-estreptocócica.",
+      "B) Vulvovaginite e prurido vulvar/vaginal com leucorria.",
+      "C) Síndrome do ovário policístico.",
+      "D) Insuficiência ovariana prematura."
+    ],
+    respostaCorreta: 1,
+    explicacao: "Devido à proximidade anatômica entre o ânus e a vulva em meninas, as fêmeas de E. vermicularis podem migrar erroneamente para a vagina e introitus vulvar. Isso causa vulvovaginite irritativa, com prurido genital intenso, corrimento esbranquiçado e escoriações locais.",
+    explicacaoAlternativas: {
+      A: "Incorreto. Decorre de imunocomplexos pós-S. pyogenes.",
+      B: "Correto. Migração errática da fêmea para o trato genital feminino provoca vulvovaginite e prurido vulvar.",
+      C: "Incorreto. Distúrbio endócrino metabólico sem relação parasita.",
+      D: "Incorreto. Falência ovariana genética ou autoimune."
+    },
+    conceitoPrincipal: "Complicação ginecológica da enterobíase em meninas: vulvovaginite e prurido vulvar por migração errática.",
+    source: "Ferreira - Parasitologia Contemporânea (2020)",
+    sourceUrl: "https://www.ncbi.nlm.nih.gov/books/NBK539824/",
+    sourceYear: 2020
+  },
+  {
+    id: "q153",
+    numero: 153,
+    assunto: "parasitologia",
+    subassunto: "Enterobíase (Enterobius vermicularis)",
+    dificuldade: "dificil",
+    enunciado: "Ao prescrever anti-helmínticos (como Albendazol ou Mebendazol em dose única) para o tratamento da enterobíase, qual é a REGRA DE OURO FARMACOLÓGICA indispensável que deve ser orientada na receita médica para evitar falha terapêutica?",
+    alternativas: [
+      "A) Associar antibiótico macrolídeo por 30 dias consecutivos.",
+      "B) REPETIR A MESMA DOSE DO ANTI-HELMÍNTICO APÓS 2 SEMANAS (14 DIAS).",
+      "C) Administrar a medicação exclusivamente por via endovenosa contínua.",
+      "D) Manter o paciente em jejum absoluto de sólidos por 7 dias."
+    ],
+    respostaCorreta: 1,
+    explicacao: "Os fármacos antiparasitários (Albendazol, Mebendazol, Pamoato de Pirantel) eliminam eficazmente os vermes adultos no intestino, mas NÃO destroem os ovos resistentes viáveis no ambiente doméstico. Como o ciclo evolutivo dura cerca de 2 semanas, a REPETIÇÃO DA DOSE APÓS 14 DIAS é obrigatória para matar as novas larvas eclodidas antes que maturarem.",
+    explicacaoAlternativas: {
+      A: "Incorreto. Antibióticos não atuam em helmintos.",
+      B: "Correto. Repetição da dose em 2 semanas (14 dias) é mandatória para eliminar larvas recém-eclodidas dos ovos ambientais.",
+      C: "Incorreto. Anti-helmínticos são administrados por via oral.",
+      D: "Incorreto. Conduta perigosa e desnecessária."
+    },
+    conceitoPrincipal: "Tratamento farmacológico da enterobíase: repetição obrigatória da dose de anti-helmíntico após 2 semanas (14 dias).",
+    source: "Neves - Parasitologia Humana (14ª ed., 2022)",
+    sourceUrl: "https://www.ncbi.nlm.nih.gov/books/NBK539824/",
+    sourceYear: 2022
+  },
+  {
+    id: "q154",
+    numero: 154,
+    assunto: "parasitologia",
+    subassunto: "Enterobíase (Enterobius vermicularis)",
+    dificuldade: "media",
+    enunciado: "Além de repetir a dose do medicamento após 14 dias, qual conduta epidemiológica é FUNDAMENTAL no manejo da enterobíase para interromper a cadeia de transmissão na casa do paciente?",
+    alternativas: [
+      "A) Tratar apenas a criança que apresenta o prurido anal noturno.",
+      "B) TRATAR SIMULTANEAMENTE TODOS OS MEMBROS DA FAMÍLIA / CONTATOS DOMICILIARES, mesmo que estejam completamente assintomáticos.",
+      "C) Isolar a criança em quarto hermeticamente fechado por 30 dias.",
+      "D) Fazer fumigação química com pesticidas organoclorados na residência."
+    ],
+    respostaCorreta: 1,
+    explicacao: "A enterobíase é uma infecção familiar. Devido à alta transmissibilidade dos ovos por fômites e contato direto, membros assintomáticos da família frequentemente albergam o parasita e atuam como reservatórios de reinfecção. Tratar todos os coabitantes simultaneamente é essencial.",
+    explicacaoAlternativas: {
+      A: "Incorreto. Tratar apenas o sintomático leva a reinfecção precoce pelos familiares assintomáticos.",
+      B: "Correto. Tratamento simultâneo de todos os membros do domicílio é a conduta padrão em pediatria e infectologia.",
+      C: "Incorreto. Isolamento desnecessário e prejudicial.",
+      D: "Incorreto. Pesticidas organoclorados são tóxicos e banidos."
+    },
+    conceitoPrincipal: "Manejo epidemiológico da enterobíase: tratamento simultâneo de todos os contatos domiciliares.",
+    source: "Engroff et al. - Parasitologia Clínica (2021)",
+    sourceUrl: "https://www.ncbi.nlm.nih.gov/books/NBK539824/",
+    sourceYear: 2021
+  },
+  {
+    id: "q155",
+    numero: 155,
+    assunto: "parasitologia",
+    subassunto: "Enterobíase (Enterobius vermicularis)",
+    dificuldade: "media",
+    enunciado: "Dentre as medidas profiláticas de higiene ambiental e pessoal no controle da enterobíase, qual recomendação sobre o manuseio das roupas de cama contaminadas é especificamente destacada para evitar a infecção por INALAÇÃO dos ovos?",
+    alternativas: [
+      "A) Sacudir vigorosamente os lençóis e cobertor no meio do quarto antes de lavar.",
+      "B) NÃO sacudir as roupas de cama e vestuário contaminados, retirando-as suavemente para evitar a suspensão e dispersão aérea dos ovos no ambiente.",
+      "C) Queimar todas as roupas de cama após uma única noite de uso.",
+      "D) Lavar as roupas exclusivamente em água gelada sem sabão."
+    ],
+    respostaCorreta: 1,
+    explicacao: "Os ovos de E. vermicularis são levemente achatados e muito leves. Ao sacudir lençóis e pijama de um paciente infectado, milhares de ovos são lançados em suspensão no ar do quarto, podendo ser inalados e deglutidos pelas pessoas no ambiente. Por isso, orienta-se recolher as roupas com cuidado sem sacudi-las e lavá-las em água quente.",
+    explicacaoAlternativas: {
+      A: "Incorreto. Sacudir roupas de cama lança ovos em suspensão no ar, favorecendo a inalação.",
+      B: "Correto. Não sacudir roupas de cama evita a formação de aerossóis contendo ovos do nematódeo.",
+      C: "Incorreto. Conduta economicamente inviável; lavagem adequada purifica o tecido.",
+      D: "Incorreto. Lavagem com água quente e sabão é mais eficaz."
+    },
+    conceitoPrincipal: "Profilaxia ambiental da enterobíase: não sacudir lençóis para prevenir dispersão e inalação de ovos.",
+    source: "Neves - Parasitologia Humana (14ª ed., 2022)",
+    sourceUrl: "https://www.ncbi.nlm.nih.gov/books/NBK539824/",
+    sourceYear: 2022
   }
 ];

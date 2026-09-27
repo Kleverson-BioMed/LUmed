@@ -1058,5 +1058,91 @@ export const STUDY_MATERIALS = [
       "Acreditar que o sinal de Chvostek é 100% exclusivo de hipocalcemia (ocorre em 10% de pessoas normais)."
     ],
     questoesRelacionadas: [131, 132, 133, 134, 135]
+  },
+  {
+    id: 16,
+    discipline: "parasitologia",
+    disciplineName: "Parasitologia & Infectologia",
+    moduloNumero: 8,
+    assunto: "Módulo 8 — Enterobíase / Oxiuríase (Enterobius vermicularis)",
+    icone: "Bug",
+    descricao: "Helmintíase mais prevalente em escolares, morfologia em oxiúro, migração noturna da fêmea, prurido anal noturno, falha do EPF, Método de Graham (fita adesiva), autoinfecção, retroinfecção, vulvovaginite e tratamento familiar com Albendazol e repetição em 14 dias.",
+    resumo: "A Enterobíase (ou Oxiuríase) é uma parasitose intestinal cosmopolita causada pelo nematódeo Enterobius vermicularis (oxiúro). É a helmintíase intestinal mais prevalente em crianças em idade escolar e, ao contrário de outras geo-helmintíases, não depende exclusivamente de saneamento precário, ocorrendo em qualquer nível socioeconômico. A fêmea adulta (8-13 mm, cauda afilada) habita o ceco e à noite migra pelo canal anal para depositar de 4.000 a 17.000 ovos na região perianal, provocando prurido anal noturno intenso (sinal cardinal). Os ovos (ovalados, assimétricos em plano-convexo 'D') tornam-se infectantes em poucas horas (4-6h). O Exame Parasitológico de Fezes (EPF) convencional FALHA por baixa sensibilidade (as fêmeas não ovipõem no lúmen intestinal); o MÉTODO DE GRAHAM (fita adesiva transparente colhida pela manhã antes do banho/evacuação) é o método de escolha. Tratamento de primeira linha: Albendazol ou Mebendazol em dose única, REPETINDO OBRIGATORIAMENTE APÓS 2 SEMANAS e TRATANDO TODOS OS CONTATOS DOMICILIARES SIMULTANEAMENTE.",
+    svgDiagrama: `<svg viewBox="0 0 700 180" class="w-full h-auto font-sans" xmlns="http://www.w3.org/2000/svg">
+      <rect x="10" y="10" width="680" height="160" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+      <rect x="25" y="30" width="150" height="120" rx="12" fill="#eff6ff" stroke="#93c5fd" stroke-width="2"/>
+      <text x="100" y="55" text-anchor="middle" font-weight="extrabold" font-size="11" fill="#1e40af">1. OVO ASSIMÉTRICO (D)</text>
+      <text x="100" y="80" text-anchor="middle" font-size="10" fill="#1d4ed8">Infectante em 4-6h</text>
+      <text x="100" y="100" text-anchor="middle" font-size="10" fill="#1e3a8a">Plano-convexo L3</text>
+
+      <text x="190" y="90" text-anchor="middle" font-weight="900" font-size="20" fill="#2563eb">➔</text>
+
+      <rect x="210" y="30" width="150" height="120" rx="12" fill="#fffbeb" stroke="#fde68a" stroke-width="2"/>
+      <text x="285" y="55" text-anchor="middle" font-weight="extrabold" font-size="11" fill="#b45309">2. HABITAT CECO</text>
+      <text x="285" y="80" text-anchor="middle" font-size="10" fill="#d97706">Desenvolvimento direto</text>
+      <text x="285" y="100" text-anchor="middle" font-size="10" fill="#92400e">Sem Ciclo de Loos</text>
+
+      <text x="375" y="90" text-anchor="middle" font-weight="900" font-size="20" fill="#d97706">➔</text>
+
+      <rect x="395" y="30" width="150" height="120" rx="12" fill="#fef2f2" stroke="#fca5a5" stroke-width="2"/>
+      <text x="470" y="55" text-anchor="middle" font-weight="extrabold" font-size="11" fill="#991b1b">3. MIGRAÇÃO NOTURNA</text>
+      <text x="470" y="80" text-anchor="middle" font-size="10" fill="#dc2626">Oviposição Perianal</text>
+      <text x="470" y="100" text-anchor="middle" font-weight="extrabold" font-size="10" fill="#7f1d1d">Prurido Anal Noturno</text>
+
+      <text x="560" y="90" text-anchor="middle" font-weight="900" font-size="20" fill="#dc2626">➔</text>
+
+      <rect x="580" y="30" width="100" height="120" rx="12" fill="#f0fdf4" stroke="#86efac" stroke-width="2"/>
+      <text x="630" y="55" text-anchor="middle" font-weight="extrabold" font-size="10" fill="#166534">GRAHAM</text>
+      <text x="630" y="80" text-anchor="middle" font-size="9" fill="#15803d">Fita Adesiva</text>
+      <text x="630" y="100" text-anchor="middle" font-weight="bold" font-size="9" fill="#14532d">Pela Manhã</text>
+    </svg>`,
+    imagemLegenda: "Ciclo Biológico e Diagnóstico do Enterobius vermicularis LUmed (Fonte: Enterobiase 2026 / UNEX MED).",
+    capitulos: [
+      {
+        titulo: "1. Agente Etiológico, Morfologia e Epidemiologia Cosmopolita",
+        subtitulo: "Enterobius vermicularis (Oxiúro), Oviposição Perianal e Ovos em 'D'",
+        conteudo: "• Agente Etiológico: Enterobius vermicularis (nematódeo intestinal conhecido como oxiúro - de oxys = pontiagudo + oura = cauda).\n• Dimorfismo Sexual: Fêmeas adultas medem de 8 a 13 mm com cauda afilada e reta; Machos medem 2 a 5 mm com cauda curvada e morrem após a cópula.\n• Ovos: Formato ovalado e assimétrico (um lado plano e outro convexo em 'D'), com casca fina transparente contendo larva L3. Tornam-se infectantes em poucas horas (4 a 6h) sob temperatura ambiente.\n• Contexto Epidemiológico: Helmintíase intestinal mais comum em escolares e creches. NÃO depende exclusivamente de saneamento precário (frequente em países desenvolvidos e qualquer nível socioeconômico).",
+        conceitoChave: "Ovos assimétricos em formato de 'D' tornam-se infectantes em apenas 4 a 6 horas após a deposição.",
+        importanteMedicina: "Não é uma geo-helmintíase clássica dependente de maturação longa no solo; os ovos amadurecem rapidamente na pele/ambiente."
+      },
+      {
+        titulo: "2. Fisiopatologia da Migração Noturna, Vias de Transmissão e Clínica",
+        subtitulo: "Prurido Anal Noturno, Autoinfecção, Retroinfecção e Vulvovaginite",
+        conteudo: "• Migração Noturna: Durante a noite, o relaxamento do esfíncter anal e a queda da temperatura corporal estimulam a fêmea grávida a abandonar o ceco e migrar pelo canal anal, depositando de 4.000 a 17.000 ovos aderidos à pele perianal.\n• Mecanismo do Prurido: A movimentação física da fêmea e secreções irritantes provocam prurido anal noturno intenso (sinal cardinal), causando insônia, irritabilidade e sono agitado.\n• Vias de Transmissão:\n  - Autoinfecção Externa: Coçar a região perianal -> ovos sob as unhas -> transporte mão-boca -> reinfecção.\n  - Heteroinfecção: Ingestão de ovos em superfícies, brinquedos ou alimentos por terceiros.\n  - Inalação: Ovos leves dispersos ao sacudir lençóis contaminados são inalados e deglutidos.\n  - Retroinfecção: Larvas eclodem na pele perianal e reentram pelo ânus subindo ao ceco.\n• Complicações: Escoriações perianais infectadas secundariamente por bactérias; Vulvovaginite e prurido genital em meninas por migração errática para a vulva; apendicite secundária.",
+        conceitoChave: "Prurido anal noturno é o sinal cardinal. Em meninas, a migração errática pode provocar vulvovaginite.",
+        importanteMedicina: "O ato de coçar e levar a mão à boca (autoinfecção) é o principal fator de manutenção da infecção crônica na criança."
+      },
+      {
+        titulo: "3. Diagnóstico (Método de Graham) e Protocolo Terapêutico Familiar",
+        subtitulo: "Por que o EPF Falha, Fita Adesiva Matinal e Repetição Obrigatória em 14 dias",
+        conteudo: "• Por que o EPF Convencional Falha?: Os vermes não ovipõem no lúmen intestinal, mas sim na pele perianal. O EPF tem baixíssima sensibilidade e um resultado negativo NÃO exclui enterobíase.\n• Método de Escolha (Método de Graham / Fita Adesiva Transparente): Coleta realizada PELA MANHÃ, ao acordar, ANTES do banho e ANTES da evacuação. Pressiona-se a fita transparente sobre a região perianal e cola-se na lâmina de vidro.\n• Sensibilidade: 1 única coleta = ~50% sensibilidade; 3 coletas seriadas em dias consecutivos = ~90% de sensibilidade.\n• Tratamento Anti-helmíntico: Albendazol (400 mg VO dose única) ou Mebendazol (100 mg VO dose única) ou Pamoato de Pirantel.\n• REGRA DE OURO TERAPÊUTICA: REPETIR A DOSE EM 2 SEMANAS! Motivo: Os anti-helmínticos matam os vermes adultos mas NÃO destroem os ovos no ambiente. A 2ª dose elimina as larvas recém-eclodidas antes que maturarem.\n• Tratamento Familiar: OBRIGATÓRIO TRATAR TODOS OS CONTATOS DOMICILIARES simultaneamente para interromper a reinfecção cruzada.",
+        conceitoChave: "EPF falha na enterobíase; método de escolha é Graham (fita adesiva) matinal. É OBRIGATÓRIO repetir a dose em 14 dias e tratar a família toda.",
+        tabelaComparativa: {
+          headers: ["Parâmetro", "EPF Convencional", "Método de Graham (Fita Adesiva)"],
+          rows: [
+            ["Sensibilidade", "BAIXA (< 10-15%)", "ALTA (50% 1 coleta; 90% 3 coletas seriadas)"],
+            ["Amostra Colhida", "Fezes no pote", "Impressão por fita transparente na pele perianal"],
+            ["Momento de Coleta", "Qualquer horário", "Pela manhã ao acordar (antes do banho/evacuar)"],
+            ["Indicação", "Outras helmintíases e protozooses", "Enterobíase / Oxiuríase (Enterobius vermicularis)"]
+          ]
+        },
+        importanteMedicina: "Não sacudir roupas de cama contaminadas para evitar dispersão aérea de ovos; lavar lençóis e cortar unhas das crianças."
+      }
+    ],
+    conceitosFundamentais: [
+      "Enterobius vermicularis é o nematódeo causador da oxiuríase (comum em crianças).",
+      "Ovos têm formato plano-convexo em 'D' e ficam infectantes em 4 a 6 horas.",
+      "Prurido anal noturno ocorre pela migração noturna da fêmea à pele perianal.",
+      "O EPF convencional tem baixa sensibilidade e falha no diagnóstico.",
+      "Método de escolha = Método de Graham (fita adesiva transparente) colhido pela manhã.",
+      "Tratamento obriga REPETIÇÃO DA DOSE APÓS 2 SEMANAS e TRATAMENTO DE TODA A FAMÍLIA."
+    ],
+    relacaoMedicina: "Pediatria, infectologia, medicina da família e parasitologia clínica.",
+    errosComuns: [
+      "Solicitar EPF convencional para diagnosticar prurido anal noturno.",
+      "Tratar apenas a criança sintomática sem tratar os contatos domiciliares assintomáticos.",
+      "Esquecer de prescrever a 2ª dose de anti-helmíntico após 14 dias."
+    ],
+    questoesRelacionadas: [146, 147, 148, 149, 150, 151, 152, 153, 154, 155]
   }
 ];

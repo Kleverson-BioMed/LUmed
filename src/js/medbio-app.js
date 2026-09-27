@@ -180,6 +180,14 @@ import { QUESTIONS } from '../data/questionsData.js';
 • **Fase Aguda**: Sinal de Romaña (edema bipalpebral unilateral indolor) e alta parassitemia (pesquisa direta no sangue). Tratamento: BENZNIDAZOL.
 • **Fase Crônica**: 2 testes sorológicos distintos IgG positivos (ELISA + IFI). Forma Cardíaca (BRD + BDAE, arritmias, aneurisma apical) e Digestiva (Megaesôfago e Megacólon por destruição dos plexos entéricos de Auerbach/Meissner).`;
       }
+      if (textQuery.includes('enterobi') || textQuery.includes('vermicularis') || textQuery.includes('oxiuro') || textQuery.includes('graham') || textQuery.includes('fita') || textQuery.includes('retroinfec')) {
+        return `🪱 **Tutor LUmed — Enterobíase / Oxiuríase (Enterobius vermicularis)**:
+• **Morfologia**: Fêmea de cauda longa e afilada (oxiúro). Ovos assimétricos em plano-convexo 'D', infectantes em 4-6h.
+• **Clínica**: Prurido anal noturno (migração noturna da fêmea para a pele perianal). Vulvovaginite em meninas.
+• **Por que o EPF Falha?**: Os ovos são depositados na pele perianal e não no lúmen intestinal.
+• **Método de Escolha**: Método de Graham (fita adesiva transparente) colhido PELA MANHÃ ao acordar (antes do banho/evacuar).
+• **Regra de Ouro**: REPETIR A DOSE DO ANTI-HELMÍNTICO (Albendazol/Mebendazol) EM 2 SEMANAS (14 DIAS) e TRATAR TODA A FAMÍLIA SIMULTANEAMENTE!`;
+      }
 
       // Propedêutica Médica
       if (textQuery.includes('glasgow') || textQuery.includes('consciencia') || textQuery.includes('decerebracao') || textQuery.includes('decorticao')) {
