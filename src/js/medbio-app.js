@@ -1701,7 +1701,8 @@ Raciocínio: ${question.explicacao}`;
   // 11. MONTAGEM INICIAL DA APLICAÇÃO LUmed
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', renderApp);
-  } else {
-    renderApp();
   }
+  renderApp();
+  setTimeout(renderApp, 50);
 })();
+
